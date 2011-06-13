@@ -1,5 +1,0 @@
-D:\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\ResolveAssemblyReference.cache
-D:\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINT.dll
-D:\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINT.pdb
-D:\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\serverFINT.dll
-D:\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\serverFINT.pdb
