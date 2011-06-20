@@ -8,32 +8,22 @@ namespace serverFINT
 
     public class cuentaProveedor : Cuenta
     {
-        private String numeroCuenta;
-        private String descripcion;
-        private DateTime vencimientoPago;
+        
         private Proveedor proveedor;
-        private List<Transaccion> coltransacciones;
- 
-
-
+        
 
         public cuentaProveedor(String numero, String descripcion, DateTime vencimiento, Proveedor prov)
         {
             this.NumeroCuenta = numero;
             this.Descripcion = descripcion;
-            this.VencimientoPago = vencimiento;
+            //this.VencimientoPago = vencimiento;
             this.Proveedor = prov;
+            
 
         }
 
 
 
-        public List<Transaccion> Coltransacciones
-        {
-            get { return coltransacciones; }
-            set { coltransacciones = value; }
-        }
-       
 
         public Proveedor Proveedor
         {
@@ -42,44 +32,54 @@ namespace serverFINT
         }
         
 
-        public DateTime VencimientoPago
-        {
-            get { return vencimientoPago; }
-            set { vencimientoPago = value; }
-        }
-     
-
-        public String Descripcion
-        {
-            get { return descripcion; }
-            set { descripcion = value; }
-        }
-
-        public String NumeroCuenta
-        {
-            get { return numeroCuenta; }
-            set { numeroCuenta = value; }
-        }
-
-
-
-
-
-
+       
 
         #region Cuenta Members
 
-        public void realizarMovimiento(Transaccion pTransaccion)
-        {
-            throw new NotImplementedException();
-        }
+        //public override String realizarMovimiento(Transaccion pTransaccion)
+        //{
+        //    this.Coltransacciones.Add(pTransaccion);
+        //    if (pTransaccion.Tipo=tipoTransaccion.Deposito)
+        //    {
+        //        return realizarDeposito(pTransaccion);
+        //    }
+        //    else if (pTransaccion.Tipo==tipoTransaccion.Extraccion)
+        //    {
+        //        return realizarExtraccion(pTransaccion);
+        //    }
+            
 
-        public void estadoCuenta(DateTime fecha)
+        //}
+
+        //private string realizarExtraccion(Transaccion pTransaccion)
+        //{
+        //    if (pTransaccion.EstadoTransaccion=estado.Realizada)
+        //    {
+        //        this.Saldo += pTransaccion.Monto;    
+        //    }
+            
+        //    return "Extraccion exitosa";
+        //}
+
+        //private void realizarDeposito(Transaccion pTransaccion)
+        //{
+        //    if (pTransaccion.EstadoTransaccion==estado.Realizada)
+        //    {
+        //        this.Saldo -= pTransaccion.Monto;    
+        //    }
+        //    //return "Pago Exitoso";
+        //}
+
+        public override estadoCuenta estadoCuenta(DateTime fecha)
         {
-            throw new NotImplementedException();
+            estadoCuenta retorno;
+            retorno.saldo = this.Saldo;
+            retorno.transacciones = this.Coltransacciones;
+            return retorno;
         }
 
         #endregion
+
     }
 
 }

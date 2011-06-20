@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serverFINT", "serverFINT\se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serverFINTWs", "serverFINTWs\serverFINTWs.csproj", "{E474EDE1-8623-4FD4-8332-6EB0F6A1A2C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serverFINTPersitencia", "serverFINTPersitencia\serverFINTPersitencia.csproj", "{908D4814-4F47-49AD-A720-AAA704BA0A37}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -23,6 +25,10 @@ Global
 		{E474EDE1-8623-4FD4-8332-6EB0F6A1A2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E474EDE1-8623-4FD4-8332-6EB0F6A1A2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E474EDE1-8623-4FD4-8332-6EB0F6A1A2C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{908D4814-4F47-49AD-A720-AAA704BA0A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{908D4814-4F47-49AD-A720-AAA704BA0A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{908D4814-4F47-49AD-A720-AAA704BA0A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{908D4814-4F47-49AD-A720-AAA704BA0A37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,7 +25,7 @@ namespace serverFINTWs
         public Boolean agregarUsuario(String nombre, String login, String passwd, serverFINT.rol tipo)
         {
             serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
-            return (sistema.agregarUsuario(nombre, login, passwd, tipo));
+            return sistema.agregarUsuario(nombre, login, passwd, tipo);
 
         }
     }

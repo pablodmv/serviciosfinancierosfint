@@ -18,17 +18,16 @@ namespace serverFINT
         Usuario
     }
 
-    public enum estadoTransaccion
+    public enum estado
     {
         Pendiente,
-        Pagado,
-        Depositado
+        Realizada
     }
 
 
     public enum tipoTransaccion
     {
-        Gasto,
+        Extraccion,
         Deposito,
         Transferencia
     }

@@ -11,16 +11,24 @@ namespace serverFINT
         private String concepto;
         private Double monto;
         private tipoTransaccion tipo;
-        private estadoTransaccion estado;
-        private DateTime fechaRealizado;
-        private DateTime fechaEstimada;
+        private DateTime fecha;
+        private estado estadoTransaccion;
+        private List<Gasto> colGastoCancela;
 
-        public Transaccion(String pConcepto, Double pMonto, DateTime pFechaDeposito, tipoTransaccion pTipo, estadoTransaccion pEstado)
+       
+
+      
+        
+      
+        
+
+        public Transaccion(String pConcepto, Double pMonto, DateTime pFecha, tipoTransaccion pTipo, estado pEstado)
         {
             this.Concepto = pConcepto;
             this.Monto = pMonto;
             this.Tipo = pTipo;
-            this.Estado = pEstado;
+            this.Fecha = pFecha;
+            this.EstadoTransaccion = pEstado;
 
         }
 
@@ -42,28 +50,29 @@ namespace serverFINT
         }
 
 
-        public estadoTransaccion Estado
+      
+        public DateTime Fecha
         {
-            get { return estado; }
-            set { estado = value; }
+            get { return fecha; }
+            set { fecha = value; }
         }
 
-        public DateTime FechaRealizado
-        {
-            get { return fechaRealizado; }
-            set { fechaRealizado = value; }
-        }
-
-        public DateTime FechaEstimada
-        {
-            get { return fechaEstimada; }
-            set { fechaEstimada = value; }
-        }
-
+      
         public int NumTransac
         {
             get { return numTransac; }
             set { numTransac = value; }
+        }
+        public estado EstadoTransaccion
+        {
+            get { return estadoTransaccion; }
+            set { estadoTransaccion = value; }
+        }
+
+        public List<Gasto> ColGastoCancela
+        {
+            get { return colGastoCancela; }
+            set { colGastoCancela = value; }
         }
     }
 }
