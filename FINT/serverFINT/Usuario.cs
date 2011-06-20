@@ -9,12 +9,12 @@ namespace serverFINT
     public class Usuario
     {
         private Credencial credencial;
-        private int id;
-
-       
-      
+        private int id;     
         private String nombre;
         private List<Cuenta> colCuentas;
+        private List<Gasto> colGasto;
+
+        
 
         public Usuario(String pNombre, Credencial cred)
         {
@@ -47,9 +47,19 @@ namespace serverFINT
             set { id = value; }
         }
 
+        private List<Gasto> ColGasto
+        {
+            get { return colGasto; }
+            set { colGasto = value; }
+        }
+
         public void agregarCuenta(Cuenta cuenta)
         {
             this.colCuentas.Add(cuenta);
+        }
+        public void agregarGasto(Gasto gasto)
+        {
+            this.ColGasto.Add(gasto);
         }
 
         public String obtenerLogin()

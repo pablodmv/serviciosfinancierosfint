@@ -78,7 +78,7 @@ namespace serverFINT
 
         public void agregarCuentaPersonal(String numero, Double saldo, String desc, Usuario user)
         {
-            Cuenta cuentapers = new cuentaPersonal(numero, saldo, desc);
+            Cuenta cuentapers = new Cuenta(numero, saldo, desc);
             user.agregarCuenta(cuentapers);
             
         }
@@ -126,8 +126,11 @@ namespace serverFINT
 
 
 
-        public Boolean realizarMovimiento(Cuenta pCuenta, Transaccion pTransaccion)
+
+
+        public String realizarMovimiento(Cuenta pCuenta, Transaccion pTransaccion)
         {
+            return pCuenta.realizarMovimiento(pTransaccion);
         
                 
         }
@@ -135,7 +138,13 @@ namespace serverFINT
         public Boolean realizarTransferencia(Cuenta pCuentaOrig, Cuenta pCuentaDestino, Transaccion pTransaccion)
         {
 
-            
+            return true;
+        }
+
+        public estadoCuenta verEstadoCuenta(DateTime fecha, Cuenta pCuenta)
+        {
+            return pCuenta.estadoCuenta(fecha);
+        
         }
     }
 

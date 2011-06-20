@@ -11,7 +11,7 @@ namespace serverFINT
        
         private String login;
         private String password;
-        private rol tipoUsuario;
+        private rol rolUsuario;
         
         public Credencial(String pLogin, String pPassword, rol pRol)
         {
@@ -24,8 +24,8 @@ namespace serverFINT
 
         public rol TipoUsuario
         {
-            get { return tipoUsuario; }
-            set { tipoUsuario = value; }
+            get { return rolUsuario; }
+            set { rolUsuario = value; }
         }
 
         public String Password
