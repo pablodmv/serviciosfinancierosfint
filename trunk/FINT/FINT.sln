@@ -7,9 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serverFINTWs", "serverFINTW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serverFINTPersitencia", "serverFINTPersitencia\serverFINTPersitencia.csproj", "{908D4814-4F47-49AD-A720-AAA704BA0A37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FINTDesktop", "..\..\FINTDesktop\FINTDesktop\FINTDesktop.csproj", "{B5008C75-A7A0-4275-9E56-81157CCFCE7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FINTDesktop", "FINTDesktop\FINTDesktop\FINTDesktop.csproj", "{B5008C75-A7A0-4275-9E56-81157CCFCE7A}"
 EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -34,9 +38,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
