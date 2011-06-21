@@ -1,0 +1,17 @@
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\bin\Debug\FINTDesktop.exe
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\bin\Debug\FINTDesktop.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\FINTDesktop.csproj.GenerateResource.Cache
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\FINTDesktop.exe
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\FINTDesktop.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.MainForm.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.Properties.Resources.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.Login.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.Registrar_Cliente.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.EditarUsuario.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.EliminarUsuario.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.IngresarCuenta.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.IngresarGastos.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.IngresarPagos.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.IngresarDepExt.resources
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.Transferencia.resources
