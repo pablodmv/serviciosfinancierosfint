@@ -33,13 +33,25 @@ namespace fint.Forms
             String nombre = this.nombreTxt.Text;
             String login = this.loginTxt.Text;
             String pwd = this.pwdText.Text;
+            int result;
 
             if (!nombre.Equals("") && !login.Equals("") && !pwd.Equals(""))
             {
                 this.msgLbl.Visible = false;
-                if (Controller.agregarUsuario(nombre, login, pwd))
+                result = Controller.agregarUsuario(nombre, login, pwd);
+                if (result==0)
                 {
                     this.msgLbl.Text = "Usuario ingresado con exito";
+                    this.msgLbl.Visible = true;
+                }
+                else if (result==14)
+                {
+                    this.msgLbl.Text = "Usuario Duplicado";
+                    this.msgLbl.Visible = true;
+                    
+                } else
+                {
+                    this.msgLbl.Text = "Error al ingresar el usuario. Consulte";
                     this.msgLbl.Visible = true;
                 }
 

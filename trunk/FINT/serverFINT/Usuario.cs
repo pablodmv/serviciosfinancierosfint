@@ -13,13 +13,17 @@ namespace serverFINT
         private String nombre;
         private List<Cuenta> colCuentas;
         private List<Gasto> colGasto;
+        private String login;
+        private String password;
+        private rol rolUsuario;
 
-        
 
-        public Usuario(String pNombre, Credencial cred)
+        public Usuario(String pNombre, String pLogin, String pPassword, rol pRol)
         {
             this.Nombre = pNombre;
-            this.Credencial = cred;
+            this.Login = pLogin;
+            this.Password = pPassword;
+            this.TipoUsuario = pRol;
 
         }
 
@@ -46,7 +50,23 @@ namespace serverFINT
             get { return id; }
             set { id = value; }
         }
+        public rol TipoUsuario
+        {
+            get { return rolUsuario; }
+            set { rolUsuario = value; }
+        }
 
+        public String Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        public String Login
+        {
+            get { return login; }
+            set { login = value; }
+        }
         private List<Gasto> ColGasto
         {
             get { return colGasto; }
