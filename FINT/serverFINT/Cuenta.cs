@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace serverFINT
 {
@@ -91,15 +92,26 @@ namespace serverFINT
             return "Gasto Ingresado";
         }
 
-        
-        public virtual estadoCuenta estadoCuenta(DateTime fecha)
+
+        public virtual estadoCuenta estadoCuentaProyectado(DateTime fecha)
         {
             //Creo la esturctura a devolver
             estadoCuenta retorno;
-            retorno.transacciones = new List<Transaccion>();
+            retorno.movimientosPendiente = new ArrayList();
             retorno.saldo = this.Saldo;
 
-            //recorro las transacciones y busco las que estan pendientes hasta la fecha
+            //recorro los gastos y busco las que estan pendientes hasta la fecha
+
+            foreach (Gasto tmpGasto in this.ColGasto)
+            {
+                if (tmpGasto.Vencimiento.CompareTo(fecha) < 0 && tmpGasto.Estado == estado.Pendiente)
+                {
+                    retorno.saldo -= tmpGasto.Monto;
+                    retorno.movimientosPendiente.Add(tmpGasto);
+                }
+            }
+
+            //recorro las transacciones pendientes hasta la fecha
 
             foreach (Transaccion transac in coltransacciones)
             {
@@ -108,19 +120,19 @@ namespace serverFINT
                     if (transac.Tipo == tipoTransaccion.Deposito)
                     {
                         retorno.saldo += transac.Monto;
-                        retorno.transacciones.Add(transac);
+                        retorno.movimientosPendiente.Add(transac);
                     }
                     else if (transac.Tipo == tipoTransaccion.Extraccion)
                     {
                         retorno.saldo -= transac.Monto;
-                        retorno.transacciones.Add(transac);
+                        retorno.movimientosPendiente.Add(transac);
                     }
 
                 }
 
+                
             }
             return retorno;
-
         }
 
         #endregion
@@ -194,7 +206,7 @@ namespace serverFINT
 
     public struct estadoCuenta
     {
-        public List<Transaccion> transacciones ;
+        public ArrayList movimientosPendiente ;
         public Double saldo;
     }
 

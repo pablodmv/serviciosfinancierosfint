@@ -56,6 +56,12 @@
     <Compile Include="Transaccion.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\serverFINTPersitencia\serverFINTPersitencia.csproj">
+      <Project>{908D4814-4F47-49AD-A720-AAA704BA0A37}</Project>
+      <Name>serverFINTPersitencia</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

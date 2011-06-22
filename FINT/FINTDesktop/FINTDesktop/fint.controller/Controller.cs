@@ -10,23 +10,28 @@ namespace fint.Forms.fint.controller
 
         public static Boolean loginUsuario(String usr, String pwd)
         {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.chequearUsuario(usr, pwd);
 
-            //Codigo provisorio
-            if (usr.Equals("gus") && pwd.Equals("gus"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            ////Codigo provisorio
+            //if (usr.Equals("gus") && pwd.Equals("gus"))
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
 
         }
 
-        public static Boolean agregarUsuario(String nombre, String login, String pwd)
+        public static int agregarUsuario(String nombre, String login, String pwd)
         {
-            return true;
+            
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+           return service.agregarUsuario(nombre, login, pwd, serverFINTFachada.rol.Usuario);
 
+            
         }
 
         public static Boolean editarUsuario(String nombre, String pwd)

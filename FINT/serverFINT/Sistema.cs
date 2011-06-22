@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using serverFINTPersitencia;
+using System.Data;
+
 
 namespace serverFINT
 {
@@ -11,8 +14,11 @@ namespace serverFINT
     public class Sistema
     {
         private static Sistema instancia = null;
-        private List<Usuario> colusuarios;
-        private List<Proveedor> colProveedor;
+        private List<Usuario> colusuarios = new List<Usuario>();
+        private List<Proveedor> colProveedor =new List<Proveedor>();
+        private List<Gasto> colGasto = new List<Gasto>();
+
+       
 
 
         private Sistema() { }
@@ -39,47 +45,64 @@ namespace serverFINT
             get { return colusuarios; }
             set { colusuarios = value; }
         }
-
-        //Crea un usuario y chequea siexite, Si no existe lo agrega a la coleccion de usuarios
-        public Boolean agregarUsuario(String nombre,String login, String passwd, rol tipo)
+        public List<Gasto> ColGasto
         {
-            Credencial cred=new Credencial(login,passwd,tipo);
-            Usuario usuario = new Usuario(nombre, cred);
-            if (!chequearUsuario(usuario))
-            {
-                colusuarios.Add(usuario);
-                return true;
-            }
+            get { return colGasto; }
+            set { colGasto = value; }
+        }
 
-            return false;
+
+        //Crea un usuario y chequea si exite, Si no existe lo agrega a la coleccion de usuarios
+        public int agregarUsuario(String nombre,String login, String passwd, rol tipo)
+        {
+            usuarioPersistente userPersistent = new usuarioPersistente();
+            Usuario usuario = new Usuario(nombre, login, passwd, tipo);
+            //if (!chequearUsuario(usuario,userPersistent))
+            //{
+                
+                 return userPersistent.altaUsuario(nombre, login, passwd, (int) tipo);
+                
+
+           //}
+
+           //// return false;
         }
 
         //Chequea si el login del usuario ya existe. Si exite devuelve true, sino false
-        public Boolean chequearUsuario(Usuario user)
+        public Boolean chequearUsuario(String login, String pwd)
         {
-            foreach (Usuario tmpUsuario in Colusuarios)
-            {
-                if (user.obtenerLogin()==tmpUsuario.obtenerLogin())
-                {
-                    return true;
+            usuarioPersistente userPersistent = new usuarioPersistente();
+            //foreach (Usuario tmpUsuario in Colusuarios)
+            //{
+            //    if (user.obtenerLogin()==tmpUsuario.obtenerLogin())
+            //    {
+            //        return true;
                     
-                }
+            //    }
                 
+            //}
+            //return false;
+            DataSet ds = userPersistent.consultaUsuario(login, pwd);
+
+            if (ds.Tables[0].Rows.Count>0)
+            {
+                return true;
             }
             return false;
+
         }
-        
-        public void agregarCuentaProveedor(DateTime vencimiento, String desc, Proveedor prov, String numero, Usuario user)
+
+        public void agregarCuentaProveedor(String numero, String descripcion, DateTime vencimiento, Proveedor prov, Usuario user)
         {
-            Cuenta cuentaProveedor = new cuentaProveedor(numero, desc, vencimiento, prov);
+            Cuenta cuentaProveedor = new cuentaProveedor(numero, descripcion, vencimiento, prov);
             user.agregarCuenta(cuentaProveedor);
             
         }
 
-        public void agregarCuentaPersonal(String numero, Double saldo, String desc, Usuario user)
+        public void agregarCuenta(String numero, Double saldo, String Descripcion, Usuario user)
         {
-            Cuenta cuentapers = new Cuenta(numero, saldo, desc);
-            user.agregarCuenta(cuentapers);
+            Cuenta cuenta = new Cuenta(numero, saldo, Descripcion);
+            user.agregarCuenta(cuenta);
             
         }
 
@@ -97,17 +120,17 @@ namespace serverFINT
         }
 
 
-        public Usuario obtenerUsuario(int id)
-        {
-            foreach (Usuario user in Colusuarios)
-            {
-                if (user.Id==id)
-                {
-                    return user;
-                }
-            }
-            return null;
-        }
+        //public Usuario obtenerUsuario(int id)
+        //{
+        //    foreach (Usuario user in Colusuarios)
+        //    {
+        //        if (user.Id==id)
+        //        {
+        //            return user;
+        //        }
+        //    }
+        //    return null;
+        //}
 
 
         public List<Cuenta> obtenerCuentasXusuario(int idUsuario)
@@ -143,8 +166,7 @@ namespace serverFINT
 
         public estadoCuenta verEstadoCuenta(DateTime fecha, Cuenta pCuenta)
         {
-            return pCuenta.estadoCuenta(fecha);
-        
+            return pCuenta.estadoCuentaProyectado(fecha);
         }
     }
 

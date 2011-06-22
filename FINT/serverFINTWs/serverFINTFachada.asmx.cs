@@ -18,15 +18,26 @@ namespace serverFINTWs
     [ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
-    public class Service1 : System.Web.Services.WebService
+    public class serverFINTFachada : System.Web.Services.WebService
     {
 
         [WebMethod]
-        public Boolean agregarUsuario(String nombre, String login, String passwd, serverFINT.rol tipo)
+        public int agregarUsuario(String nombre, String login, String passwd, serverFINT.rol tipo)
         {
             serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
             return sistema.agregarUsuario(nombre, login, passwd, tipo);
+            
 
         }
+
+        [WebMethod]
+        public Boolean chequearUsuario(String login, String passwd)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.chequearUsuario(login, passwd);
+
+
+        }
+
     }
 }

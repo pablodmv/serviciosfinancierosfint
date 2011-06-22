@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections;
 
 namespace serverFINT
 {
@@ -70,11 +71,11 @@ namespace serverFINT
         //    //return "Pago Exitoso";
         //}
 
-        public override estadoCuenta estadoCuenta(DateTime fecha)
+        public override estadoCuenta estadoCuentaProyectado(DateTime fecha)
         {
             estadoCuenta retorno;
             retorno.saldo = this.Saldo;
-            retorno.transacciones = this.Coltransacciones;
+            retorno.movimientosPendiente =  new ArrayList(this.Coltransacciones);
             return retorno;
         }
 
