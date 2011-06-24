@@ -20,6 +20,7 @@ namespace fint.Forms.serverFINTFachada {
     using System.Web.Services.Protocols;
     using System;
     using System.Xml.Serialization;
+    using System.Data;
     
     
     /// <remarks/>
@@ -32,6 +33,8 @@ namespace fint.Forms.serverFINTFachada {
         private System.Threading.SendOrPostCallback agregarUsuarioOperationCompleted;
         
         private System.Threading.SendOrPostCallback chequearUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback modificarUsuarioOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -78,6 +81,9 @@ namespace fint.Forms.serverFINTFachada {
         public event chequearUsuarioCompletedEventHandler chequearUsuarioCompleted;
         
         /// <remarks/>
+        public event modificarUsuarioCompletedEventHandler modificarUsuarioCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/agregarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int agregarUsuario(string nombre, string login, string passwd, rol tipo) {
             object[] results = this.Invoke("agregarUsuario", new object[] {
@@ -114,11 +120,11 @@ namespace fint.Forms.serverFINTFachada {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/chequearUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool chequearUsuario(string login, string passwd) {
+        public System.Data.DataSet chequearUsuario(string login, string passwd) {
             object[] results = this.Invoke("chequearUsuario", new object[] {
                         login,
                         passwd});
-            return ((bool)(results[0]));
+            return ((System.Data.DataSet)(results[0]));
         }
         
         /// <remarks/>
@@ -140,6 +146,39 @@ namespace fint.Forms.serverFINTFachada {
             if ((this.chequearUsuarioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.chequearUsuarioCompleted(this, new chequearUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/modificarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool modificarUsuario(string nombre, string passwd, int id) {
+            object[] results = this.Invoke("modificarUsuario", new object[] {
+                        nombre,
+                        passwd,
+                        id});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void modificarUsuarioAsync(string nombre, string passwd, int id) {
+            this.modificarUsuarioAsync(nombre, passwd, id, null);
+        }
+        
+        /// <remarks/>
+        public void modificarUsuarioAsync(string nombre, string passwd, int id, object userState) {
+            if ((this.modificarUsuarioOperationCompleted == null)) {
+                this.modificarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnmodificarUsuarioOperationCompleted);
+            }
+            this.InvokeAsync("modificarUsuario", new object[] {
+                        nombre,
+                        passwd,
+                        id}, this.modificarUsuarioOperationCompleted, userState);
+        }
+        
+        private void OnmodificarUsuarioOperationCompleted(object arg) {
+            if ((this.modificarUsuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.modificarUsuarioCompleted(this, new modificarUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -214,6 +253,32 @@ namespace fint.Forms.serverFINTFachada {
         private object[] results;
         
         internal chequearUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void modificarUsuarioCompletedEventHandler(object sender, modificarUsuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class modificarUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal modificarUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

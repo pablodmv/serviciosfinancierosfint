@@ -14,10 +14,12 @@ namespace fint.Forms
     {
 
         private MainForm main;
+        private static Controller controladora;
 
         public Login()
         {
             InitializeComponent();
+           
         }
 
         public Login(MainForm f)
@@ -44,10 +46,10 @@ namespace fint.Forms
 
         private void doneBtn_Click(object sender, EventArgs e)
         {
-
+            controladora = Controller.getInstancia();
             String usr = this.usrTxt.Text;
             String pwd = this.pwdTxt.Text;
-            if (Controller.loginUsuario(usr,pwd))
+            if (controladora.loginUsuario(usr, pwd).Tables[0].Rows.Count>0)
             {
                 this.msgLbl.Visible = false;
                 this.main.getMenu().Visible = true;

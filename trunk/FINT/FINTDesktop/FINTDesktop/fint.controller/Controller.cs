@@ -2,16 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace fint.Forms.fint.controller
 {
-    class Controller
+    public class Controller
     {
+        private static Controller instancia;
+        private DataSet dsusuario;
+       
 
-        public static Boolean loginUsuario(String usr, String pwd)
+        public DataSet dsUsuario
+        {
+            get { return dsusuario; }
+            set { dsusuario = value; }
+        }
+
+        public static Controller getInstancia()
+        {
+
+            if (instancia == null)
+            {
+                instancia = new Controller();
+            }
+            return instancia;
+        }
+        public Controller()
+        {
+            dsusuario = new DataSet();
+
+        }
+
+        public DataSet loginUsuario(String usr, String pwd)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            return service.chequearUsuario(usr, pwd);
+            dsusuario= service.chequearUsuario(usr, pwd);
+            return dsusuario;
 
             ////Codigo provisorio
             //if (usr.Equals("gus") && pwd.Equals("gus"))
@@ -27,16 +53,17 @@ namespace fint.Forms.fint.controller
 
         public static int agregarUsuario(String nombre, String login, String pwd)
         {
-            
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            
            return service.agregarUsuario(nombre, login, pwd, serverFINTFachada.rol.Usuario);
 
             
         }
 
-        public static Boolean editarUsuario(String nombre, String pwd)
+        public Boolean editarUsuario(String nombre, String pwd, int id)
         {
-            return true;
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.modificarUsuario(nombre, pwd,id);
 
         }
 

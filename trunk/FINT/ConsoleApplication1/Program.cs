@@ -11,7 +11,7 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Sistema pepe = Sistema.getInstancia();
-            Boolean hola = pepe.chequearUsuario("Palo");
+            Boolean hola= pepe.editarUsuario("pepe", "pepe",1);
             Console.WriteLine(hola);
         }
     }
