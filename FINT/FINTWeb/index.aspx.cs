@@ -16,6 +16,8 @@ namespace FINTWeb
 {
     public partial class _Default : System.Web.UI.Page
     {
+        private Controller controladora;
+
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -27,7 +29,8 @@ namespace FINTWeb
             String usr = this.usuarioTxt.Text;
             String pwd = this.pwdTxt.Text;
 
-            if (Controller.loginUsuario(usr, pwd))
+            this.controladora = Controller.getInstancia();
+            if (controladora.loginUsuario(usr, pwd).Tables[0].Rows.Count > 0)
             {
                 
                 Server.Transfer("~/webForms/Main.aspx",true);

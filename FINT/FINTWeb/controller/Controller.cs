@@ -15,24 +15,58 @@ namespace FINTWeb.controller
     public class Controller
     {
 
-        public static Boolean loginUsuario(String usr, String pwd)
+
+        private static Controller instancia;
+        private DataSet dsusuario;
+
+        public DataSet dsUsuario
+        {
+            get { return dsusuario; }
+            set { dsusuario = value; }
+        }
+
+        public static Controller getInstancia()
         {
 
-            //Codigo provisorio
-            if (usr.Equals("gus") && pwd.Equals("gus"))
+            if (instancia == null)
             {
-                return true;
+                instancia = new Controller();
             }
-            else
-            {
-                return false;
-            }
+            return instancia;
+        }
+
+        private Controller()
+        {
+            dsusuario = new DataSet();
 
         }
 
-        public static Boolean agregarUsuario(String nombre, String login, String pwd)
+
+        public DataSet loginUsuario(String usr, String pwd)
         {
-            return true;
+
+
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            dsusuario = service.chequearUsuario(usr, pwd);
+            return dsusuario;
+
+            //Codigo provisorio
+            //if (usr.Equals("gus") && pwd.Equals("gus"))
+            //{
+              //  return true;
+            //}
+            //else
+            //{
+              //  return false;
+            //}
+
+        }
+
+        public int agregarUsuario(String nombre, String login, String pwd)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+
+            return service.agregarUsuario(nombre, login, pwd, serverFINTFachada.rol.Usuario);
 
         }
 

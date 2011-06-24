@@ -16,6 +16,9 @@ namespace FINTWeb.webForms
 {
     public partial class RegistrarUsuario : System.Web.UI.Page
     {
+
+        public Controller controladora;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -28,16 +31,32 @@ namespace FINTWeb.webForms
             String login = this.loginTxt.Text;
             String pwd = this.pwdTxt.Text;
 
+            int result;
+
+            this.controladora = Controller.getInstancia();
+
             if (!nombre.Equals("") && !login.Equals("") && !pwd.Equals(""))
             {
 
                 this.msgLbl.Visible = false;
-                if (Controller.agregarUsuario(nombre, login, pwd))
+                result = this.controladora.agregarUsuario(nombre, login, pwd);
+                if (result == 0)
                 {
                     this.msgLbl.Text = "Usuario ingresado con exito";
                     this.msgLbl.Visible = true;
 
                     this.clear();
+                }
+                else if (result == 14)
+                {
+                    this.msgLbl.Text = "Usuario Duplicado";
+                    this.msgLbl.Visible = true;
+
+                }
+                else
+                {
+                    this.msgLbl.Text = "Error al ingresar el usuario. Consulte";
+                    this.msgLbl.Visible = true;
                 }
 
             }
@@ -46,11 +65,6 @@ namespace FINTWeb.webForms
                 this.msgLbl.Text = "Todos los datos son requeridos.";
                 this.msgLbl.Visible=true;
             }
-
-
-
-
-
 
 
         }
