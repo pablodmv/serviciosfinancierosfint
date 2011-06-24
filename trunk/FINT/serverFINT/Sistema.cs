@@ -98,12 +98,12 @@ namespace serverFINT
 
         }
 
-        public void agregarCuentaProveedor(String numero, String descripcion, DateTime vencimiento, Proveedor prov, Usuario user)
-        {
-            Cuenta cuentaProveedor = new cuentaProveedor(numero, descripcion, vencimiento, prov);
-            user.agregarCuenta(cuentaProveedor);
+        //public void agregarCuentaProveedor(String numero, String descripcion, DateTime vencimiento, Proveedor prov, Usuario user)
+        //{
+        //   // Cuenta cuentaProveedor = new cuentaProveedor(numero, descripcion, vencimiento, prov);
+        //   // user.agregarCuenta(cuentaProveedor);
             
-        }
+        //}
 
         public Boolean agregarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario)
         {
@@ -139,17 +139,23 @@ namespace serverFINT
         //}
 
 
-        public List<Cuenta> obtenerCuentasXusuario(int idUsuario)
+        public DataSet obtenerCuentasXusuario(int idUsuario)
         {
-            foreach (Usuario user in Colusuarios)
-            {
-                if (user.Id==idUsuario)
-                {
-                    return user.ColCuentas;
+
+            Cuenta cuen = new Cuenta();
+            return cuen.obtenerCuentasXusuario(idUsuario);
+
+
+
+            //foreach (Usuario user in Colusuarios)
+            //{
+            //    if (user.Id==idUsuario)
+            //    {
+            //        return user.ColCuentas;
                     
-                }
-            }
-            return null;
+            //    }
+            //}
+            //return null;
         
         }
 

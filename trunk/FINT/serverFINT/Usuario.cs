@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace serverFINT
 {
@@ -73,10 +74,11 @@ namespace serverFINT
             set { colGasto = value; }
         }
 
-        public void agregarCuenta(Cuenta cuenta)
-        {
-            this.colCuentas.Add(cuenta);
-        }
+      
+       
+
+
+
         public void agregarGasto(Gasto gasto)
         {
             this.ColGasto.Add(gasto);
