@@ -36,6 +36,10 @@ namespace fint.Forms.serverFINTFachada {
         
         private System.Threading.SendOrPostCallback modificarUsuarioOperationCompleted;
         
+        private System.Threading.SendOrPostCallback obtenerProveedoresOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ingresarCuentaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -82,6 +86,12 @@ namespace fint.Forms.serverFINTFachada {
         
         /// <remarks/>
         public event modificarUsuarioCompletedEventHandler modificarUsuarioCompleted;
+        
+        /// <remarks/>
+        public event obtenerProveedoresCompletedEventHandler obtenerProveedoresCompleted;
+        
+        /// <remarks/>
+        public event ingresarCuentaCompletedEventHandler ingresarCuentaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/agregarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -183,6 +193,70 @@ namespace fint.Forms.serverFINTFachada {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/obtenerProveedores", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet obtenerProveedores() {
+            object[] results = this.Invoke("obtenerProveedores", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void obtenerProveedoresAsync() {
+            this.obtenerProveedoresAsync(null);
+        }
+        
+        /// <remarks/>
+        public void obtenerProveedoresAsync(object userState) {
+            if ((this.obtenerProveedoresOperationCompleted == null)) {
+                this.obtenerProveedoresOperationCompleted = new System.Threading.SendOrPostCallback(this.OnobtenerProveedoresOperationCompleted);
+            }
+            this.InvokeAsync("obtenerProveedores", new object[0], this.obtenerProveedoresOperationCompleted, userState);
+        }
+        
+        private void OnobtenerProveedoresOperationCompleted(object arg) {
+            if ((this.obtenerProveedoresCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.obtenerProveedoresCompleted(this, new obtenerProveedoresCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ingresarCuenta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ingresarCuenta(string numero, string descripcion, decimal saldo, int idProveedor, int idUsuario) {
+            object[] results = this.Invoke("ingresarCuenta", new object[] {
+                        numero,
+                        descripcion,
+                        saldo,
+                        idProveedor,
+                        idUsuario});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ingresarCuentaAsync(string numero, string descripcion, decimal saldo, int idProveedor, int idUsuario) {
+            this.ingresarCuentaAsync(numero, descripcion, saldo, idProveedor, idUsuario, null);
+        }
+        
+        /// <remarks/>
+        public void ingresarCuentaAsync(string numero, string descripcion, decimal saldo, int idProveedor, int idUsuario, object userState) {
+            if ((this.ingresarCuentaOperationCompleted == null)) {
+                this.ingresarCuentaOperationCompleted = new System.Threading.SendOrPostCallback(this.OningresarCuentaOperationCompleted);
+            }
+            this.InvokeAsync("ingresarCuenta", new object[] {
+                        numero,
+                        descripcion,
+                        saldo,
+                        idProveedor,
+                        idUsuario}, this.ingresarCuentaOperationCompleted, userState);
+        }
+        
+        private void OningresarCuentaOperationCompleted(object arg) {
+            if ((this.ingresarCuentaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ingresarCuentaCompleted(this, new ingresarCuentaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -279,6 +353,58 @@ namespace fint.Forms.serverFINTFachada {
         private object[] results;
         
         internal modificarUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void obtenerProveedoresCompletedEventHandler(object sender, obtenerProveedoresCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class obtenerProveedoresCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal obtenerProveedoresCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void ingresarCuentaCompletedEventHandler(object sender, ingresarCuentaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ingresarCuentaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ingresarCuentaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

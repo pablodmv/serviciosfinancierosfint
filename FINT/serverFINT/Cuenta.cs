@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using serverFINTPersitencia;
 
 namespace serverFINT
 {
@@ -60,6 +61,28 @@ namespace serverFINT
             get { return colGasto; }
             set { colGasto = value; }
         }
+
+        public Boolean ingresarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario) 
+        {
+
+            cuentaPersistente cuentaPersis = new cuentaPersistente();
+           return cuentaPersis.ingresarCuenta(numero, descripcion, saldo, idProveedor, idUsuario);
+        
+        
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         #region Cuenta Members
 

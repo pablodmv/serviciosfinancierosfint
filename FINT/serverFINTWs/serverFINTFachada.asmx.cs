@@ -45,8 +45,21 @@ namespace serverFINTWs
         {
             serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
             return sistema.editarUsuario(nombre, passwd, id);
+        }
 
+        [WebMethod]
+        public DataSet obtenerProveedores()
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.obtenerProveedores();
+        }
 
+        [WebMethod]
+        public Boolean ingresarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.agregarCuenta(numero, descripcion, saldo, idProveedor, idUsuario);
+      
         }
 
     }

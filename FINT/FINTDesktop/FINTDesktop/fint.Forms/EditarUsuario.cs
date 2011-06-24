@@ -14,6 +14,7 @@ namespace fint.Forms
     {
         DataSet dsUsuario = new DataSet();
         static Controller controladora;
+
         public EditarUsuario()
         {
             InitializeComponent();
