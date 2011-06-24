@@ -171,19 +171,6 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:51148/serverFINTFachada.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\serverFINTFachada\</RelPath>
-      <UpdateFromURL>http://localhost:51148/serverFINTFachada.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>FINTWeb_localhost_serverFINTFachada</CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -193,6 +180,19 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\serverFINTFachada\serverFINTFachada.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:51148/serverFINTFachada.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\serverFINTFachada\</RelPath>
+      <UpdateFromURL>http://localhost:51148/serverFINTFachada.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>FINTWeb_serverFINTFachada_serverFINTFachada</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

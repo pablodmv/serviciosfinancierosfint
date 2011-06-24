@@ -70,7 +70,6 @@ namespace fint.Forms
             }
             else
             {
-                this.msgLbl.Text = "Faltan datos.";
                 this.msgLbl.Visible = true;
             }
             

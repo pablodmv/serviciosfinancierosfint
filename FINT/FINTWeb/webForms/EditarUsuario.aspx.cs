@@ -16,26 +16,36 @@ namespace FINTWeb.webForms
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+
+        private DataSet dsUsuario = new DataSet();
+        private Controller controladora;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            controladora = Controller.getInstancia();
+            dsUsuario = controladora.dsUsuario;
+
             String usr = "";
             if (Request.QueryString["usuarioTxt"] != null)
             {
                 usr = Request.QueryString["usuarioTxt"];
             }
             this.usrLbl.Text = "Bienvenido Usuario: " + usr;
+
+            this.nomTxt.Text = dsUsuario.Tables[0].Rows[0]["Nombre"].ToString();
+            //this.pwdTxt.Text = dsUsuario.Tables[0].Rows[0]["Password"].ToString();
         }
 
         protected void doneBtn_Click(object sender, EventArgs e)
         {
 
-
+            int idUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
             String nombre = this.nomTxt.Text;
             String pwd = this.pwdTxt.Text;
 
             if (!nombre.Equals("") && !pwd.Equals(""))
             {
-                if (Controller.editarUsuario(nombre, pwd))
+                if (this.controladora.editarUsuario(nombre, pwd, idUsuario))
                 {
                     this.msgLbl.Text = "Usuario editado con exito.";
                     this.clear();

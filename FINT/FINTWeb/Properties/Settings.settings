@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FINTWeb.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="FINTWeb_localhost_serverFINTFachada" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="FINTWeb_serverFINTFachada_serverFINTFachada" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:51148/serverFINTFachada.asmx</Value>
     </Setting>
   </Settings>

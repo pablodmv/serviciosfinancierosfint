@@ -27,9 +27,9 @@ namespace FINTWeb.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:51148/serverFINTFachada.asmx")]
-        public string FINTWeb_localhost_serverFINTFachada {
+        public string FINTWeb_serverFINTFachada_serverFINTFachada {
             get {
-                return ((string)(this["FINTWeb_localhost_serverFINTFachada"]));
+                return ((string)(this["FINTWeb_serverFINTFachada_serverFINTFachada"]));
             }
         }
     }
