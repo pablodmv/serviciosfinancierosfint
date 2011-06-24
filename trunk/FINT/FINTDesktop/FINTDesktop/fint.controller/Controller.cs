@@ -58,7 +58,7 @@ namespace fint.Forms.fint.controller
 
         }
 
-        public static int agregarUsuario(String nombre, String login, String pwd)
+        public int agregarUsuario(String nombre, String login, String pwd)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
             

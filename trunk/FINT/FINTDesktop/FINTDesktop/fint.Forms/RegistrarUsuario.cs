@@ -12,6 +12,8 @@ namespace fint.Forms
 {
     public partial class Registrar_Cliente : Form
     {
+        public Controller controladora;
+
         public Registrar_Cliente()
         {
             InitializeComponent();
@@ -35,10 +37,11 @@ namespace fint.Forms
             String pwd = this.pwdText.Text;
             int result;
 
+            this.controladora = Controller.getInstancia();
             if (!nombre.Equals("") && !login.Equals("") && !pwd.Equals(""))
             {
                 this.msgLbl.Visible = false;
-                result = Controller.agregarUsuario(nombre, login, pwd);
+                result = this.controladora.agregarUsuario(nombre, login, pwd);
                 if (result==0)
                 {
                     this.msgLbl.Text = "Usuario ingresado con exito";

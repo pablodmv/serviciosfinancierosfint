@@ -1,0 +1,9 @@
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\bin\serverFINTWs.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\bin\serverFINTWs.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\bin\serverFINT.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\bin\serverFINTPersitencia.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\bin\serverFINT.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\bin\serverFINTPersitencia.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\obj\Debug\serverFINTWs.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\obj\Debug\serverFINTWs.pdb

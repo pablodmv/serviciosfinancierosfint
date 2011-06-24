@@ -32,3 +32,4 @@ C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancieros
 C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.Transferencia.resources
 C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.Properties.Resources.resources
 C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\FINTDesktop\FINTDesktop\obj\Debug\FINTDesktop.csproj.GenerateResource.Cache
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\FINTDesktop\FINTDesktop\bin\Debug\FINTDesktop.exe.config

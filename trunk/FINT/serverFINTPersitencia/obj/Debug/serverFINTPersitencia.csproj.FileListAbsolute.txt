@@ -1,0 +1,5 @@
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\bin\Debug\serverFINTPersitencia.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\bin\Debug\serverFINTPersitencia.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\obj\Debug\serverFINTPersitencia.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\obj\Debug\serverFINTPersitencia.pdb
