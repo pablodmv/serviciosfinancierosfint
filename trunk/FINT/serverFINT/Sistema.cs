@@ -105,10 +105,10 @@ namespace serverFINT
             
         }
 
-        public void agregarCuenta(String numero, Double saldo, String Descripcion, Usuario user)
+        public Boolean agregarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario)
         {
-            Cuenta cuenta = new Cuenta(numero, saldo, Descripcion);
-            user.agregarCuenta(cuenta);
+            Cuenta cuenta = new Cuenta();
+            return cuenta.ingresarCuenta(numero,descripcion, saldo, idProveedor, idUsuario);
             
         }
 
@@ -174,6 +174,16 @@ namespace serverFINT
         {
             return pCuenta.estadoCuentaProyectado(fecha);
         }
+
+        public DataSet obtenerProveedores()
+        {
+            proveedorPersistente proveedorPersist = new proveedorPersistente();
+            return proveedorPersist.obtenerProveedores();
+
+        }
+        
+        
+
     }
 
 }

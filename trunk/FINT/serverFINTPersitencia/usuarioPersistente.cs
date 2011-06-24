@@ -62,10 +62,20 @@ namespace serverFINTPersitencia
 
        public DataSet consultaUsuario(String login, String pwd)
        {
-           SqlConnection conn = new SqlConnection(this.conn);
-           SqlDataAdapter da = new SqlDataAdapter("select * from USUARIOS WHERE LOGIN='"+ login +"' AND PASSWORD='"+pwd+"'", conn);
            DataSet dsUsuario = new DataSet();
-           da.Fill(dsUsuario, "Customers");
+           try
+           {
+               SqlConnection conn = new SqlConnection(this.conn);
+               SqlDataAdapter da = new SqlDataAdapter("select * from USUARIOS WHERE LOGIN='" + login + "' AND PASSWORD='" + pwd + "'", conn);
+               
+               da.Fill(dsUsuario, "Usuarios");
+               return dsUsuario;
+           }
+           catch (SqlException e)
+           {
+               
+               
+           }
            return dsUsuario;
        }
 

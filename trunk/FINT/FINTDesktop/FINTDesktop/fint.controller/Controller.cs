@@ -10,6 +10,13 @@ namespace fint.Forms.fint.controller
     {
         private static Controller instancia;
         private DataSet dsusuario;
+        private DataSet dsProveedores;
+
+        public DataSet DsProveedores
+        {
+            get { return dsProveedores; }
+            set { dsProveedores = value; }
+        }
        
 
         public DataSet dsUsuario
@@ -30,7 +37,7 @@ namespace fint.Forms.fint.controller
         public Controller()
         {
             dsusuario = new DataSet();
-
+            dsProveedores = new DataSet();
         }
 
         public DataSet loginUsuario(String usr, String pwd)
@@ -66,6 +73,21 @@ namespace fint.Forms.fint.controller
             return service.modificarUsuario(nombre, pwd,id);
 
         }
+
+        public DataSet obtenerProveedores()
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            dsProveedores= service.obtenerProveedores();
+            return dsProveedores;
+        
+        }
+        public Boolean ingresarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.ingresarCuenta(numero, descripcion, saldo, idProveedor, idUsuario);
+        
+        }
+
 
         public static Boolean desactivarUsuario(String login)
         {

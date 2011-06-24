@@ -33,10 +33,11 @@
             this.saldoLbl = new System.Windows.Forms.Label();
             this.provLbl = new System.Windows.Forms.Label();
             this.provCmb = new System.Windows.Forms.ComboBox();
-            this.noCuentaTxt = new System.Windows.Forms.MaskedTextBox();
             this.descTxt = new System.Windows.Forms.TextBox();
-            this.saldoTxt = new System.Windows.Forms.MaskedTextBox();
             this.doneBtn = new System.Windows.Forms.Button();
+            this.msgLbl = new System.Windows.Forms.Label();
+            this.saldoTxt = new System.Windows.Forms.TextBox();
+            this.noCuentaTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // noCuentaLbl
@@ -87,14 +88,6 @@
             this.provCmb.TabIndex = 4;
             this.provCmb.SelectedIndexChanged += new System.EventHandler(this.provCmb_SelectedIndexChanged);
             // 
-            // noCuentaTxt
-            // 
-            this.noCuentaTxt.Location = new System.Drawing.Point(150, 21);
-            this.noCuentaTxt.Mask = "00000";
-            this.noCuentaTxt.Name = "noCuentaTxt";
-            this.noCuentaTxt.Size = new System.Drawing.Size(121, 20);
-            this.noCuentaTxt.TabIndex = 5;
-            // 
             // descTxt
             // 
             this.descTxt.Location = new System.Drawing.Point(150, 54);
@@ -102,15 +95,6 @@
             this.descTxt.Name = "descTxt";
             this.descTxt.Size = new System.Drawing.Size(209, 49);
             this.descTxt.TabIndex = 6;
-            // 
-            // saldoTxt
-            // 
-            this.saldoTxt.Location = new System.Drawing.Point(150, 116);
-            this.saldoTxt.Mask = "9999999";
-            this.saldoTxt.Name = "saldoTxt";
-            this.saldoTxt.Size = new System.Drawing.Size(100, 20);
-            this.saldoTxt.TabIndex = 7;
-            this.saldoTxt.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.saldoTxt_MaskInputRejected);
             // 
             // doneBtn
             // 
@@ -122,15 +106,40 @@
             this.doneBtn.UseVisualStyleBackColor = true;
             this.doneBtn.Click += new System.EventHandler(this.doneBtn_Click);
             // 
+            // msgLbl
+            // 
+            this.msgLbl.AutoSize = true;
+            this.msgLbl.ForeColor = System.Drawing.Color.Red;
+            this.msgLbl.Location = new System.Drawing.Point(85, 249);
+            this.msgLbl.Name = "msgLbl";
+            this.msgLbl.Size = new System.Drawing.Size(0, 13);
+            this.msgLbl.TabIndex = 9;
+            this.msgLbl.Visible = false;
+            // 
+            // saldoTxt
+            // 
+            this.saldoTxt.Location = new System.Drawing.Point(150, 119);
+            this.saldoTxt.Name = "saldoTxt";
+            this.saldoTxt.Size = new System.Drawing.Size(149, 20);
+            this.saldoTxt.TabIndex = 10;
+            // 
+            // noCuentaTxt
+            // 
+            this.noCuentaTxt.Location = new System.Drawing.Point(150, 21);
+            this.noCuentaTxt.Name = "noCuentaTxt";
+            this.noCuentaTxt.Size = new System.Drawing.Size(209, 20);
+            this.noCuentaTxt.TabIndex = 11;
+            // 
             // IngresarCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 281);
-            this.Controls.Add(this.doneBtn);
-            this.Controls.Add(this.saldoTxt);
-            this.Controls.Add(this.descTxt);
             this.Controls.Add(this.noCuentaTxt);
+            this.Controls.Add(this.saldoTxt);
+            this.Controls.Add(this.msgLbl);
+            this.Controls.Add(this.doneBtn);
+            this.Controls.Add(this.descTxt);
             this.Controls.Add(this.provCmb);
             this.Controls.Add(this.provLbl);
             this.Controls.Add(this.saldoLbl);
@@ -152,9 +161,10 @@
         private System.Windows.Forms.Label saldoLbl;
         private System.Windows.Forms.Label provLbl;
         private System.Windows.Forms.ComboBox provCmb;
-        private System.Windows.Forms.MaskedTextBox noCuentaTxt;
         private System.Windows.Forms.TextBox descTxt;
-        private System.Windows.Forms.MaskedTextBox saldoTxt;
         private System.Windows.Forms.Button doneBtn;
+        private System.Windows.Forms.Label msgLbl;
+        private System.Windows.Forms.TextBox saldoTxt;
+        private System.Windows.Forms.TextBox noCuentaTxt;
     }
 }
