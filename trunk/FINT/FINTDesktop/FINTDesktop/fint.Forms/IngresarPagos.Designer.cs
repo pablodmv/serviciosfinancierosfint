@@ -82,6 +82,7 @@
             this.pagarBtn.TabIndex = 4;
             this.pagarBtn.Text = "Pagar";
             this.pagarBtn.UseVisualStyleBackColor = true;
+            this.pagarBtn.Click += new System.EventHandler(this.pagarBtn_Click);
             // 
             // msgLbl
             // 

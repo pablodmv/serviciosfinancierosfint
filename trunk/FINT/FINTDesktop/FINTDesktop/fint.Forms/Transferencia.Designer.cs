@@ -117,6 +117,7 @@
             this.doneBtn.TabIndex = 8;
             this.doneBtn.Text = "Aceptar";
             this.doneBtn.UseVisualStyleBackColor = true;
+            this.doneBtn.Click += new System.EventHandler(this.doneBtn_Click);
             // 
             // msgLbl
             // 
