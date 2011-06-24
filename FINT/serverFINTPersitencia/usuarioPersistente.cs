@@ -27,6 +27,7 @@ namespace serverFINTPersitencia
                 SqlCommand sqlCom = new SqlCommand();
                 sqlCom.CommandType = CommandType.Text;
                 sqlCom.CommandText = "INSERT INTO USUARIOS (Nombre, Login, Password,Tipo) VALUES (@Val1, @Val2, @Val3, @Val4)";
+                //sqlCom.CommandText = "SELECT * FROM USUARIOS";
                 sqlCom.Parameters.Add("@Val1",SqlDbType.Text).Value = nombre;
                 sqlCom.Parameters.Add("@Val2", SqlDbType.Text).Value = login;
                 sqlCom.Parameters.Add("@Val3", SqlDbType.Text).Value = passwd;
@@ -35,13 +36,18 @@ namespace serverFINTPersitencia
                 dbConnection.Open();
                 sqlCom.ExecuteNonQuery();
                 dbConnection.Close();
-
-                //SqlDataAdapter dbDataAdapter = new SqlDataAdapter();
-                //dbDataAdapter.InsertCommand = sqlCom;
-
                 //DataSet dsUsuarios = new DataSet();
+                
+                //SqlDataAdapter dbDataAdapter = new SqlDataAdapter(sqlCom.CommandText,dbConnection);
+                //dbDataAdapter.InsertCommand = sqlCom;
+                //DataRow dr = new DataRow();
+                //dr["Nombre"] = nombre;
+                //dr["Login"] = login;
+                //dr["Password"] = passwd;
+                //dr["Tipo"] = tipo;
 
-                //dbDataAdapter.Update(dsUsuarios,"USUARIOS"); 
+               
+               // dbDataAdapter.Update(dsUsuarios,"USUARIOS"); 
                 ////dbDataAdapter.Fill(dsUsuarios,"USUARIOS");
                 return 0;
             }
@@ -61,6 +67,59 @@ namespace serverFINTPersitencia
            DataSet dsUsuario = new DataSet();
            da.Fill(dsUsuario, "Customers");
            return dsUsuario;
+       }
+
+       public Boolean eliminarUsuario(int id)
+       {
+           try
+           {
+               SqlConnection dbConnection = new SqlConnection(this.conn);
+               SqlCommand sqlCom = new SqlCommand();
+               sqlCom.CommandType = CommandType.Text;
+               sqlCom.CommandText = "DELETE FROM USUARIOS WHERE ID=@Val1";
+               sqlCom.Parameters.Add("@Val1", SqlDbType.Int).Value = id;
+               sqlCom.Connection = dbConnection;
+               dbConnection.Open();
+               sqlCom.ExecuteNonQuery();
+               dbConnection.Close();
+               return true;
+           }
+           catch (SqlException e)
+           {
+               //return e.Class;
+               //TODO: Log
+
+           }
+           return false;
+       
+       
+       }
+
+       public Boolean modificarUsuario(String nombre, String passwd, int id)
+       {
+
+           try
+           {
+               SqlConnection dbConnection = new SqlConnection(this.conn);
+               SqlCommand sqlCom = new SqlCommand();
+               sqlCom.CommandType = CommandType.Text;
+               sqlCom.CommandText = "UPDATE USUARIOS SET Nombre=@VAL1,Password=@VAL2 WHERE ID=@VAL3";
+               sqlCom.Parameters.Add("@Val1", SqlDbType.Text).Value = nombre;
+               sqlCom.Parameters.Add("@Val2", SqlDbType.Text).Value = passwd;
+               sqlCom.Parameters.Add("@Val3", SqlDbType.Int).Value = id;
+               sqlCom.Connection = dbConnection;
+               dbConnection.Open();
+               sqlCom.ExecuteNonQuery();
+               dbConnection.Close();
+
+               return true;
+           }
+           catch (SqlException e)
+           {
+               //TODO:log
+
+           }
+           return false;
 
        }
 

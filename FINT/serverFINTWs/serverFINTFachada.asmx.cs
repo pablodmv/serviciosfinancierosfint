@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml.Linq;
 
+
 namespace serverFINTWs
 {
     /// <summary>
@@ -31,10 +32,19 @@ namespace serverFINTWs
         }
 
         [WebMethod]
-        public Boolean chequearUsuario(String login, String passwd)
+        public DataSet chequearUsuario(String login, String passwd)
         {
             serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
             return sistema.chequearUsuario(login, passwd);
+
+
+        }
+
+        [WebMethod]
+        public Boolean modificarUsuario(String nombre, String passwd, int id)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.editarUsuario(nombre, passwd, id);
 
 
         }

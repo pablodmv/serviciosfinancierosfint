@@ -68,8 +68,18 @@ namespace serverFINT
            //// return false;
         }
 
+        public Boolean editarUsuario(String nombre, String passwd, int id)
+        {
+            usuarioPersistente userPersistent = new usuarioPersistente();
+            return userPersistent.modificarUsuario(nombre, passwd, id);
+
+        }
+
+
+
+
         //Chequea si el login del usuario ya existe. Si exite devuelve true, sino false
-        public Boolean chequearUsuario(String login, String pwd)
+        public DataSet chequearUsuario(String login, String pwd)
         {
             usuarioPersistente userPersistent = new usuarioPersistente();
             //foreach (Usuario tmpUsuario in Colusuarios)
@@ -84,11 +94,7 @@ namespace serverFINT
             //return false;
             DataSet ds = userPersistent.consultaUsuario(login, pwd);
 
-            if (ds.Tables[0].Rows.Count>0)
-            {
-                return true;
-            }
-            return false;
+            return ds;
 
         }
 
