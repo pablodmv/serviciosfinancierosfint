@@ -10,6 +10,44 @@ namespace serverFINTPersitencia
     public class transaccionPersistente : Persistente
     {
 
+
+
+        public void ingresarTransferencia()
+        {
+        }
+
+        public void ingresarDeposito()
+        { 
+        
+        }
+
+        public void ingresarExtraccion()
+        { 
+        
+        }
+
+        public void obtenerTransaccionXcuenta(int idcuenta)
+        {
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //public int altaTransaccion(Object param )
         //{
 

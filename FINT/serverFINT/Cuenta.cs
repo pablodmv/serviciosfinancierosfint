@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 using serverFINTPersitencia;
+using System.Data;
 
 namespace serverFINT
 {
@@ -14,6 +15,7 @@ namespace serverFINT
         private String descripcion;
         private List<Transaccion> coltransacciones;
         private List<Gasto> colGasto;
+        cuentaPersistente cuentaPersis;
 
       
 
@@ -27,7 +29,7 @@ namespace serverFINT
 
         public Cuenta()
         {
-
+            cuentaPersis = new cuentaPersistente();
         }
 
         public List<Transaccion> Coltransacciones
@@ -65,13 +67,17 @@ namespace serverFINT
         public Boolean ingresarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario) 
         {
 
-            cuentaPersistente cuentaPersis = new cuentaPersistente();
+            //cuentaPersistente cuentaPersis = new cuentaPersistente();
            return cuentaPersis.ingresarCuenta(numero, descripcion, saldo, idProveedor, idUsuario);
         
         
         }
 
-
+        public DataSet obtenerCuentasXusuario(int idusuario)
+        {
+            return cuentaPersis.obtenerCuentaPorUsuario(idusuario);
+        
+        }
 
 
 

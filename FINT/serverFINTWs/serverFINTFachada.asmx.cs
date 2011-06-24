@@ -62,5 +62,13 @@ namespace serverFINTWs
       
         }
 
+        [WebMethod]
+        public DataSet obtenerCuentaXusuario( int idUsuario)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.obtenerCuentasXusuario(idUsuario);
+
+        }
+
     }
 }
