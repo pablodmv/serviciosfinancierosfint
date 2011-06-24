@@ -47,9 +47,6 @@
             <tr>
                 <td><asp:Label ID="provLbl" runat="server" Text="Proveedor Asociado:"></asp:Label></td>
                 <td> <asp:DropDownList ID="provCmb" runat="server">
-                        <asp:ListItem>Seleccione...</asp:ListItem>
-                        <asp:ListItem>Proveedor1</asp:ListItem>
-                        <asp:ListItem>Proveedor2</asp:ListItem>
                         </asp:DropDownList>
                 </td>
             
@@ -65,7 +62,9 @@
             </tr>
             
         </table>
-    
+        <br />
+        <asp:Label ID="msgLbl" runat="server" ForeColor="Red" Text="" 
+        Visible="False"></asp:Label>    
     </form>
     </div>
     <div id="foot">

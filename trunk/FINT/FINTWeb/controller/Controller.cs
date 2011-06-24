@@ -18,6 +18,13 @@ namespace FINTWeb.controller
 
         private static Controller instancia;
         private DataSet dsusuario;
+        private DataSet dsProveedores;
+
+        public DataSet DsProveedores
+        {
+            get { return dsProveedores; }
+            set { dsProveedores = value; }
+        }
 
         public DataSet dsUsuario
         {
@@ -70,9 +77,10 @@ namespace FINTWeb.controller
 
         }
 
-        public static Boolean editarUsuario(String nombre, String pwd)
+        public Boolean editarUsuario(String nombre, String pwd, int id)
         {
-            return true;
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.modificarUsuario(nombre, pwd, id);
 
         }
 
@@ -82,9 +90,20 @@ namespace FINTWeb.controller
             return true;
         }
 
-        //Agregar metodo getAllProveedores()
+        public DataSet obtenerProveedores()
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            dsProveedores = service.obtenerProveedores();
+            return dsProveedores;
 
-        //Agregar metodo agregarCuenta(int idUsuario, double saldo, String desc, int nCuenta)
+        }
+
+        public Boolean ingresarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.ingresarCuenta(numero, descripcion, saldo, idProveedor, idUsuario);
+
+        }
 
 
         public static Boolean agregarGasto(int nFactura, String concepto, double monto, DateTime venc)
