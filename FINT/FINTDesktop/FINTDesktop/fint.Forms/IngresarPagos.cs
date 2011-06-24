@@ -30,5 +30,10 @@ namespace fint.Forms
         {
 
         }
+
+        private void pagarBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

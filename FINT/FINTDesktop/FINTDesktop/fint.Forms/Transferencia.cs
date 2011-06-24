@@ -20,5 +20,10 @@ namespace fint.Forms
         {
 
         }
+
+        private void doneBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
