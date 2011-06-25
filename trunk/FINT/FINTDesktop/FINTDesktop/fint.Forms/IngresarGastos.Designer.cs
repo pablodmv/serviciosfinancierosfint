@@ -52,11 +52,9 @@
             // nFacTxt
             // 
             this.nFacTxt.Location = new System.Drawing.Point(99, 37);
-            this.nFacTxt.Mask = "99999";
             this.nFacTxt.Name = "nFacTxt";
-            this.nFacTxt.Size = new System.Drawing.Size(54, 20);
+            this.nFacTxt.Size = new System.Drawing.Size(221, 20);
             this.nFacTxt.TabIndex = 1;
-            this.nFacTxt.ValidatingType = typeof(int);
             // 
             // descLbl
             // 
@@ -90,9 +88,8 @@
             // montoTxt
             // 
             this.montoTxt.Location = new System.Drawing.Point(99, 114);
-            this.montoTxt.Mask = "9999999";
             this.montoTxt.Name = "montoTxt";
-            this.montoTxt.Size = new System.Drawing.Size(54, 20);
+            this.montoTxt.Size = new System.Drawing.Size(82, 20);
             this.montoTxt.TabIndex = 5;
             this.montoTxt.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.montoTxt_MaskInputRejected);
             // 
@@ -113,7 +110,7 @@
             this.fVenDPicker.Name = "fVenDPicker";
             this.fVenDPicker.Size = new System.Drawing.Size(100, 20);
             this.fVenDPicker.TabIndex = 7;
-            this.fVenDPicker.Value = new System.DateTime(2011, 6, 20, 0, 0, 0, 0);
+            this.fVenDPicker.Value = new System.DateTime(2011, 6, 6, 0, 0, 0, 0);
             // 
             // doneBtn
             // 
@@ -152,6 +149,7 @@
             this.Name = "IngresarGastos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IngresarGastos";
+            this.Load += new System.EventHandler(this.IngresarGastos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

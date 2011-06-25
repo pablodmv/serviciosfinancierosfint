@@ -35,14 +35,14 @@ namespace serverFINTPersitencia
                 dbConnection.Open();
                 sqlCom.ExecuteNonQuery();
                 dbConnection.Close();
-                         return true;
+                 return true;
             }
             catch (SqlException e)
             {
-                return false                ;
+                return false;
 
             }
-            return false;
+            return true;
 
         }
 

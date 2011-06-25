@@ -42,25 +42,38 @@ namespace fint.Forms
 
             String nFac = this.nFacTxt.Text;
             String desc = this.descTxt.Text;
-            String monto = this.montoTxt.Text;
-            DateTime fVen = this.fVenDPicker.Value.Date;
-            
-            //Console.WriteLine(fVen.Date.ToString());
-            //Console.WriteLine(fVen.ToString());
-
-            if (!nFac.Equals("") && !desc.Equals("") && !monto.Equals(""))
+            try
             {
+                Double tmpMonto = Double.Parse(this.montoTxt.Text);
+                Decimal monto = (Decimal)tmpMonto;
+                String fVen = this.fVenDPicker.Value.ToString("dd/MM/yyyy");
+                int estado = (int)Estado.Pendiente;
 
-                if(Controller.agregarGasto(int.Parse(nFac),desc,double.Parse(monto),fVen)){
-                    this.msgLbl.Text = "Gasto ingresado con exito.";
+                //Console.WriteLine(fVen.Date.ToString());
+                //Console.WriteLine(fVen.ToString());
+
+                if (!nFac.Equals("") && !desc.Equals("") && !monto.Equals(""))
+                {
+
+                    if (Controller.getInstancia().ingresarGasto(nFac, desc, monto, fVen, estado))
+                    {
+                        this.msgLbl.Text = "Gasto ingresado con exito.";
+
+                        this.clear();
+                    }
+
                 }
-                
-                this.clear();
+                else
+                {
+                    this.msgLbl.Text = "Todos los datos son requeridos.";
+                }
             }
-            else
+            catch (Exception)
             {
-                this.msgLbl.Text = "Todos los datos son requeridos.";
+                
+               this.msgLbl.Text = "Monto incorrecto.";
             }
+           
 
 
 
@@ -73,8 +86,21 @@ namespace fint.Forms
             this.descTxt.Text = "";
             this.montoTxt.Text = "";
             this.fVenDPicker.Value = DateTime.Today;
+            this.msgLbl.Text = "";
+
+        }
+
+        private void IngresarGastos_Load(object sender, EventArgs e)
+        {
+            this.fVenDPicker.Value = DateTime.Today;
         }
 
 
+    }
+
+    public enum Estado
+    {
+        Pendiente,
+        Realizada
     }
 }

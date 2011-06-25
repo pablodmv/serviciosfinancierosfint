@@ -102,6 +102,12 @@ namespace fint.Forms.fint.controller
 
         }
 
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado);
+
+        }
 
 
         public static Boolean desactivarUsuario(String login)
@@ -115,11 +121,11 @@ namespace fint.Forms.fint.controller
         //Agregar metodo agregarCuenta(int idUsuario, double saldo, String desc, int nCuenta)
 
 
-        public static Boolean agregarGasto(int nFactura,String concepto, double monto, DateTime venc)
-        {
+        //public static Boolean agregarGasto(int nFactura,String concepto, double monto, DateTime venc)
+        //{
 
-            return true;
-        }
+        //    return true;
+        //}
 
 
         //Agregar metodo obtenerGastosXUsuario(int idUsuario)

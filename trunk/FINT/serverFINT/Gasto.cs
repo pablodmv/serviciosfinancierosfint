@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using serverFINTPersitencia;
 
 namespace serverFINT
 {
     public class Gasto
     {
-        private int id;
+       gastoPersistente gastoPersis;
 
-        
+        private int id;
         private int numeroFactura;
         private String concepto;
         private Double monto;
         private DateTime vencimiento;
         private estado estado;
-
+        
+        public Gasto()
+        {
+            gastoPersis = new gastoPersistente();
+        }
 
         public Gasto(String pConcepto, Double pMonto, DateTime pVencimiento, estado pEstado, int pNumfact)
         {
@@ -62,6 +67,12 @@ namespace serverFINT
             set { id = value; }
         }
 
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
+        {
+            return gastoPersis.ingresarGasto(numero, concepto, monto, vencimiento, estado);
+        
+        
+        }
 
 
     }

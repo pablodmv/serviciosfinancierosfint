@@ -167,8 +167,14 @@ namespace serverFINT
         
         }
 
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
+        {
+            Gasto gasto = new Gasto();
+
+            return gasto.ingresarGasto(numero, concepto, monto, vencimiento, estado);
 
 
+        }
 
 
         public String realizarMovimiento(Cuenta pCuenta, Transaccion pTransaccion)

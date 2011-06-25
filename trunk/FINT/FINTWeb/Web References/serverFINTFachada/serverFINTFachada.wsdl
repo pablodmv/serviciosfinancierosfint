@@ -63,6 +63,62 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="obtenerProveedores">
+        <s:complexType />
+      </s:element>
+      <s:element name="obtenerProveedoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerProveedoresResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarCuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="saldo" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="idProveedor" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idUsuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarCuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ingresarCuentaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerCuentaXusuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idUsuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerCuentaXusuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerCuentaXusuarioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="agregarUsuarioSoapIn">
@@ -83,6 +139,24 @@
   <wsdl:message name="modificarUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:modificarUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="obtenerProveedoresSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerProveedores" />
+  </wsdl:message>
+  <wsdl:message name="obtenerProveedoresSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerProveedoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="ingresarCuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:ingresarCuenta" />
+  </wsdl:message>
+  <wsdl:message name="ingresarCuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:ingresarCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerCuentaXusuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerCuentaXusuario" />
+  </wsdl:message>
+  <wsdl:message name="obtenerCuentaXusuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerCuentaXusuarioResponse" />
+  </wsdl:message>
   <wsdl:portType name="serverFINTFachadaSoap">
     <wsdl:operation name="agregarUsuario">
       <wsdl:input message="tns:agregarUsuarioSoapIn" />
@@ -95,6 +169,18 @@
     <wsdl:operation name="modificarUsuario">
       <wsdl:input message="tns:modificarUsuarioSoapIn" />
       <wsdl:output message="tns:modificarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerProveedores">
+      <wsdl:input message="tns:obtenerProveedoresSoapIn" />
+      <wsdl:output message="tns:obtenerProveedoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ingresarCuenta">
+      <wsdl:input message="tns:ingresarCuentaSoapIn" />
+      <wsdl:output message="tns:ingresarCuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerCuentaXusuario">
+      <wsdl:input message="tns:obtenerCuentaXusuarioSoapIn" />
+      <wsdl:output message="tns:obtenerCuentaXusuarioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="serverFINTFachadaSoap" type="tns:serverFINTFachadaSoap">
@@ -126,6 +212,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="obtenerProveedores">
+      <soap:operation soapAction="http://tempuri.org/obtenerProveedores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarCuenta">
+      <soap:operation soapAction="http://tempuri.org/ingresarCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerCuentaXusuario">
+      <soap:operation soapAction="http://tempuri.org/obtenerCuentaXusuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="serverFINTFachadaSoap12" type="tns:serverFINTFachadaSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -149,6 +262,33 @@
     </wsdl:operation>
     <wsdl:operation name="modificarUsuario">
       <soap12:operation soapAction="http://tempuri.org/modificarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerProveedores">
+      <soap12:operation soapAction="http://tempuri.org/obtenerProveedores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarCuenta">
+      <soap12:operation soapAction="http://tempuri.org/ingresarCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerCuentaXusuario">
+      <soap12:operation soapAction="http://tempuri.org/obtenerCuentaXusuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
