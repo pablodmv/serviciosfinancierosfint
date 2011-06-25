@@ -176,6 +176,12 @@ namespace serverFINT
 
         }
 
+        public DataSet obtenerGastoXusuario(int idUsuario)
+        {
+            Gasto gasto = new Gasto();
+           return gasto.obtenerGastosXusuario(idUsuario);
+        }
+
 
         public String realizarMovimiento(Cuenta pCuenta, Transaccion pTransaccion)
         {

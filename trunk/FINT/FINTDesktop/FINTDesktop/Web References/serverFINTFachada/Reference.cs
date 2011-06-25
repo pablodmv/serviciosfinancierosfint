@@ -46,6 +46,8 @@ namespace fint.Forms.serverFINTFachada {
         
         private System.Threading.SendOrPostCallback ingresarGastoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback obtenerCuentasXusuarioOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -107,6 +109,9 @@ namespace fint.Forms.serverFINTFachada {
         
         /// <remarks/>
         public event ingresarGastoCompletedEventHandler ingresarGastoCompleted;
+        
+        /// <remarks/>
+        public event obtenerCuentasXusuarioCompletedEventHandler obtenerCuentasXusuarioCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/agregarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -369,6 +374,35 @@ namespace fint.Forms.serverFINTFachada {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/obtenerCuentasXusuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet obtenerCuentasXusuario(int idUsuario) {
+            object[] results = this.Invoke("obtenerCuentasXusuario", new object[] {
+                        idUsuario});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void obtenerCuentasXusuarioAsync(int idUsuario) {
+            this.obtenerCuentasXusuarioAsync(idUsuario, null);
+        }
+        
+        /// <remarks/>
+        public void obtenerCuentasXusuarioAsync(int idUsuario, object userState) {
+            if ((this.obtenerCuentasXusuarioOperationCompleted == null)) {
+                this.obtenerCuentasXusuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnobtenerCuentasXusuarioOperationCompleted);
+            }
+            this.InvokeAsync("obtenerCuentasXusuario", new object[] {
+                        idUsuario}, this.obtenerCuentasXusuarioOperationCompleted, userState);
+        }
+        
+        private void OnobtenerCuentasXusuarioOperationCompleted(object arg) {
+            if ((this.obtenerCuentasXusuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.obtenerCuentasXusuarioCompleted(this, new obtenerCuentasXusuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -607,6 +641,32 @@ namespace fint.Forms.serverFINTFachada {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void obtenerCuentasXusuarioCompletedEventHandler(object sender, obtenerCuentasXusuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class obtenerCuentasXusuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal obtenerCuentasXusuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }
