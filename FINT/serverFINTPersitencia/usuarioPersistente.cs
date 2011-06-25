@@ -133,6 +133,27 @@ namespace serverFINTPersitencia
 
        }
 
+       //Obtiene todos los usuario del tipo ingresado .
+       public DataSet obtenerUsuarios(int tipo)
+       {
+           DataSet dsUsuario = new DataSet();
+           try
+           {
+               SqlConnection conn = new SqlConnection(this.conn);
+               SqlDataAdapter da = new SqlDataAdapter("select * from USUARIOS WHERE TIPO=" + tipo, conn);
+
+               da.Fill(dsUsuario, "Usuarios");
+               //return dsUsuario;
+
+
+
+           }catch(SqlException){
+               //TODO:log
+           }
+
+           return dsUsuario;
+       }
+
 
 
     }

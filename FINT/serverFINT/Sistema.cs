@@ -98,6 +98,14 @@ namespace serverFINT
 
         }
 
+        public DataSet obtenerUsuarioXTipo(rol tipo)
+        {
+            Usuario usr = new Usuario();
+
+            return usr.obtenerUsuariosXTipo(tipo);
+        }
+
+
         //public void agregarCuentaProveedor(String numero, String descripcion, DateTime vencimiento, Proveedor prov, Usuario user)
         //{
         //   // Cuenta cuentaProveedor = new cuentaProveedor(numero, descripcion, vencimiento, prov);

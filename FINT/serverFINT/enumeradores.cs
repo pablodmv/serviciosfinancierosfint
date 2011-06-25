@@ -15,7 +15,8 @@ namespace serverFINT
     public enum rol
     {
         Administrador,
-        Usuario
+        Usuario,
+        Cliente
     }
 
     public enum estado

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FINTWeb", "FINTWeb\FINTWeb.csproj", "{71A7875F-3A66-4FB4-873C-DF3A086BAEFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCliente", "AppCliente\AppCliente.csproj", "{F63BB46E-8201-44A0-9701-D9FF9345E2F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{71A7875F-3A66-4FB4-873C-DF3A086BAEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A7875F-3A66-4FB4-873C-DF3A086BAEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71A7875F-3A66-4FB4-873C-DF3A086BAEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63BB46E-8201-44A0-9701-D9FF9345E2F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63BB46E-8201-44A0-9701-D9FF9345E2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63BB46E-8201-44A0-9701-D9FF9345E2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63BB46E-8201-44A0-9701-D9FF9345E2F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

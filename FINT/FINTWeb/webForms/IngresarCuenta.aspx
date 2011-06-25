@@ -41,7 +41,7 @@
                 <td><asp:Label ID="saldoLbl" runat="server" Text="Saldo:"></asp:Label></td>
                 <td><asp:TextBox ID="saldoTxt" runat="server"></asp:TextBox></td>
                 <td><asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
-                ControlToValidate="saldoTxt" ErrorMessage="Monto Invalido." 
+                ControlToValidate="saldoTxt" ErrorMessage="Monto Inválido." 
                 ValidationExpression="^\d{7}"></asp:RegularExpressionValidator></td>
             </tr>
             <tr>

@@ -63,6 +63,14 @@ namespace serverFINTWs
         }
 
         [WebMethod]
+        public DataSet obtenerUsuariosXTipo(serverFINT.rol tipo)
+        {
+
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.obtenerUsuarioXTipo(tipo);
+        }
+
+        [WebMethod]
         public DataSet obtenerCuentaXusuario( int idUsuario)
         {
             serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
