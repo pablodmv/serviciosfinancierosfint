@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cuentaPersistente.cs" />
+    <Compile Include="gastoPersistente.cs" />
     <Compile Include="Persistente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="proveedorPersistente.cs" />

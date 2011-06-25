@@ -78,5 +78,13 @@ namespace serverFINTWs
 
         }
 
+        [WebMethod]
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.ingresarGasto(numero, concepto, monto, vencimiento, estado);
+
+        }
+
     }
 }

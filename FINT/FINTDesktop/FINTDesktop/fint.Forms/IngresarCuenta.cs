@@ -44,38 +44,55 @@ namespace fint.Forms
 
         private void doneBtn_Click(object sender, EventArgs e)
         {
-            String numero = this.noCuentaTxt.Text;
-            String descripcion = this.descTxt.Text;
-            Decimal saldo = Decimal.Parse(this.saldoTxt.Text);
-            //Decimal saldo = 200;
-            int idProveedor = int.Parse(this.provCmb.SelectedValue.ToString());
-            int idUsuario = int.Parse(Controller.getInstancia().dsUsuario.Tables[0].Rows[0]["id"].ToString());
-
-            if (!numero.Equals("") && saldo!=0)
+            try
             {
-                
-                this.msgLbl.Visible = false;
-               
-                if ( Controller.getInstancia().ingresarCuenta(numero, descripcion, saldo, idProveedor, idUsuario))
+                String numero = this.noCuentaTxt.Text;
+                String descripcion = this.descTxt.Text;
+                Double tmpsaldo = Double.Parse(this.saldoTxt.Text);
+                Decimal saldo = (Decimal)tmpsaldo;
+                int idProveedor = int.Parse(this.provCmb.SelectedValue.ToString());
+                int idUsuario = int.Parse(Controller.getInstancia().dsUsuario.Tables[0].Rows[0]["id"].ToString());
+
+                if (!numero.Equals("") && saldo != 0)
                 {
-                    this.msgLbl.Text = "Cuenta ingresada con exito";
-                    this.msgLbl.Visible = true;
+
+                    this.msgLbl.Visible = false;
+
+                    if (Controller.getInstancia().ingresarCuenta(numero, descripcion, saldo, idProveedor, idUsuario))
+                    {
+                        this.msgLbl.Text = "Cuenta ingresada con exito";
+                        this.msgLbl.Visible = true;
+                        this.clear();
+                    }
+                    else
+                    {
+                        this.msgLbl.Text = "Error al ingresar el Cuenta. Consulte";
+                        this.msgLbl.Visible = true;
+                    }
+
                 }
                 else
                 {
-                    this.msgLbl.Text = "Error al ingresar el Cuenta. Consulte";
                     this.msgLbl.Visible = true;
                 }
-
             }
-            else
+            catch (Exception)
             {
+                this.msgLbl.Text = "Monto incorrecto";
                 this.msgLbl.Visible = true;
             }
             
            
                 
         }
+
+        private void clear()
+        {
+            this.noCuentaTxt.Text = "";
+            this.saldoTxt.Text = "";
+            this.descTxt.Text = "";
+        }
+
 
         private void saldoTxt_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
