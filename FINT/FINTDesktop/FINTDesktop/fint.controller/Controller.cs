@@ -12,7 +12,20 @@ namespace fint.Forms.fint.controller
         private DataSet dsusuario;
         private DataSet dsProveedores;
         private DataSet dsCuentasXusuario;
+        private DataSet dsGastosXusuario;
         private int idUsuario;
+
+        public int IdUsuario
+        {
+            get { return idUsuario; }
+            set { idUsuario = value; }
+        }
+        public DataSet DsGastosXusuario
+        {
+            get { return dsGastosXusuario; }
+            set { dsGastosXusuario = value; }
+        }
+        
 
         public DataSet DsCuentasXusuario
         {
@@ -52,7 +65,7 @@ namespace fint.Forms.fint.controller
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
             dsusuario= service.chequearUsuario(usr, pwd);
-            idUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
+            IdUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
             return dsusuario;
 
             ////Codigo provisorio
@@ -107,8 +120,13 @@ namespace fint.Forms.fint.controller
         public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado,idUsuario);
+            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado,IdUsuario);
 
+        }
+        public DataSet obtenerCuentasXusuario(int idusuario)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            service.obtenerCuentasXusuario(idUsuario);
         }
 
 

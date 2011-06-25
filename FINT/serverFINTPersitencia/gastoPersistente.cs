@@ -49,6 +49,24 @@ namespace serverFINTPersitencia
         }
 
 
+        public DataSet obtenerGastosPorUsuario(int idUsuario)
+        {
+            DataSet dsGastos = new DataSet();
+            try
+            {
+                SqlConnection conn = new SqlConnection(this.conn);
+                SqlDataAdapter da = new SqlDataAdapter("select * from GASTOS WHERE idUsuario=" + idUsuario, conn);
+               
+                da.Fill(dsGastos, "Gastos");
+                return dsGastos;
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Class);
+            }
+            return dsGastos;
+        }
+
 
 
 

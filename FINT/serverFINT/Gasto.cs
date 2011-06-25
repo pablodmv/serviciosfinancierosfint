@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using serverFINTPersitencia;
+using System.Data;
 
 namespace serverFINT
 {
@@ -70,9 +71,13 @@ namespace serverFINT
         public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idusuario)
         {
             return gastoPersis.ingresarGasto(numero, concepto, monto, vencimiento, estado,idusuario);
-        
-        
         }
+
+        public DataSet obtenerGastosXusuario(int idusuario)
+        {
+            return gastoPersis.obtenerGastosPorUsuario(idusuario);
+        }
+
 
 
     }
