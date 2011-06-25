@@ -167,11 +167,11 @@ namespace serverFINT
         
         }
 
-        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idusuario)
         {
             Gasto gasto = new Gasto();
 
-            return gasto.ingresarGasto(numero, concepto, monto, vencimiento, estado);
+            return gasto.ingresarGasto(numero, concepto, monto, vencimiento, estado,idusuario);
 
 
         }
