@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using serverFINTPersitencia;
 
 namespace serverFINT
 {
@@ -17,7 +18,12 @@ namespace serverFINT
         private String login;
         private String password;
         private rol rolUsuario;
+        private usuarioPersistente usuarioPersis = new usuarioPersistente();
 
+
+        public Usuario()
+        {
+        }
 
         public Usuario(String pNombre, String pLogin, String pPassword, rol pRol)
         {
@@ -89,6 +95,13 @@ namespace serverFINT
             return this.Credencial.Login;
         
         }
+
+        public DataSet obtenerUsuariosXTipo(rol tipo)
+        {
+            return this.usuarioPersis.obtenerUsuarios((int)tipo);
+
+        }
+
     }
 
 }

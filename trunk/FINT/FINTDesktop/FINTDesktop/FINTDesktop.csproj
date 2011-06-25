@@ -167,7 +167,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Web References\serverFINTFachada\serverFINTFachada.wsdl" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -186,6 +185,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Web References\serverFINTFachada\serverFINTFachada.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
     <WebReferenceUrl Include="http://localhost:51148/serverFINTFachada.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\serverFINTFachada\</RelPath>
@@ -199,7 +202,6 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Web References\serverFINTFachada\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
