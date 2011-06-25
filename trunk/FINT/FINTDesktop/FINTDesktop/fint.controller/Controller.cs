@@ -12,6 +12,7 @@ namespace fint.Forms.fint.controller
         private DataSet dsusuario;
         private DataSet dsProveedores;
         private DataSet dsCuentasXusuario;
+        private int idUsuario;
 
         public DataSet DsCuentasXusuario
         {
@@ -51,6 +52,7 @@ namespace fint.Forms.fint.controller
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
             dsusuario= service.chequearUsuario(usr, pwd);
+            idUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
             return dsusuario;
 
             ////Codigo provisorio
@@ -105,7 +107,7 @@ namespace fint.Forms.fint.controller
         public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado);
+            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado,idUsuario);
 
         }
 

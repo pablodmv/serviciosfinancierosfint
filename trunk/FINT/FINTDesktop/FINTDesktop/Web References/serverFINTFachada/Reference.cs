@@ -40,6 +40,8 @@ namespace fint.Forms.serverFINTFachada {
         
         private System.Threading.SendOrPostCallback ingresarCuentaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback obtenerUsuariosXTipoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback obtenerCuentaXusuarioOperationCompleted;
         
         private System.Threading.SendOrPostCallback ingresarGastoOperationCompleted;
@@ -96,6 +98,9 @@ namespace fint.Forms.serverFINTFachada {
         
         /// <remarks/>
         public event ingresarCuentaCompletedEventHandler ingresarCuentaCompleted;
+        
+        /// <remarks/>
+        public event obtenerUsuariosXTipoCompletedEventHandler obtenerUsuariosXTipoCompleted;
         
         /// <remarks/>
         public event obtenerCuentaXusuarioCompletedEventHandler obtenerCuentaXusuarioCompleted;
@@ -267,6 +272,35 @@ namespace fint.Forms.serverFINTFachada {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/obtenerUsuariosXTipo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet obtenerUsuariosXTipo(rol tipo) {
+            object[] results = this.Invoke("obtenerUsuariosXTipo", new object[] {
+                        tipo});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void obtenerUsuariosXTipoAsync(rol tipo) {
+            this.obtenerUsuariosXTipoAsync(tipo, null);
+        }
+        
+        /// <remarks/>
+        public void obtenerUsuariosXTipoAsync(rol tipo, object userState) {
+            if ((this.obtenerUsuariosXTipoOperationCompleted == null)) {
+                this.obtenerUsuariosXTipoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnobtenerUsuariosXTipoOperationCompleted);
+            }
+            this.InvokeAsync("obtenerUsuariosXTipo", new object[] {
+                        tipo}, this.obtenerUsuariosXTipoOperationCompleted, userState);
+        }
+        
+        private void OnobtenerUsuariosXTipoOperationCompleted(object arg) {
+            if ((this.obtenerUsuariosXTipoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.obtenerUsuariosXTipoCompleted(this, new obtenerUsuariosXTipoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/obtenerCuentaXusuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public System.Data.DataSet obtenerCuentaXusuario(int idUsuario) {
             object[] results = this.Invoke("obtenerCuentaXusuario", new object[] {
@@ -297,23 +331,24 @@ namespace fint.Forms.serverFINTFachada {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ingresarGasto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool ingresarGasto(string numero, string concepto, decimal monto, string vencimiento, int estado) {
+        public bool ingresarGasto(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario) {
             object[] results = this.Invoke("ingresarGasto", new object[] {
                         numero,
                         concepto,
                         monto,
                         vencimiento,
-                        estado});
+                        estado,
+                        idUsuario});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado) {
-            this.ingresarGastoAsync(numero, concepto, monto, vencimiento, estado, null);
+        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario) {
+            this.ingresarGastoAsync(numero, concepto, monto, vencimiento, estado, idUsuario, null);
         }
         
         /// <remarks/>
-        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, object userState) {
+        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario, object userState) {
             if ((this.ingresarGastoOperationCompleted == null)) {
                 this.ingresarGastoOperationCompleted = new System.Threading.SendOrPostCallback(this.OningresarGastoOperationCompleted);
             }
@@ -322,7 +357,8 @@ namespace fint.Forms.serverFINTFachada {
                         concepto,
                         monto,
                         vencimiento,
-                        estado}, this.ingresarGastoOperationCompleted, userState);
+                        estado,
+                        idUsuario}, this.ingresarGastoOperationCompleted, userState);
         }
         
         private void OningresarGastoOperationCompleted(object arg) {
@@ -362,6 +398,9 @@ namespace fint.Forms.serverFINTFachada {
         
         /// <remarks/>
         Usuario,
+        
+        /// <remarks/>
+        Cliente,
     }
     
     /// <remarks/>
@@ -490,6 +529,32 @@ namespace fint.Forms.serverFINTFachada {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void obtenerUsuariosXTipoCompletedEventHandler(object sender, obtenerUsuariosXTipoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class obtenerUsuariosXTipoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal obtenerUsuariosXTipoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }
