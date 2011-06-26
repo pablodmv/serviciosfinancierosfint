@@ -1,0 +1,11 @@
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\bin\Debug\serverFINT.dll
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\bin\Debug\serverFINTPersitencia.dll
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\bin\Debug\serverFINT.pdb
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\bin\Debug\serverFINTPersitencia.pdb
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\obj\Debug\ResolveAssemblyReference.cache
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Visual Studio 2008\Projects\FINT\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

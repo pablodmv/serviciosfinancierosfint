@@ -1,7 +1,19 @@
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\bin\Debug\serverFINT.dll
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\bin\Debug\serverFINT.pdb
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\obj\Debug\serverFINT.dll
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\obj\Debug\serverFINT.pdb
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\bin\Debug\serverFINTPersitencia.dll
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\bin\Debug\serverFINTPersitencia.pdb
+D:\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\ResolveAssemblyReference.cache
+D:\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINT.dll
+D:\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINT.pdb
+D:\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\serverFINT.dll
+D:\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\serverFINT.pdb
+C:\Documents and Settings\Sistemas\Mis documentos\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Sistemas\Mis documentos\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\serverFINT.dll
+C:\Documents and Settings\Sistemas\Mis documentos\Visual Studio 2008\Projects\FINT\serverFINT\obj\Debug\serverFINT.pdb
+C:\Documents and Settings\Sistemas\Mis documentos\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINT.dll
+C:\Documents and Settings\Sistemas\Mis documentos\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINT.pdb
+D:\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINTPersitencia.dll
+D:\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINTPersitencia.pdb
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\obj\Debug\serverFINT.dll
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\obj\Debug\serverFINT.pdb
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\bin\Debug\serverFINT.dll
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\bin\Debug\serverFINT.pdb
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\bin\Debug\serverFINTPersitencia.dll
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\bin\Debug\serverFINTPersitencia.pdb

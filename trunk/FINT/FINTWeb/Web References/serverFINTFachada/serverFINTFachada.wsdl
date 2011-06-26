@@ -16,6 +16,7 @@
         <s:restriction base="s:string">
           <s:enumeration value="Administrador" />
           <s:enumeration value="Usuario" />
+          <s:enumeration value="Cliente" />
         </s:restriction>
       </s:simpleType>
       <s:element name="agregarUsuarioResponse">
@@ -98,6 +99,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="obtenerUsuariosXTipo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="tipo" type="tns:rol" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerUsuariosXTipoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerUsuariosXTipoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="obtenerCuentaXusuario">
         <s:complexType>
           <s:sequence>
@@ -109,6 +131,46 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="obtenerCuentaXusuarioResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarGasto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="concepto" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="monto" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="vencimiento" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="estado" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idUsuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ingresarGastoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ingresarGastoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerCuentasXusuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idUsuario" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerCuentasXusuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerCuentasXusuarioResult">
               <s:complexType>
                 <s:sequence>
                   <s:element ref="s:schema" />
@@ -151,11 +213,29 @@
   <wsdl:message name="ingresarCuentaSoapOut">
     <wsdl:part name="parameters" element="tns:ingresarCuentaResponse" />
   </wsdl:message>
+  <wsdl:message name="obtenerUsuariosXTipoSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerUsuariosXTipo" />
+  </wsdl:message>
+  <wsdl:message name="obtenerUsuariosXTipoSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerUsuariosXTipoResponse" />
+  </wsdl:message>
   <wsdl:message name="obtenerCuentaXusuarioSoapIn">
     <wsdl:part name="parameters" element="tns:obtenerCuentaXusuario" />
   </wsdl:message>
   <wsdl:message name="obtenerCuentaXusuarioSoapOut">
     <wsdl:part name="parameters" element="tns:obtenerCuentaXusuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ingresarGastoSoapIn">
+    <wsdl:part name="parameters" element="tns:ingresarGasto" />
+  </wsdl:message>
+  <wsdl:message name="ingresarGastoSoapOut">
+    <wsdl:part name="parameters" element="tns:ingresarGastoResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerCuentasXusuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerCuentasXusuario" />
+  </wsdl:message>
+  <wsdl:message name="obtenerCuentasXusuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerCuentasXusuarioResponse" />
   </wsdl:message>
   <wsdl:portType name="serverFINTFachadaSoap">
     <wsdl:operation name="agregarUsuario">
@@ -178,9 +258,21 @@
       <wsdl:input message="tns:ingresarCuentaSoapIn" />
       <wsdl:output message="tns:ingresarCuentaSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="obtenerUsuariosXTipo">
+      <wsdl:input message="tns:obtenerUsuariosXTipoSoapIn" />
+      <wsdl:output message="tns:obtenerUsuariosXTipoSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="obtenerCuentaXusuario">
       <wsdl:input message="tns:obtenerCuentaXusuarioSoapIn" />
       <wsdl:output message="tns:obtenerCuentaXusuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ingresarGasto">
+      <wsdl:input message="tns:ingresarGastoSoapIn" />
+      <wsdl:output message="tns:ingresarGastoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerCuentasXusuario">
+      <wsdl:input message="tns:obtenerCuentasXusuarioSoapIn" />
+      <wsdl:output message="tns:obtenerCuentasXusuarioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="serverFINTFachadaSoap" type="tns:serverFINTFachadaSoap">
@@ -230,8 +322,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="obtenerUsuariosXTipo">
+      <soap:operation soapAction="http://tempuri.org/obtenerUsuariosXTipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="obtenerCuentaXusuario">
       <soap:operation soapAction="http://tempuri.org/obtenerCuentaXusuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarGasto">
+      <soap:operation soapAction="http://tempuri.org/ingresarGasto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerCuentasXusuario">
+      <soap:operation soapAction="http://tempuri.org/obtenerCuentasXusuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -287,8 +406,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="obtenerUsuariosXTipo">
+      <soap12:operation soapAction="http://tempuri.org/obtenerUsuariosXTipo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="obtenerCuentaXusuario">
       <soap12:operation soapAction="http://tempuri.org/obtenerCuentaXusuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ingresarGasto">
+      <soap12:operation soapAction="http://tempuri.org/ingresarGasto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerCuentasXusuario">
+      <soap12:operation soapAction="http://tempuri.org/obtenerCuentasXusuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

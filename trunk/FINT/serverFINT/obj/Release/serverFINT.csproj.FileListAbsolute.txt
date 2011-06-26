@@ -1,0 +1,7 @@
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\bin\Release\serverFINT.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\bin\Release\serverFINT.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\bin\Release\serverFINTPersitencia.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\bin\Release\serverFINTPersitencia.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\obj\Release\serverFINT.dll
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINT\obj\Release\serverFINT.pdb
