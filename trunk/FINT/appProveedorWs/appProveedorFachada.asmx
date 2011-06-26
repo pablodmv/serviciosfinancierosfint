@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="appProveedorFachada.asmx.cs" Class="appProveedorWs.appProveedorFachada" %>

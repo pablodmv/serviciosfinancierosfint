@@ -18,7 +18,7 @@ namespace serverFINTPersitencia
 
         }
 
-        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idUsuario)
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idUsuario, int idcuenta)
         {
 
             try
@@ -26,13 +26,14 @@ namespace serverFINTPersitencia
                 SqlConnection dbConnection = new SqlConnection(this.conn);
                 SqlCommand sqlCom = new SqlCommand();
                 sqlCom.CommandType = CommandType.Text;
-                sqlCom.CommandText = "INSERT INTO GASTOS (NumFactura, Concepto, Monto,Vencimiento,Estado, idusuario) VALUES (@Val1, @Val2, @Val3, @Val4, @Val5, @Val6)";
+                sqlCom.CommandText = "INSERT INTO GASTOS (NumFactura, Concepto, Monto,Vencimiento,Estado, idusuario,idcuenta) VALUES (@Val1, @Val2, @Val3, @Val4, @Val5, @Val6,@VAL7)";
                 sqlCom.Parameters.Add("@Val1", SqlDbType.Text).Value = numero;
                 sqlCom.Parameters.Add("@Val2", SqlDbType.Text).Value = concepto;
                 sqlCom.Parameters.Add("@Val3", SqlDbType.Decimal).Value = monto;
                 sqlCom.Parameters.Add("@Val4", SqlDbType.DateTime).Value = DateTime.Parse(vencimiento);
                 sqlCom.Parameters.Add("@Val5", SqlDbType.Int).Value = estado;
                 sqlCom.Parameters.Add("@Val6", SqlDbType.Int).Value = idUsuario;
+                sqlCom.Parameters.Add("@Val7", SqlDbType.Int).Value = idcuenta;
                 sqlCom.Connection = dbConnection;
                 dbConnection.Open();
                 sqlCom.ExecuteNonQuery();

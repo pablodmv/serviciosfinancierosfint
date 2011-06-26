@@ -51,7 +51,7 @@ namespace fint.Forms
                     }
 
                     //  if (Controller.realizarMovimiento(cuenta, double.Parse(monto), conc, tipoTrans))
-                    if (true)
+                    if (resultado)
                     {
                         this.msgLbl.Text = "Transacción realizada con exito.";
                     }

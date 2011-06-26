@@ -38,15 +38,15 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevaCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.realToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transferenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transferenciaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoCuentasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.realToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.proyectadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevaCuentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transferenciaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,14 +77,14 @@
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.editarToolStripMenuItem.Text = "Editar";
             this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.eliminarToolStripMenuItem.Text = "Desactivar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
@@ -95,6 +95,13 @@
             this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
             this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.proveedoresToolStripMenuItem.Text = "Cuentas";
+            // 
+            // nuevaCuentaToolStripMenuItem
+            // 
+            this.nuevaCuentaToolStripMenuItem.Name = "nuevaCuentaToolStripMenuItem";
+            this.nuevaCuentaToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.nuevaCuentaToolStripMenuItem.Text = "Nueva Cuenta";
+            this.nuevaCuentaToolStripMenuItem.Click += new System.EventHandler(this.nuevaCuentaToolStripMenuItem_Click);
             // 
             // estadoCuentasToolStripMenuItem
             // 
@@ -117,7 +124,7 @@
             // proyectadoToolStripMenuItem
             // 
             this.proyectadoToolStripMenuItem.Name = "proyectadoToolStripMenuItem";
-            this.proyectadoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.proyectadoToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.proyectadoToolStripMenuItem.Text = "Pagos";
             this.proyectadoToolStripMenuItem.Click += new System.EventHandler(this.proyectadoToolStripMenuItem_Click);
             // 
@@ -127,6 +134,13 @@
             this.transferenciaToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.transferenciaToolStripMenuItem.Text = "Depositos/Extracciones";
             this.transferenciaToolStripMenuItem.Click += new System.EventHandler(this.transferenciaToolStripMenuItem_Click);
+            // 
+            // transferenciaToolStripMenuItem1
+            // 
+            this.transferenciaToolStripMenuItem1.Name = "transferenciaToolStripMenuItem1";
+            this.transferenciaToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
+            this.transferenciaToolStripMenuItem1.Text = "Transferencia";
+            this.transferenciaToolStripMenuItem1.Click += new System.EventHandler(this.transferenciaToolStripMenuItem1_Click);
             // 
             // estadoCuentasToolStripMenuItem1
             // 
@@ -140,28 +154,15 @@
             // realToolStripMenuItem1
             // 
             this.realToolStripMenuItem1.Name = "realToolStripMenuItem1";
-            this.realToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.realToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.realToolStripMenuItem1.Text = "Real";
+            this.realToolStripMenuItem1.Click += new System.EventHandler(this.realToolStripMenuItem1_Click);
             // 
             // proyectadoToolStripMenuItem1
             // 
             this.proyectadoToolStripMenuItem1.Name = "proyectadoToolStripMenuItem1";
-            this.proyectadoToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.proyectadoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.proyectadoToolStripMenuItem1.Text = "Proyectado";
-            // 
-            // nuevaCuentaToolStripMenuItem
-            // 
-            this.nuevaCuentaToolStripMenuItem.Name = "nuevaCuentaToolStripMenuItem";
-            this.nuevaCuentaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.nuevaCuentaToolStripMenuItem.Text = "Nueva Cuenta";
-            this.nuevaCuentaToolStripMenuItem.Click += new System.EventHandler(this.nuevaCuentaToolStripMenuItem_Click);
-            // 
-            // transferenciaToolStripMenuItem1
-            // 
-            this.transferenciaToolStripMenuItem1.Name = "transferenciaToolStripMenuItem1";
-            this.transferenciaToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
-            this.transferenciaToolStripMenuItem1.Text = "Transferencia";
-            this.transferenciaToolStripMenuItem1.Click += new System.EventHandler(this.transferenciaToolStripMenuItem1_Click);
             // 
             // MainForm
             // 

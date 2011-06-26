@@ -78,9 +78,9 @@ namespace serverFINT
             set { id = value; }
         }
 
-        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idusuario)
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idusuario, int idcuenta)
         {
-            return gastoPersis.ingresarGasto(numero, concepto, monto, vencimiento, estado,idusuario);
+            return gastoPersis.ingresarGasto(numero, concepto, monto, vencimiento, estado,idusuario, idcuenta);
         }
 
         public DataSet obtenerGastosXusuario(int idusuario)

@@ -12,6 +12,8 @@ namespace fint.Forms
 {
     public partial class IngresarGastos : Form
     {
+        int idusuario;
+        DataSet dsCuentas = new DataSet();
         public IngresarGastos()
         {
             InitializeComponent();
@@ -42,6 +44,7 @@ namespace fint.Forms
 
             String nFac = this.nFacTxt.Text;
             String desc = this.descTxt.Text;
+            int idcuenta = int.Parse(this.comboBox1.SelectedValue.ToString());
             try
             {
                 Decimal tmpMonto = Decimal.Parse(this.montoTxt.Text);
@@ -55,7 +58,7 @@ namespace fint.Forms
                 if (!nFac.Equals("") && !desc.Equals("") && !monto.Equals(""))
                 {
 
-                    if (Controller.getInstancia().ingresarGasto(nFac, desc, monto, fVen, estado))
+                    if (Controller.getInstancia().ingresarGasto(nFac, desc, monto, fVen, estado,idcuenta))
                     {
                         this.msgLbl.Text = "Gasto ingresado con exito.";
 
@@ -93,6 +96,11 @@ namespace fint.Forms
         private void IngresarGastos_Load(object sender, EventArgs e)
         {
             this.fVenDPicker.Value = DateTime.Today;
+            idusuario = Controller.getInstancia().IdUsuario;
+            dsCuentas = Controller.getInstancia().obtenerCuentasXusuario(idusuario);
+            this.comboBox1.DataSource = dsCuentas.Tables[0];
+            this.comboBox1.DisplayMember = "Descripcion";
+            this.comboBox1.ValueMember = "id";
         }
 
 
