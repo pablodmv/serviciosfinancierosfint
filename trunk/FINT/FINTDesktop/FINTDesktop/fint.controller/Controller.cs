@@ -65,7 +65,10 @@ namespace fint.Forms.fint.controller
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
             dsusuario= service.chequearUsuario(usr, pwd);
-            IdUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
+            if (dsUsuario.Tables[0].Rows.Count>0)
+            {
+                IdUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString()); 
+            }
             return dsusuario;
 
             ////Codigo provisorio
@@ -123,11 +126,13 @@ namespace fint.Forms.fint.controller
             return service.ingresarGasto(numero, concepto, monto, vencimiento, estado,IdUsuario);
 
         }
-        public DataSet obtenerCuentasXusuario(int idusuario)
+        public DataSet obtenerGastosXusuario(int id)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            service.obtenerCuentasXusuario(idUsuario);
+            return service.obtenerGastosXusuario(id);
         }
+
+
 
 
         public static Boolean desactivarUsuario(String login)
@@ -152,12 +157,41 @@ namespace fint.Forms.fint.controller
         //Agregar metodo obtenerCuentasXUsuario(int idUsuario)
 
 
-        public static Boolean realizarMovimiento(String cuenta, double monto, String concepto, String tTrans)
+        //public static Boolean realizarMovimiento(String cuenta, double monto, String concepto, String tTrans)
+        //{
+        //    return true;
+
+        //}
+
+        public Boolean realizarPago(int idGasto, int idCuenta)
         {
-            return true;
+
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.realizarPago(idGasto, idCuenta);
+        }
+
+        public Boolean realizarDeposito(int idCuenta, Decimal monto, String concepto)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.realizarDeposito(idCuenta, monto, concepto);
 
         }
-        
+
+        public Boolean realizarExtraccion(int idCuenta, Decimal monto, String concepto)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.realizarExtraccion(idCuenta, monto, concepto);
+
+        }
+
+       
+        public Boolean realizarTransferencia(int pCuentaOrig, int pCuentaDestino, Decimal monto, String concepto)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.realizarTransferencia(pCuentaOrig, pCuentaDestino, monto, concepto);
+
+        }
+
 
     }
 }

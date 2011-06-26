@@ -23,7 +23,10 @@ namespace serverFINT
             this.Direccion = pDireccion;
             this.TipoProveedor = pTipo;
         }
+        public Proveedor()
+        {
 
+        }
 
         public tipoProveedor TipoProveedor
         {
@@ -55,6 +58,8 @@ namespace serverFINT
             get { return codProveedor; }
             set { codProveedor = value; }
         }
+
+      
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using serverFINT;
+using System.Data;
 
 namespace ConsoleApplication1
 {
@@ -11,7 +12,7 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Sistema pepe = Sistema.getInstancia();
-            Boolean hola = pepe.ingresarGasto("hasdas", "hsjhdkjas", 222, "25/06/2001", 0);
+            Boolean hola = pepe.realizarTransferencia(1, 11, 200, "Pruebadebug");
             Console.WriteLine(hola);
         }
     }

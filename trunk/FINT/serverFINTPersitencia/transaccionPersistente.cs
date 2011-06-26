@@ -12,19 +12,39 @@ namespace serverFINTPersitencia
 
 
 
-        public void ingresarTransferencia()
+        public Boolean ingresarTransaccion(String pconcepto,Decimal monto,int tipo,String fecha,int idgasto,int estado,int idcuenta,int idcuentadestino)
         {
+            try
+            {
+                SqlConnection dbConnection = new SqlConnection(this.conn);
+                SqlCommand sqlCom = new SqlCommand();
+                sqlCom.CommandType = CommandType.Text;
+                sqlCom.CommandText = "INSERT INTO TRANSACCIONES (Concepto, Monto, Tipo,Fecha,idGasto,Estado,idCuenta,idCuentaDestino) VALUES (@Val1, @Val2, @Val3, @Val4, @Val5, @Val6, @Val7, @Val8)";
+                sqlCom.Parameters.Add("@Val1", SqlDbType.Text).Value = pconcepto;
+                sqlCom.Parameters.Add("@Val2", SqlDbType.Decimal).Value = monto;
+                sqlCom.Parameters.Add("@Val3", SqlDbType.Int).Value = tipo;
+                sqlCom.Parameters.Add("@Val4", SqlDbType.DateTime).Value = DateTime.Parse(fecha);
+                sqlCom.Parameters.Add("@Val5", SqlDbType.Int).Value = idgasto;
+                sqlCom.Parameters.Add("@Val6", SqlDbType.Int).Value = estado;
+                sqlCom.Parameters.Add("@Val7", SqlDbType.Int).Value = idcuenta;
+                sqlCom.Parameters.Add("@Val8", SqlDbType.Int).Value = idcuentadestino;
+                sqlCom.Connection = dbConnection;
+                dbConnection.Open();
+                sqlCom.ExecuteNonQuery();
+                dbConnection.Close();
+                return true;
+            }
+            catch (SqlException e)
+            {
+                return false;
+
+            }
+
+
+
         }
 
-        public void ingresarDeposito()
-        { 
         
-        }
-
-        public void ingresarExtraccion()
-        { 
-        
-        }
 
         public void obtenerTransaccionXcuenta(int idcuenta)
         {

@@ -154,6 +154,27 @@ namespace serverFINTPersitencia
            return dsUsuario;
        }
 
+       public DataSet obtenerUsuarioXid(int id)
+       {
+           DataSet dsUsuario = new DataSet();
+           try
+           {
+               SqlConnection conn = new SqlConnection(this.conn);
+               SqlDataAdapter da = new SqlDataAdapter("select * from USUARIOS WHERE id=" + id, conn);
+               da.Fill(dsUsuario, "Usuarios");
+               //return dsUsuario;
+
+
+
+           }
+           catch (SqlException)
+           {
+               //TODO:log
+           }
+
+           return dsUsuario;
+       }
+
 
 
     }

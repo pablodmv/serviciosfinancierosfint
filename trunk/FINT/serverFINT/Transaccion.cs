@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using serverFINTPersitencia;
 
 namespace serverFINT
 {
@@ -9,26 +10,63 @@ namespace serverFINT
     {
         private int numTransac;
         private String concepto;
-        private Double monto;
+        private Decimal monto;
         private tipoTransaccion tipo;
-        private DateTime fecha;
+        private String fecha;
         private estado estadoTransaccion;
-        private List<Gasto> colGastoCancela;
+        private int idGastoCancela;
+        private int idCuentainicial;
+        private int idCuentaFinal;
+        private transaccionPersistente transacpers;
 
-       
+
+
+        public Transaccion()
+        {
+            transacpers = new transaccionPersistente();
+
+        }
+        public Transaccion(String concepto, Decimal monto, int idcuentainicial, tipoTransaccion tipo, estado est)
+        {
+            this.Concepto = concepto;
+            this.Monto = monto;
+            this.IdCuentainicial = idcuentainicial;
+            this.Tipo = tipo;
+            this.EstadoTransaccion = est;
+            this.Fecha = DateTime.Today.ToString("dd/MM/yyyy");
+            transacpers = new transaccionPersistente();
+
+        }
+
+        public Transaccion(String concepto, Decimal monto, int idcuentainicial,int idcuentafinal, tipoTransaccion tipo, estado est)
+        {
+            this.Concepto = concepto;
+            this.Monto = monto;
+            this.IdCuentainicial = idcuentainicial;
+            this.IdCuentaFinal = idcuentafinal;
+            this.Tipo = tipo;
+            this.EstadoTransaccion = est;
+            this.Fecha = DateTime.Today.ToString("dd/MM/yyyy");
+            transacpers = new transaccionPersistente();
+
+        }
 
       
         
       
         
 
-        public Transaccion(String pConcepto, Double pMonto, DateTime pFecha, tipoTransaccion pTipo, estado pEstado)
+        public Transaccion(String pConcepto, Decimal pMonto, String pFecha, tipoTransaccion pTipo, estado pEstado, int pidgastocancela, int idcuentainicia, int idcuentafinal)
         {
             this.Concepto = pConcepto;
             this.Monto = pMonto;
             this.Tipo = pTipo;
             this.Fecha = pFecha;
             this.EstadoTransaccion = pEstado;
+            this.IdGastoCancela = pidgastocancela;
+            this.IdCuentainicial = idcuentainicia;
+            this.idCuentaFinal = idcuentafinal;
+            transacpers = new transaccionPersistente();
 
         }
 
@@ -38,7 +76,7 @@ namespace serverFINT
             set { concepto = value; }
         }
 
-        public Double Monto
+        public Decimal Monto
         {
             get { return monto; }
             set { monto = value; }
@@ -51,7 +89,7 @@ namespace serverFINT
 
 
       
-        public DateTime Fecha
+        public String Fecha
         {
             get { return fecha; }
             set { fecha = value; }
@@ -69,10 +107,30 @@ namespace serverFINT
             set { estadoTransaccion = value; }
         }
 
-        public List<Gasto> ColGastoCancela
+        public int IdGastoCancela
         {
-            get { return colGastoCancela; }
-            set { colGastoCancela = value; }
+            get { return idGastoCancela; }
+            set { idGastoCancela = value; }
         }
+        public int IdCuentainicial
+        {
+            get { return idCuentainicial; }
+            set { idCuentainicial = value; }
+        }
+        public int IdCuentaFinal
+        {
+            get { return idCuentaFinal; }
+            set { idCuentaFinal = value; }
+        }
+
+        public Boolean ingresarTransaccion(Transaccion transac)
+        {
+            return transacpers.ingresarTransaccion(transac.Concepto, transac.Monto, (int)transac.Tipo, transac.Fecha, transac.IdGastoCancela, (int)transac.EstadoTransaccion, transac.IdCuentainicial, transac.IdCuentaFinal);
+        }
+
+
+
+
+    
     }
 }
