@@ -17,3 +17,4 @@ C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\bin\Debug
 C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\bin\Debug\serverFINT.pdb
 C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\bin\Debug\serverFINTPersitencia.dll
 C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINT\bin\Debug\serverFINTPersitencia.pdb
+D:\Visual Studio 2008\Projects\FINT\serverFINT\bin\Debug\serverFINT.dll.config

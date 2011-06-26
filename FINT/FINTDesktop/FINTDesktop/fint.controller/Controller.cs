@@ -25,7 +25,7 @@ namespace fint.Forms.fint.controller
             get { return dsGastosXusuario; }
             set { dsGastosXusuario = value; }
         }
-        
+
 
         public DataSet DsCuentasXusuario
         {
@@ -38,7 +38,7 @@ namespace fint.Forms.fint.controller
             get { return dsProveedores; }
             set { dsProveedores = value; }
         }
-       
+
 
         public DataSet dsUsuario
         {
@@ -64,10 +64,10 @@ namespace fint.Forms.fint.controller
         public DataSet loginUsuario(String usr, String pwd)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            dsusuario= service.chequearUsuario(usr, pwd);
-            if (dsUsuario.Tables[0].Rows.Count>0)
+            dsusuario = service.chequearUsuario(usr, pwd);
+            if (dsUsuario.Tables[0].Rows.Count > 0)
             {
-                IdUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString()); 
+                IdUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
             }
             return dsusuario;
 
@@ -86,31 +86,31 @@ namespace fint.Forms.fint.controller
         public int agregarUsuario(String nombre, String login, String pwd)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            
-           return service.agregarUsuario(nombre, login, pwd, serverFINTFachada.rol.Usuario);
 
-            
+            return service.agregarUsuario(nombre, login, pwd, serverFINTFachada.rol.Usuario);
+
+
         }
 
         public Boolean editarUsuario(String nombre, String pwd, int id)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            return service.modificarUsuario(nombre, pwd,id);
+            return service.modificarUsuario(nombre, pwd, id);
 
         }
 
         public DataSet obtenerProveedores()
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            dsProveedores= service.obtenerProveedores();
+            dsProveedores = service.obtenerProveedores();
             return dsProveedores;
-        
+
         }
         public Boolean ingresarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
             return service.ingresarCuenta(numero, descripcion, saldo, idProveedor, idUsuario);
-        
+
         }
 
         public DataSet obtenerCuentasXusuario(int idusuario)
@@ -123,10 +123,14 @@ namespace fint.Forms.fint.controller
         public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idcuenta)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado,IdUsuario,idcuenta);
+            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado, IdUsuario, idcuenta);
 
         }
-        
+        public DataSet obtenerGastosXusuario(int id)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.obtenerGastosXusuario(id);
+        }
 
 
 
@@ -180,13 +184,16 @@ namespace fint.Forms.fint.controller
 
         }
 
-       
+
         public Boolean realizarTransferencia(int pCuentaOrig, int pCuentaDestino, Decimal monto, String concepto)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
             return service.realizarTransferencia(pCuentaOrig, pCuentaDestino, monto, concepto);
 
         }
+
+
+
 
 
     }
