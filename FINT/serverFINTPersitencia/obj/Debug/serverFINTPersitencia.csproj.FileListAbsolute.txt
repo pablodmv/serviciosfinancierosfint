@@ -1,5 +1,10 @@
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\bin\Debug\serverFINTPersitencia.dll
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\bin\Debug\serverFINTPersitencia.pdb
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\obj\Debug\serverFINTPersitencia.dll
-C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTPersitencia\obj\Debug\serverFINTPersitencia.pdb
+D:\Visual Studio 2008\Projects\FINT\serverFINTPersitencia\bin\Debug\serverFINTPersitencia.dll
+D:\Visual Studio 2008\Projects\FINT\serverFINTPersitencia\bin\Debug\serverFINTPersitencia.pdb
+D:\Visual Studio 2008\Projects\FINT\serverFINTPersitencia\obj\Debug\ResolveAssemblyReference.cache
+D:\Visual Studio 2008\Projects\FINT\serverFINTPersitencia\obj\Debug\serverFINTPersitencia.dll
+D:\Visual Studio 2008\Projects\FINT\serverFINTPersitencia\obj\Debug\serverFINTPersitencia.pdb
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINTPersitencia\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINTPersitencia\obj\Debug\serverFINTPersitencia.dll
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINTPersitencia\bin\Debug\serverFINTPersitencia.dll
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINTPersitencia\bin\Debug\serverFINTPersitencia.pdb
+C:\Documents and Settings\Sistemas\Escritorio\personal\FINT\serverFINTPersitencia\obj\Debug\serverFINTPersitencia.pdb

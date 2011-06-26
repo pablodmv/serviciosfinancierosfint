@@ -19,6 +19,27 @@ namespace FINTWeb.controller
         private static Controller instancia;
         private DataSet dsusuario;
         private DataSet dsProveedores;
+        private DataSet dsCuentasXusuario;
+        private DataSet dsGastosXusuario;
+        private int idUsuario;
+
+        public int IdUsuario
+        {
+            get { return idUsuario; }
+            set { idUsuario = value; }
+        }
+
+        public DataSet DsGastosXusuario
+        {
+            get { return dsGastosXusuario; }
+            set { dsGastosXusuario = value; }
+        }
+        
+        public DataSet DsCuentasXusuario
+        {
+            get { return dsCuentasXusuario; }
+            set { dsCuentasXusuario = value; }
+        }
 
         public DataSet DsProveedores
         {
@@ -45,6 +66,7 @@ namespace FINTWeb.controller
         private Controller()
         {
             dsusuario = new DataSet();
+            dsProveedores = new DataSet();
 
         }
 
@@ -105,13 +127,20 @@ namespace FINTWeb.controller
 
         }
 
-
-        public static Boolean agregarGasto(int nFactura, String concepto, double monto, DateTime venc)
+        public DataSet obtenerCuentasXusuario(int idusuario)
         {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.obtenerCuentaXusuario(idusuario);
 
-            return true;
         }
 
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            idUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
+            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado, IdUsuario);
+
+        }
 
         //Agregar metodo obtenerGastosXUsuario(int idUsuario)
         //Agregar metodo obtenerCuentasXUsuario(int idUsuario)

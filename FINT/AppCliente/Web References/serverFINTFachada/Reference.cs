@@ -44,6 +44,10 @@ namespace AppCliente.serverFINTFachada {
         
         private System.Threading.SendOrPostCallback obtenerCuentaXusuarioOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ingresarGastoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback obtenerCuentasXusuarioOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -102,6 +106,12 @@ namespace AppCliente.serverFINTFachada {
         
         /// <remarks/>
         public event obtenerCuentaXusuarioCompletedEventHandler obtenerCuentaXusuarioCompleted;
+        
+        /// <remarks/>
+        public event ingresarGastoCompletedEventHandler ingresarGastoCompleted;
+        
+        /// <remarks/>
+        public event obtenerCuentasXusuarioCompletedEventHandler obtenerCuentasXusuarioCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/agregarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -325,6 +335,74 @@ namespace AppCliente.serverFINTFachada {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ingresarGasto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ingresarGasto(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario) {
+            object[] results = this.Invoke("ingresarGasto", new object[] {
+                        numero,
+                        concepto,
+                        monto,
+                        vencimiento,
+                        estado,
+                        idUsuario});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario) {
+            this.ingresarGastoAsync(numero, concepto, monto, vencimiento, estado, idUsuario, null);
+        }
+        
+        /// <remarks/>
+        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario, object userState) {
+            if ((this.ingresarGastoOperationCompleted == null)) {
+                this.ingresarGastoOperationCompleted = new System.Threading.SendOrPostCallback(this.OningresarGastoOperationCompleted);
+            }
+            this.InvokeAsync("ingresarGasto", new object[] {
+                        numero,
+                        concepto,
+                        monto,
+                        vencimiento,
+                        estado,
+                        idUsuario}, this.ingresarGastoOperationCompleted, userState);
+        }
+        
+        private void OningresarGastoOperationCompleted(object arg) {
+            if ((this.ingresarGastoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ingresarGastoCompleted(this, new ingresarGastoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/obtenerCuentasXusuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet obtenerCuentasXusuario(int idUsuario) {
+            object[] results = this.Invoke("obtenerCuentasXusuario", new object[] {
+                        idUsuario});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void obtenerCuentasXusuarioAsync(int idUsuario) {
+            this.obtenerCuentasXusuarioAsync(idUsuario, null);
+        }
+        
+        /// <remarks/>
+        public void obtenerCuentasXusuarioAsync(int idUsuario, object userState) {
+            if ((this.obtenerCuentasXusuarioOperationCompleted == null)) {
+                this.obtenerCuentasXusuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnobtenerCuentasXusuarioOperationCompleted);
+            }
+            this.InvokeAsync("obtenerCuentasXusuario", new object[] {
+                        idUsuario}, this.obtenerCuentasXusuarioOperationCompleted, userState);
+        }
+        
+        private void OnobtenerCuentasXusuarioOperationCompleted(object arg) {
+            if ((this.obtenerCuentasXusuarioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.obtenerCuentasXusuarioCompleted(this, new obtenerCuentasXusuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -528,6 +606,58 @@ namespace AppCliente.serverFINTFachada {
         private object[] results;
         
         internal obtenerCuentaXusuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.3053")]
+    public delegate void ingresarGastoCompletedEventHandler(object sender, ingresarGastoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.3053")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ingresarGastoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ingresarGastoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.3053")]
+    public delegate void obtenerCuentasXusuarioCompletedEventHandler(object sender, obtenerCuentasXusuarioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.3053")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class obtenerCuentasXusuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal obtenerCuentasXusuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

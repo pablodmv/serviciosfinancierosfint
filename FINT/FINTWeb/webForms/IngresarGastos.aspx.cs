@@ -33,13 +33,16 @@ namespace FINTWeb.webForms
 
             String nFac = this.nFacTxt.Text;
             String desc = this.descTxt.Text;
-            String monto = this.montoTxt.Text;
-            DateTime fVen = this.fVenDPicker.SelectedDate;
+            
+            Double tmpMonto = Double.Parse(this.montoTxt.Text);
+            Decimal monto = (Decimal)tmpMonto;
+            String fVen = this.fVenDPicker.SelectedDate.ToString("dd/MM/yyyy");
+            int estado = (int)Estado.Pendiente;
 
-            if (!nFac.Equals("") && !desc.Equals("") && !monto.Equals(""))
+            if (!nFac.Equals("") && !desc.Equals("") && monto > 0)
             {
 
-                if (Controller.agregarGasto(int.Parse(nFac), desc, double.Parse(monto), fVen))
+                if (Controller.getInstancia().ingresarGasto(nFac, desc, monto, fVen, estado))
                 {
                     this.msgLbl.Text = "Gasto ingresado con exito.";
                 }
@@ -65,6 +68,12 @@ namespace FINTWeb.webForms
             this.montoTxt.Text = "";
             this.fVenDPicker.SelectedDate = DateTime.Today; 
             
+        }
+
+        public enum Estado
+        {
+            Pendiente,
+            Realizada
         }
 
     }

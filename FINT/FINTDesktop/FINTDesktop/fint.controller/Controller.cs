@@ -126,11 +126,7 @@ namespace fint.Forms.fint.controller
             return service.ingresarGasto(numero, concepto, monto, vencimiento, estado,IdUsuario);
 
         }
-        public DataSet obtenerGastosXusuario(int id)
-        {
-            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            return service.obtenerGastosXusuario(id);
-        }
+        
 
 
 
