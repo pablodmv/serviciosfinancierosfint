@@ -120,10 +120,10 @@ namespace fint.Forms.fint.controller
 
         }
 
-        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idcuenta)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado,IdUsuario);
+            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado,IdUsuario,idcuenta);
 
         }
         

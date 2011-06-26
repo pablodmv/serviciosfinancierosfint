@@ -81,5 +81,12 @@ namespace fint.Forms
             trans.Show();
 
         }
+
+        private void realToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form estCuenta = new estadoCuentaReal();
+            estCuenta.Show();
+
+        }
     }
 }

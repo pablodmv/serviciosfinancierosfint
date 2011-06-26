@@ -38,6 +38,8 @@
             this.fVenDPicker = new System.Windows.Forms.DateTimePicker();
             this.doneBtn = new System.Windows.Forms.Button();
             this.msgLbl = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nFacLbl
@@ -114,7 +116,7 @@
             // 
             // doneBtn
             // 
-            this.doneBtn.Location = new System.Drawing.Point(245, 191);
+            this.doneBtn.Location = new System.Drawing.Point(245, 221);
             this.doneBtn.Name = "doneBtn";
             this.doneBtn.Size = new System.Drawing.Size(75, 23);
             this.doneBtn.TabIndex = 8;
@@ -131,11 +133,31 @@
             this.msgLbl.Size = new System.Drawing.Size(0, 13);
             this.msgLbl.TabIndex = 9;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(99, 166);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(225, 21);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 174);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Cuenta";
+            // 
             // IngresarGastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 264);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.msgLbl);
             this.Controls.Add(this.doneBtn);
             this.Controls.Add(this.fVenDPicker);
@@ -167,5 +189,7 @@
         private System.Windows.Forms.DateTimePicker fVenDPicker;
         private System.Windows.Forms.Button doneBtn;
         private System.Windows.Forms.Label msgLbl;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

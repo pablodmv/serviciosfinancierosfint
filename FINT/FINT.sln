@@ -15,7 +15,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FINTWeb", "FINTWeb\FINTWeb.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCliente", "AppCliente\AppCliente.csproj", "{F63BB46E-8201-44A0-9701-D9FF9345E2F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appProveedor", "appProveedor\appProveedor.csproj", "{90B33D23-B68E-4C54-9FA7-C7BA11A464AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appProveedorWs", "appProveedorWs\appProveedorWs.csproj", "{55FDB7B5-1051-4FF1-BA98-307B47C919E5}"
+EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -49,12 +57,16 @@ Global
 		{F63BB46E-8201-44A0-9701-D9FF9345E2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F63BB46E-8201-44A0-9701-D9FF9345E2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F63BB46E-8201-44A0-9701-D9FF9345E2F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90B33D23-B68E-4C54-9FA7-C7BA11A464AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B33D23-B68E-4C54-9FA7-C7BA11A464AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B33D23-B68E-4C54-9FA7-C7BA11A464AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B33D23-B68E-4C54-9FA7-C7BA11A464AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55FDB7B5-1051-4FF1-BA98-307B47C919E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55FDB7B5-1051-4FF1-BA98-307B47C919E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55FDB7B5-1051-4FF1-BA98-307B47C919E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55FDB7B5-1051-4FF1-BA98-307B47C919E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

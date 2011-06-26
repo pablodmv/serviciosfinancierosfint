@@ -63,6 +63,12 @@
     <Compile Include="fint.Forms\EliminarUsuario.Designer.cs">
       <DependentUpon>EliminarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="fint.Forms\estadoCuentaReal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fint.Forms\estadoCuentaReal.Designer.cs">
+      <DependentUpon>estadoCuentaReal.cs</DependentUpon>
+    </Compile>
     <Compile Include="fint.Forms\IngresarCuenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fint.Forms\EliminarUsuario.resx">
       <DependentUpon>EliminarUsuario.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fint.Forms\estadoCuentaReal.resx">
+      <DependentUpon>estadoCuentaReal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="fint.Forms\IngresarCuenta.resx">

@@ -361,24 +361,25 @@ namespace fint.Forms.serverFINTFachada {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ingresarGasto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool ingresarGasto(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario) {
+        public bool ingresarGasto(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario, int idcuenta) {
             object[] results = this.Invoke("ingresarGasto", new object[] {
                         numero,
                         concepto,
                         monto,
                         vencimiento,
                         estado,
-                        idUsuario});
+                        idUsuario,
+                        idcuenta});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario) {
-            this.ingresarGastoAsync(numero, concepto, monto, vencimiento, estado, idUsuario, null);
+        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario, int idcuenta) {
+            this.ingresarGastoAsync(numero, concepto, monto, vencimiento, estado, idUsuario, idcuenta, null);
         }
         
         /// <remarks/>
-        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario, object userState) {
+        public void ingresarGastoAsync(string numero, string concepto, decimal monto, string vencimiento, int estado, int idUsuario, int idcuenta, object userState) {
             if ((this.ingresarGastoOperationCompleted == null)) {
                 this.ingresarGastoOperationCompleted = new System.Threading.SendOrPostCallback(this.OningresarGastoOperationCompleted);
             }
@@ -388,7 +389,8 @@ namespace fint.Forms.serverFINTFachada {
                         monto,
                         vencimiento,
                         estado,
-                        idUsuario}, this.ingresarGastoOperationCompleted, userState);
+                        idUsuario,
+                        idcuenta}, this.ingresarGastoOperationCompleted, userState);
         }
         
         private void OningresarGastoOperationCompleted(object arg) {

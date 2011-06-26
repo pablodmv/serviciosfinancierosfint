@@ -125,7 +125,7 @@ namespace serverFINT
         {
             foreach (Proveedor prov in ColProveedor)
             {
-                if (prov.CodProveedor==id)
+                if (prov.Id==id)
                 {
                     return prov;   
                 }
@@ -167,11 +167,11 @@ namespace serverFINT
         
         }
 
-        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idusuario)
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idusuario, int idcuenta)
         {
             Gasto gasto = new Gasto();
 
-            return gasto.ingresarGasto(numero, concepto, monto, vencimiento, estado,idusuario);
+            return gasto.ingresarGasto(numero, concepto, monto, vencimiento, estado,idusuario, idcuenta);
 
 
         }
@@ -281,8 +281,22 @@ namespace serverFINT
         //    return transac.ingresarTransaccion(pconcepto, monto, ptipo, fecha, idgasto, estado, idcuenta, idcuentadestino);
         //}
 
-        
-        
+
+        public Object estadoCuentaServicio(String numcuenta)
+        {
+            appProveedorFachadaProxy.appProveedorFachada serviceProveedor = new appProveedorFachadaProxy.appProveedorFachada();
+            return serviceProveedor.obtenerEstadoCuenta(numcuenta);
+            
+        }
+
+        //private Boolean realizarPago(String numcue, Decimal monto)
+        //{
+        //    appProveedorFachadaProxy.appProveedorFachada serviceProveedor = new appProveedorFachadaProxy.appProveedorFachada();
+        //    return serviceProveedor.realizarPago(numcue, monto);
+
+        //}
+
+
 
     }
 

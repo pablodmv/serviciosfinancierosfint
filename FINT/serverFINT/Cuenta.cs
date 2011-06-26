@@ -13,19 +13,20 @@ namespace serverFINT
         private String numeroCuenta;
         private Decimal saldo;
         private String descripcion;
-        private int idProveedor;
+        private Proveedor proveedor;
         private int idUsuario;
         private int id;
+        cuentaPersistente cuentaPersis;
 
         public int Id
         {
             get { return id; }
             set { id = value; }
         }
-        public int IdProveedor
+        public Proveedor Proveedor
         {
-            get { return idProveedor; }
-            set { idProveedor = value; }
+            get { return proveedor; }
+            set { proveedor = value; }
         }
         
 
@@ -42,7 +43,7 @@ namespace serverFINT
     
 
        
-        cuentaPersistente cuentaPersis;
+       
 
       
 
@@ -103,7 +104,7 @@ namespace serverFINT
             this.NumeroCuenta =dsCuenta.Tables[0].Rows[0]["NumeroCuenta"].ToString();
             this.Descripcion = dsCuenta.Tables[0].Rows[0]["Descripcion"].ToString();
             this.Saldo = Decimal.Parse(dsCuenta.Tables[0].Rows[0]["Saldo"].ToString());
-            this.IdProveedor = int.Parse(dsCuenta.Tables[0].Rows[0]["idProveedor"].ToString());
+            this.Proveedor = prov.obtenerObjProveedor(int.Parse(dsCuenta.Tables[0].Rows[0]["idProveedor"].ToString()));
             this.IdUsuario = int.Parse(dsCuenta.Tables[0].Rows[0]["idusuario"].ToString());
             this.Id = int.Parse(dsCuenta.Tables[0].Rows[0]["id"].ToString());
             return this;
@@ -112,7 +113,7 @@ namespace serverFINT
 
         public Boolean modificarCuenta(Cuenta tmpCuenta)
         {
-            return cuentaPersis.modificarCuenta(tmpCuenta.NumeroCuenta, tmpCuenta.Descripcion, tmpCuenta.Saldo, tmpCuenta.IdProveedor, tmpCuenta.IdUsuario, tmpCuenta.Id);
+            return cuentaPersis.modificarCuenta(tmpCuenta.NumeroCuenta, tmpCuenta.Descripcion, tmpCuenta.Saldo, tmpCuenta.Proveedor.Id, tmpCuenta.IdUsuario, tmpCuenta.Id);
         
         
         }
@@ -156,7 +157,7 @@ namespace serverFINT
                 
             }
             
-            if (cuentaPersis.modificarCuenta(this.NumeroCuenta, this.Descripcion, this.Saldo, this.IdProveedor, this.IdUsuario, this.Id))
+            if (cuentaPersis.modificarCuenta(this.NumeroCuenta, this.Descripcion, this.Saldo, this.Proveedor.Id, this.IdUsuario, this.Id))
             {
                 
                 return true;
@@ -171,7 +172,7 @@ namespace serverFINT
         private Boolean ingresarGasto(Transaccion pTransaccion)
         {
             this.Saldo -= pTransaccion.Monto;
-            if (cuentaPersis.modificarCuenta(this.NumeroCuenta, this.Descripcion, this.Saldo, this.IdProveedor, this.IdUsuario, this.Id))
+            if (cuentaPersis.modificarCuenta(this.NumeroCuenta, this.Descripcion, this.Saldo, this.Proveedor.Id, this.IdUsuario, this.Id))
             {
                 return true;
             }else
