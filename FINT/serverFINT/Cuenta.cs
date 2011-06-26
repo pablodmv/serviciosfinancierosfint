@@ -11,15 +11,42 @@ namespace serverFINT
     public class Cuenta 
     {
         private String numeroCuenta;
-        private Double saldo;
+        private Decimal saldo;
         private String descripcion;
-        private List<Transaccion> coltransacciones;
-        private List<Gasto> colGasto;
+        private int idProveedor;
+        private int idUsuario;
+        private int id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        public int IdProveedor
+        {
+            get { return idProveedor; }
+            set { idProveedor = value; }
+        }
+        
+
+        public int IdUsuario
+        {
+            get { return idUsuario; }
+            set { idUsuario = value; }
+        }
+
+
+     
+   
+
+    
+
+       
         cuentaPersistente cuentaPersis;
 
       
 
-        public Cuenta(String numero, Double saldo, String Descripcion)
+        public Cuenta(String numero, Decimal saldo, String Descripcion)
         {
             this.NumeroCuenta = numero;
             this.Saldo = saldo;
@@ -32,21 +59,17 @@ namespace serverFINT
             cuentaPersis = new cuentaPersistente();
         }
 
-        public List<Transaccion> Coltransacciones
-        {
-            get { return coltransacciones; }
-            set { coltransacciones = value; }
-        }
         
+   
 
         public String Descripcion
         {
             get { return descripcion; }
             set { descripcion = value; }
         }
-      
 
-        public Double Saldo
+        
+        public Decimal Saldo
         {
             get { return saldo; }
             set { saldo = value; }
@@ -58,24 +81,39 @@ namespace serverFINT
             set { numeroCuenta = value; }
         }
 
-        public List<Gasto> ColGasto
-        {
-            get { return colGasto; }
-            set { colGasto = value; }
-        }
 
         public Boolean ingresarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario) 
         {
-
             //cuentaPersistente cuentaPersis = new cuentaPersistente();
            return cuentaPersis.ingresarCuenta(numero, descripcion, saldo, idProveedor, idUsuario);
-        
-        
         }
 
         public DataSet obtenerCuentasXusuario(int idusuario)
         {
             return cuentaPersis.obtenerCuentaPorUsuario(idusuario);
+        }
+
+
+        public Cuenta obtenerObjCuenta(int idcuenta) 
+        {
+            Proveedor prov = new Proveedor();
+            Usuario user = new Usuario();
+            DataSet dsCuenta = new DataSet();
+            dsCuenta= cuentaPersis.obtenerObjCuenta(idcuenta);
+            this.NumeroCuenta =dsCuenta.Tables[0].Rows[0]["NumeroCuenta"].ToString();
+            this.Descripcion = dsCuenta.Tables[0].Rows[0]["Descripcion"].ToString();
+            this.Saldo = Decimal.Parse(dsCuenta.Tables[0].Rows[0]["Saldo"].ToString());
+            this.IdProveedor = int.Parse(dsCuenta.Tables[0].Rows[0]["idProveedor"].ToString());
+            this.IdUsuario = int.Parse(dsCuenta.Tables[0].Rows[0]["idusuario"].ToString());
+            this.Id = int.Parse(dsCuenta.Tables[0].Rows[0]["id"].ToString());
+            return this;
+
+        }
+
+        public Boolean modificarCuenta(Cuenta tmpCuenta)
+        {
+            return cuentaPersis.modificarCuenta(tmpCuenta.NumeroCuenta, tmpCuenta.Descripcion, tmpCuenta.Saldo, tmpCuenta.IdProveedor, tmpCuenta.IdUsuario, tmpCuenta.Id);
+        
         
         }
 
@@ -95,30 +133,52 @@ namespace serverFINT
 
 
 
-        public String realizarMovimiento(Transaccion pTransaccion)
+        public Boolean realizarMovimiento(Transaccion pTransaccion)
         {
-            if (pTransaccion.Tipo == tipoTransaccion.Extraccion)
+            if (pTransaccion.Tipo==tipoTransaccion.Extraccion)
             {
-                return ingresarGasto(pTransaccion);
-
+                this.Saldo -= pTransaccion.Monto;
             }
             else if (pTransaccion.Tipo == tipoTransaccion.Deposito)
             {
-                return ingresarDeposito(pTransaccion);
+                this.Saldo += pTransaccion.Monto;
             }
-            return "Transaccion incorrecta";
+            else if (pTransaccion.Tipo == tipoTransaccion.Transferencia)
+            {
+                if (pTransaccion.IdCuentainicial==this.Id)
+                {
+                    this.Saldo -= pTransaccion.Monto;
+                }
+                else if (pTransaccion.IdCuentaFinal==this.Id)
+                {
+                    this.Saldo += pTransaccion.Monto;
+                }
+                
+            }
+            
+            if (cuentaPersis.modificarCuenta(this.NumeroCuenta, this.Descripcion, this.Saldo, this.IdProveedor, this.IdUsuario, this.Id))
+            {
+                
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        private String ingresarDeposito(Transaccion pTransaccion)
-        {
-            this.Saldo += pTransaccion.Monto;
-            return "Deposito Exitoso";
-        }
 
-        private String ingresarGasto(Transaccion pTransaccion)
+        private Boolean ingresarGasto(Transaccion pTransaccion)
         {
             this.Saldo -= pTransaccion.Monto;
-            return "Gasto Ingresado";
+            if (cuentaPersis.modificarCuenta(this.NumeroCuenta, this.Descripcion, this.Saldo, this.IdProveedor, this.IdUsuario, this.Id))
+            {
+                return true;
+            }else
+	        {
+                return false;
+	        } 
+            
         }
 
 
@@ -131,36 +191,36 @@ namespace serverFINT
 
             //recorro los gastos y busco las que estan pendientes hasta la fecha
 
-            foreach (Gasto tmpGasto in this.ColGasto)
-            {
-                if (tmpGasto.Vencimiento.CompareTo(fecha) < 0 && tmpGasto.Estado == estado.Pendiente)
-                {
-                    retorno.saldo -= tmpGasto.Monto;
-                    retorno.movimientosPendiente.Add(tmpGasto);
-                }
-            }
+            //foreach (Gasto tmpGasto in this.ColGasto)
+            //{
+            //    if (tmpGasto.Vencimiento.CompareTo(fecha) < 0 && tmpGasto.Estado == estado.Pendiente)
+            //    {
+            //        retorno.saldo -= tmpGasto.Monto;
+            //        retorno.movimientosPendiente.Add(tmpGasto);
+            //    }
+            //}
 
             //recorro las transacciones pendientes hasta la fecha
 
-            foreach (Transaccion transac in coltransacciones)
-            {
-                if (transac.Fecha.CompareTo(fecha) < 0 && transac.EstadoTransaccion == estado.Pendiente)
-                {
-                    if (transac.Tipo == tipoTransaccion.Deposito)
-                    {
-                        retorno.saldo += transac.Monto;
-                        retorno.movimientosPendiente.Add(transac);
-                    }
-                    else if (transac.Tipo == tipoTransaccion.Extraccion)
-                    {
-                        retorno.saldo -= transac.Monto;
-                        retorno.movimientosPendiente.Add(transac);
-                    }
+            //foreach (Transaccion transac in coltransacciones)
+            //{
+            //    if (transac.Fecha.CompareTo(fecha) < 0 && transac.EstadoTransaccion == estado.Pendiente)
+            //    {
+            //        if (transac.Tipo == tipoTransaccion.Deposito)
+            //        {
+            //            retorno.saldo += transac.Monto;
+            //            retorno.movimientosPendiente.Add(transac);
+            //        }
+            //        else if (transac.Tipo == tipoTransaccion.Extraccion)
+            //        {
+            //            retorno.saldo -= transac.Monto;
+            //            retorno.movimientosPendiente.Add(transac);
+            //        }
 
-                }
+            //    }
 
                 
-            }
+            //}
             return retorno;
         }
 
@@ -236,7 +296,7 @@ namespace serverFINT
     public struct estadoCuenta
     {
         public ArrayList movimientosPendiente ;
-        public Double saldo;
+        public Decimal saldo;
     }
 
 }

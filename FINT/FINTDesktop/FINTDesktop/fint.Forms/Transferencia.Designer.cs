@@ -31,13 +31,13 @@
             this.cuentaIniLbl = new System.Windows.Forms.Label();
             this.cuentaIniCmb = new System.Windows.Forms.ComboBox();
             this.cuentaFinLbl = new System.Windows.Forms.Label();
-            this.cuentaFinTxt = new System.Windows.Forms.MaskedTextBox();
             this.montoLbl = new System.Windows.Forms.Label();
             this.montoTxt = new System.Windows.Forms.MaskedTextBox();
             this.descLbl = new System.Windows.Forms.Label();
             this.descTxt = new System.Windows.Forms.TextBox();
             this.doneBtn = new System.Windows.Forms.Button();
             this.msgLbl = new System.Windows.Forms.Label();
+            this.cuentaFinCmb = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cuentaIniLbl
@@ -67,14 +67,6 @@
             this.cuentaFinLbl.TabIndex = 2;
             this.cuentaFinLbl.Text = "Cuenta Destino:";
             // 
-            // cuentaFinTxt
-            // 
-            this.cuentaFinTxt.Location = new System.Drawing.Point(96, 59);
-            this.cuentaFinTxt.Mask = "00000";
-            this.cuentaFinTxt.Name = "cuentaFinTxt";
-            this.cuentaFinTxt.Size = new System.Drawing.Size(44, 20);
-            this.cuentaFinTxt.TabIndex = 3;
-            // 
             // montoLbl
             // 
             this.montoLbl.AutoSize = true;
@@ -87,9 +79,8 @@
             // montoTxt
             // 
             this.montoTxt.Location = new System.Drawing.Point(96, 94);
-            this.montoTxt.Mask = "9999999";
             this.montoTxt.Name = "montoTxt";
-            this.montoTxt.Size = new System.Drawing.Size(64, 20);
+            this.montoTxt.Size = new System.Drawing.Size(163, 20);
             this.montoTxt.TabIndex = 5;
             // 
             // descLbl
@@ -125,22 +116,30 @@
             this.msgLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.msgLbl.Location = new System.Drawing.Point(66, 239);
             this.msgLbl.Name = "msgLbl";
-            this.msgLbl.Size = new System.Drawing.Size(166, 13);
+            this.msgLbl.Size = new System.Drawing.Size(0, 13);
             this.msgLbl.TabIndex = 9;
-            this.msgLbl.Text = "Transferencia realizada con exito.";
+            // 
+            // cuentaFinCmb
+            // 
+            this.cuentaFinCmb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cuentaFinCmb.FormattingEnabled = true;
+            this.cuentaFinCmb.Location = new System.Drawing.Point(96, 59);
+            this.cuentaFinCmb.Name = "cuentaFinCmb";
+            this.cuentaFinCmb.Size = new System.Drawing.Size(163, 21);
+            this.cuentaFinCmb.TabIndex = 11;
             // 
             // Transferencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 267);
+            this.Controls.Add(this.cuentaFinCmb);
             this.Controls.Add(this.msgLbl);
             this.Controls.Add(this.doneBtn);
             this.Controls.Add(this.descTxt);
             this.Controls.Add(this.descLbl);
             this.Controls.Add(this.montoTxt);
             this.Controls.Add(this.montoLbl);
-            this.Controls.Add(this.cuentaFinTxt);
             this.Controls.Add(this.cuentaFinLbl);
             this.Controls.Add(this.cuentaIniCmb);
             this.Controls.Add(this.cuentaIniLbl);
@@ -158,12 +157,12 @@
         private System.Windows.Forms.Label cuentaIniLbl;
         private System.Windows.Forms.ComboBox cuentaIniCmb;
         private System.Windows.Forms.Label cuentaFinLbl;
-        private System.Windows.Forms.MaskedTextBox cuentaFinTxt;
         private System.Windows.Forms.Label montoLbl;
         private System.Windows.Forms.MaskedTextBox montoTxt;
         private System.Windows.Forms.Label descLbl;
         private System.Windows.Forms.TextBox descTxt;
         private System.Windows.Forms.Button doneBtn;
         private System.Windows.Forms.Label msgLbl;
+        private System.Windows.Forms.ComboBox cuentaFinCmb;
     }
 }

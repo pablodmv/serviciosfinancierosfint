@@ -183,18 +183,51 @@ namespace serverFINT
         }
 
 
-        public String realizarMovimiento(Cuenta pCuenta, Transaccion pTransaccion)
+        public Boolean realizarDeposito(int idCuenta,Decimal monto, String concepto)
         {
-            return pCuenta.realizarMovimiento(pTransaccion);
-        
-                
+            Cuenta cuenta = new Cuenta();
+            cuenta.obtenerObjCuenta(idCuenta);
+            Transaccion transacDep = new Transaccion(concepto,monto,idCuenta,tipoTransaccion.Deposito,estado.Realizada);
+            if (cuenta.realizarMovimiento(transacDep))
+            {
+                transacDep.ingresarTransaccion(transacDep);
+                return true;
+            }
+            return false;
         }
 
-        public Boolean realizarTransferencia(Cuenta pCuentaOrig, Cuenta pCuentaDestino, Transaccion pTransaccion)
+        public Boolean realizarExtraccion(int idCuenta, Decimal monto, String concepto)
         {
-
-            return true;
+            Cuenta cuenta = new Cuenta();
+            cuenta.obtenerObjCuenta(idCuenta);
+            Transaccion transacExt = new Transaccion(concepto, monto, idCuenta, tipoTransaccion.Extraccion, estado.Realizada);
+            if (cuenta.realizarMovimiento(transacExt))
+            {
+                transacExt.ingresarTransaccion(transacExt);
+                return true;
+            }
+            return false;
         }
+
+
+
+        public Boolean realizarTransferencia(int pCuentaOrig, int pCuentaDestino, Decimal monto, String concepto)
+        {
+            Cuenta orig = new Cuenta();
+            Cuenta dest = new Cuenta();
+            orig = orig.obtenerObjCuenta(pCuentaOrig);
+            dest = dest.obtenerObjCuenta(pCuentaDestino);
+            Transaccion transac = new Transaccion(concepto, monto, pCuentaOrig,pCuentaDestino, tipoTransaccion.Transferencia, estado.Realizada);
+            if (orig.realizarMovimiento(transac) && dest.realizarMovimiento(transac))
+            {
+                transac.ingresarTransaccion(transac);
+                return true;    
+            }
+            return false;
+            
+
+        }
+
 
         public estadoCuenta verEstadoCuenta(DateTime fecha, Cuenta pCuenta)
         {
@@ -207,6 +240,47 @@ namespace serverFINT
             return proveedorPersist.obtenerProveedores();
 
         }
+
+        public Boolean realizarPago(int idGasto, int idCuenta)
+        {
+            Gasto tmpGasto = new Gasto();
+            Cuenta tmpCuenta = new Cuenta();
+
+            try
+            {
+
+                //Armo los objetos de cuenta y gasto
+                tmpGasto = tmpGasto.obtenerObjGasto(idGasto);
+                tmpCuenta = tmpCuenta.obtenerObjCuenta(idCuenta);
+
+                //Creo la transaccion
+                Transaccion transac = new Transaccion("Pago cuenta", tmpGasto.Monto, DateTime.Today.ToString("dd/MM/yyyy"), tipoTransaccion.Extraccion, estado.Realizada, tmpGasto.Id, tmpCuenta.Id, 0);
+                //Descuento los montos de la cuenta y cambio de estado al gasto
+                tmpCuenta.realizarMovimiento(transac);
+                tmpGasto.Estado = estado.Realizada;
+
+                //guardo la cuenta y el gasto
+                tmpCuenta.modificarCuenta(tmpCuenta);
+                tmpGasto.modificarEstadoGasto(tmpGasto.Id, (int)tmpGasto.Estado);
+                transac.ingresarTransaccion(transac);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+            
+
+        }
+
+        //public Boolean ingresarTransaccion(String pconcepto, Decimal monto, int ptipo, String fecha, int idgasto, int estado, int idcuenta, int idcuentadestino)
+        //{
+        //    Transaccion transac = new Transaccion();
+        //    return transac.ingresarTransaccion(pconcepto, monto, ptipo, fecha, idgasto, estado, idcuenta, idcuentadestino);
+        //}
+
         
         
 

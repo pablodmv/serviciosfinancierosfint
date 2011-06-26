@@ -44,7 +44,7 @@ namespace fint.Forms
             String desc = this.descTxt.Text;
             try
             {
-                Double tmpMonto = Double.Parse(this.montoTxt.Text);
+                Decimal tmpMonto = Decimal.Parse(this.montoTxt.Text);
                 Decimal monto = (Decimal)tmpMonto;
                 String fVen = this.fVenDPicker.Value.ToString("dd/MM/yyyy");
                 int estado = (int)Estado.Pendiente;
@@ -68,7 +68,7 @@ namespace fint.Forms
                     this.msgLbl.Text = "Todos los datos son requeridos.";
                 }
             }
-            catch (Exception)
+            catch (Exception ex )
             {
                 
                this.msgLbl.Text = "Monto incorrecto.";

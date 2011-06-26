@@ -94,5 +94,44 @@ namespace serverFINTWs
 
         }
 
+        [WebMethod]
+        public DataSet obtenerGastosXusuario(int idUsuario)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.obtenerGastoXusuario(idUsuario);
+
+        }
+
+        [WebMethod]
+        public Boolean realizarPago(int idGasto, int idCuenta)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.realizarPago(idGasto, idCuenta);
+
+        }
+
+        [WebMethod]
+        public Boolean realizarDeposito(int idCuenta, Decimal monto, String concepto)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.realizarDeposito(idCuenta, monto, concepto);
+
+        }
+
+        [WebMethod]
+        public Boolean realizarExtraccion(int idCuenta, Decimal monto, String concepto)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.realizarExtraccion(idCuenta, monto, concepto);
+
+        }
+
+        [WebMethod]
+        public Boolean realizarTransferencia(int pCuentaOrig, int pCuentaDestino, Decimal monto, String concepto)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.realizarTransferencia(pCuentaOrig, pCuentaDestino, monto, concepto);
+
+        }
     }
 }

@@ -75,7 +75,7 @@ namespace serverFINT
         {
             estadoCuenta retorno;
             retorno.saldo = this.Saldo;
-            retorno.movimientosPendiente =  new ArrayList(this.Coltransacciones);
+            retorno.movimientosPendiente =  new ArrayList();
             return retorno;
         }
 

@@ -61,9 +61,8 @@
             // montoTxt
             // 
             this.montoTxt.Location = new System.Drawing.Point(121, 75);
-            this.montoTxt.Mask = "9999999";
             this.montoTxt.Name = "montoTxt";
-            this.montoTxt.Size = new System.Drawing.Size(50, 20);
+            this.montoTxt.Size = new System.Drawing.Size(178, 20);
             this.montoTxt.TabIndex = 2;
             // 
             // montoLbl
@@ -131,9 +130,8 @@
             this.msgLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.msgLbl.Location = new System.Drawing.Point(87, 272);
             this.msgLbl.Name = "msgLbl";
-            this.msgLbl.Size = new System.Drawing.Size(160, 13);
+            this.msgLbl.Size = new System.Drawing.Size(0, 13);
             this.msgLbl.TabIndex = 9;
-            this.msgLbl.Text = "Transacción realizada con exito.";
             // 
             // IngresarDepExt
             // 
@@ -153,6 +151,7 @@
             this.Name = "IngresarDepExt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar Depositos/Extracciones";
+            this.Load += new System.EventHandler(this.IngresarDepExt_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
