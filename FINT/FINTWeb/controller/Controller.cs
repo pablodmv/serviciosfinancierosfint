@@ -9,6 +9,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace FINTWeb.controller
 {
@@ -134,26 +135,76 @@ namespace FINTWeb.controller
 
         }
 
-        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado)
+        public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idcuenta)
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
-            idUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
-            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado, IdUsuario);
+            int idUsuario = int.Parse(Controller.getInstancia().dsUsuario.Tables[0].Rows[0]["id"].ToString());
+            return service.ingresarGasto(numero, concepto, monto, vencimiento, estado, idUsuario, idcuenta);
 
         }
 
-        //Agregar metodo obtenerGastosXUsuario(int idUsuario)
-        //Agregar metodo obtenerCuentasXUsuario(int idUsuario)
-
-
-        public static Boolean realizarMovimiento(String cuenta, double monto, String concepto, String tTrans)
+        public DataSet obtenerGastosXusuario(int id)
         {
-            return true;
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.obtenerGastosXusuario(id);
+        }
+
+        public Boolean realizarPago(int idGasto, int idCuenta)
+        {
+
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.realizarPago(idGasto, idCuenta);
+        }
+
+        public Boolean realizarDeposito(int idCuenta, Decimal monto, String concepto)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.realizarDeposito(idCuenta, monto, concepto);
+
+        }
+
+        public Boolean realizarExtraccion(int idCuenta, Decimal monto, String concepto)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.realizarExtraccion(idCuenta, monto, concepto);
 
         }
 
 
+        public Boolean realizarTransferencia(int pCuentaOrig, int pCuentaDestino, Decimal monto, String concepto)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.realizarTransferencia(pCuentaOrig, pCuentaDestino, monto, concepto);
 
+        }
+
+
+        public List<String> estadoCuentaFINT(int idcuenta, String fecha)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            List<String> retorno = new List<string>(service.estadoCuentaFINT(idcuenta, fecha));
+            return retorno;
+        }
+        public List<String> estadoCuentaRemoto(int idcuenta)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            List<String> retorno = new List<string>(service.estadoCuentaRemoto(idcuenta));
+            return retorno;
+        }
+
+
+        public DataSet obtenerTransaccionesPendientes()
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.obtenerTransaccionesPendientes();
+
+        }
+
+        public Boolean confirmarComprobante(int idtransacc)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.confirmarComprobante(idtransacc);
+        }
 
 
 

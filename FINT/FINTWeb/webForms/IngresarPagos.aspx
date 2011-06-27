@@ -16,23 +16,19 @@
 <body>
 
     <div id="container">
+            <form id="form1" runat="server">
+    
         <div id="head">
             <h4>Ingresar Pagos</h4>
             <asp:Label ID="usrLbl" runat="server"></asp:Label>    
         </div>
         <div id="central">
-            <form id="form1" runat="server">
     
                 <table id="tbl">
                     <tr>
                         <td><asp:Label ID="gastoLbl" runat="server" Text="Seleccionar Gasto:"></asp:Label></td>
                         <td>
-                            <asp:DropDownList ID="listGastosCmb" runat="server">
-                            <asp:ListItem>Seleccione...</asp:ListItem>
-                            <asp:ListItem>Gasto1</asp:ListItem>
-                            <asp:ListItem>Gasto2</asp:ListItem>
-                            <asp:ListItem></asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:ListBox ID="gastoLb" runat="server" Width="214px"></asp:ListBox>
                         
                         </td>
                         
@@ -67,12 +63,13 @@
             <br />
             <asp:Label ID="msgLbl" runat="server" ForeColor="Red"></asp:Label>
     
-    </form>    
-        
         </div>
         <div id="foot">
             <asp:Label ID="Label2" runat="server" Text="FINT WEB" Visible="true"></asp:Label>
         </div>
+    
+    </form>    
+        
     </div>
 </body>
 </html>

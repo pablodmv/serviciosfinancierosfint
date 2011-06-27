@@ -45,11 +45,12 @@
                     Text="Depositos-Extracciones" Value="DepExtr"></asp:MenuItem>
                 <asp:MenuItem NavigateUrl="~/webForms/Transferencia.aspx" Text="Transferencias" 
                     Value="Transferencias"></asp:MenuItem>
+                <asp:MenuItem Text="Transferencias Pendientes" Value="TransfPendientes">
+                </asp:MenuItem>
             </asp:MenuItem>
             <asp:MenuItem Text="Estado de Cuentas" Value="EstadoCuentas">
-                <asp:MenuItem Text="Real" Value="Real" NavigateUrl="~/webForms/EstadoReal.aspx"></asp:MenuItem>
-                <asp:MenuItem Text="Proyectado" Value="Proyectado" 
-                    NavigateUrl="~/webForms/EstadoProyectado.aspx"></asp:MenuItem>
+                <asp:MenuItem Text="Ver" Value="Real" NavigateUrl="~/webForms/EstadoReal.aspx"></asp:MenuItem>
+                
             </asp:MenuItem>
         </Items>
     </asp:Menu>

@@ -11,7 +11,7 @@
 namespace FINTWeb.webForms {
     
     
-    public partial class EstadoReal {
+    public partial class TransfPendientes {
         
         /// <summary>
         /// form1 control.
@@ -32,58 +32,13 @@ namespace FINTWeb.webForms {
         protected global::System.Web.UI.WebControls.Label usrLbl;
         
         /// <summary>
-        /// noCuentaLbl control.
+        /// transLb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label noCuentaLbl;
-        
-        /// <summary>
-        /// selCuentaCmb control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList selCuentaCmb;
-        
-        /// <summary>
-        /// fechaDtPicker control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar fechaDtPicker;
-        
-        /// <summary>
-        /// realBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button realBtn;
-        
-        /// <summary>
-        /// proyBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button proyBtn;
-        
-        /// <summary>
-        /// lbEstados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbEstados;
+        protected global::System.Web.UI.WebControls.ListBox transLb;
         
         /// <summary>
         /// backBtn control.
@@ -93,6 +48,24 @@ namespace FINTWeb.webForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button backBtn;
+        
+        /// <summary>
+        /// doneBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button doneBtn;
+        
+        /// <summary>
+        /// msgLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msgLbl;
         
         /// <summary>
         /// Label1 control.

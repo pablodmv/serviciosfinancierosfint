@@ -17,12 +17,13 @@
 <body>
 
     <div id="container">
+            <form id="form1" runat="server">
+
         <div id="head">
             <h4>Transferencia</h4>
             <asp:Label ID="usrLbl" runat="server"></asp:Label>    
         </div>
         <div id="central">
-            <form id="form1" runat="server">
 
         <table id="tbl">
             <tr>
@@ -38,12 +39,11 @@
             </tr>
             <tr>
                 <td><asp:Label ID="cuentaFinLbl" runat="server" Text="Cuenta Destino:"></asp:Label></td>
-                <td><asp:TextBox ID="cuentaFinTxt" runat="server"></asp:TextBox></td>
                 <td>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
-                    ControlToValidate="cuentaFinTxt" ErrorMessage="Cuenta inválida." 
-                    ValidationExpression="^\d{5}"></asp:RegularExpressionValidator>
+                    <asp:DropDownList ID="cuentaFinCmb" runat="server">
+                    </asp:DropDownList>
                 </td>
+                
             
             </tr>
             <tr>
@@ -76,11 +76,12 @@
     <br />
     <asp:Label ID="msgLbl" runat="server" ForeColor="Red"></asp:Label>
     
-    </form>    
         </div>
         <div id="foot">
             <asp:Label ID="Label1" runat="server" Text="FINT WEB" Visible="true"></asp:Label>
         </div>
+    
+    </form>    
     </div>
     
 </body>
