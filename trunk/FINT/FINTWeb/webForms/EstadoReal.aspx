@@ -53,7 +53,7 @@
                                 onclick="realBtn_Click" />
                         </td>
                         <td>
-                            <asp:Button ID="proyBtn" runat="server" Text="Proyectado" 
+                            <asp:Button ID="proyBtn" runat="server" Text="Remoto" 
                                 onclick="proyBtn_Click" />
                         </td>
                     </tr>
@@ -61,12 +61,17 @@
                     
                 
                 <br />
-                <asp:ListBox ID="lbEstados" runat="server" Width="307px"></asp:ListBox>
+                <asp:ListBox ID="lbEstados" runat="server" Width="496px"></asp:ListBox>
                 <br />
                 <table id="btnTbl">
                     <tr>
                         <td><asp:Button ID="backBtn" runat="server" Text="Atras" 
                                 onclick="backBtn_Click" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="msgLbl" runat="server" ForeColor="Red"></asp:Label>
+                        </td>
                     </tr>
                 </table>
                 

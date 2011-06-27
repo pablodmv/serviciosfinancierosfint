@@ -48,24 +48,46 @@ namespace FINTWeb.webForms
         protected void proyBtn_Click(object sender, EventArgs e)
         {
             int idcuenta = int.Parse(this.selCuentaCmb.SelectedValue.ToString());
-            String fecha = this.fechaDtPicker.SelectedDate.ToString("dd/MM/yyyy");
-            List<String> source = Controller.getInstancia().estadoCuentaRemoto(idcuenta);
-            this.lbEstados.DataSource = source;
-            this.DataBind();
+            if (idcuenta > 0)
+            {
+                this.msgLbl.Visible = false;
 
-            this.selCuentaCmb.Items.Insert(0, new ListItem("Seleccione...", "0"));
+                String fecha = this.fechaDtPicker.SelectedDate.ToString("dd/MM/yyyy");
+                List<String> source = Controller.getInstancia().estadoCuentaRemoto(idcuenta);
+                this.lbEstados.DataSource = source;
+                this.DataBind();
+
+                this.selCuentaCmb.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            }
+            else
+            {
+                this.msgLbl.Visible = true;
+                this.msgLbl.Text = "El número de cuenta es  requerido.";
+            }
+            
 
         }
 
         protected void realBtn_Click(object sender, EventArgs e)
         {
             int idcuenta = int.Parse(this.selCuentaCmb.SelectedValue.ToString());
-            String fecha = this.fechaDtPicker.SelectedDate.ToString("dd/MM/yyyy");
-            List<String> source = Controller.getInstancia().estadoCuentaFINT(idcuenta, fecha);
-            this.lbEstados.DataSource = source;
-            this.DataBind();
+            if (idcuenta > 0)
+            {
+                this.msgLbl.Visible = false;
 
-            this.selCuentaCmb.Items.Insert(0, new ListItem("Seleccione...", "0"));
+                String fecha = this.fechaDtPicker.SelectedDate.ToString("dd/MM/yyyy");
+                List<String> source = Controller.getInstancia().estadoCuentaFINT(idcuenta, fecha);
+                this.lbEstados.DataSource = source;
+                this.DataBind();
+
+                this.selCuentaCmb.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            }
+            else
+            {
+                this.msgLbl.Visible = true;
+                this.msgLbl.Text = "El número de cuenta es  requerido.";
+            }
+            
         }
 
         protected void backBtn_Click(object sender, EventArgs e)
