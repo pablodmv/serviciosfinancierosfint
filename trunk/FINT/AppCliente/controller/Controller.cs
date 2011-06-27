@@ -20,6 +20,13 @@ namespace AppCliente.controller
         private DataSet dsusuario;
         private DataSet dsProveedores;
         private DataSet dsCuentasXusuario;
+        private int idUsuario;
+
+        public int IdUsuario
+        {
+            get { return idUsuario; }
+            set { idUsuario = value; }
+        }
 
         public DataSet DsCuentasXusuario
         {
@@ -60,6 +67,10 @@ namespace AppCliente.controller
         {
             serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
             dsusuario = service.chequearUsuario(usr, pwd);
+            if (dsUsuario.Tables[0].Rows.Count > 0)
+            {
+                IdUsuario = int.Parse(dsUsuario.Tables[0].Rows[0]["id"].ToString());
+            }
             return dsusuario;
 
         }
@@ -79,6 +90,14 @@ namespace AppCliente.controller
             //Usuario.
             return service.obtenerUsuariosXTipo(rol.Usuario);
         }
+
+        public Boolean ingresarComprobante(int idcuenta, Decimal monto, String numcomprobante, int idcliente)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.ingresarComprobante(idcuenta, monto, numcomprobante, idcliente);
+
+        }
+
 
 
     }

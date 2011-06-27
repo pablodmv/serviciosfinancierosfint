@@ -34,6 +34,22 @@ namespace fint.Forms
             this.dateTimePicker1.Value=DateTime.Today;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int idcuenta = int.Parse(this.lsbCuenta.SelectedValue.ToString());
+            String fecha = this.dateTimePicker1.Value.ToString("dd/MM/yyyy");
+            List<String> source = Controller.getInstancia().estadoCuentaFINT(idcuenta,fecha);
+            this.lbEstados.DataSource = source;
+        }
+
+        private void btnRemoto_Click(object sender, EventArgs e)
+        {
+            int idcuenta = int.Parse(this.lsbCuenta.SelectedValue.ToString());
+            String fecha = this.dateTimePicker1.Value.ToString("dd/MM/yyyy");
+            List<String> source = Controller.getInstancia().estadoCuentaRemoto(idcuenta);
+            this.lbEstados.DataSource = source;
+        }
+
 
     }
 }

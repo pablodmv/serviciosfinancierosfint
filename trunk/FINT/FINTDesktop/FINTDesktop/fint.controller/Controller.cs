@@ -193,8 +193,31 @@ namespace fint.Forms.fint.controller
         }
 
 
+        public List<String> estadoCuentaFINT(int idcuenta, String fecha)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            List<String> retorno = new List<string>(service.estadoCuentaFINT(idcuenta,fecha));
+            return retorno;
+        }
+        public List<String> estadoCuentaRemoto(int idcuenta)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            List<String> retorno = new List<string>(service.estadoCuentaRemoto(idcuenta));
+            return retorno;
+        }
 
 
+        public DataSet obtenerTransaccionesPendientes()
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.obtenerTransaccionesPendientes();
+        
+        }
 
+        public Boolean confirmarComprobante(int idtransacc)
+        {
+            serverFINTFachada.serverFINTFachada service = new serverFINTFachada.serverFINTFachada();
+            return service.confirmarComprobante(idtransacc);
+        }
     }
 }

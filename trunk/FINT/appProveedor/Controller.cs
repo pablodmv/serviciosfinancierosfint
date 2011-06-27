@@ -37,17 +37,42 @@ namespace appProveedor
             colcuenta.Add(tmpcuenta);
         }
 
-        public estadoCuenta estadoCuenta(String numcue)
+        public List<String> estadoCuenta(String numcuenta)
         {
+            List<String> retorno = new List<string>();
+
             foreach (Cuenta cue in Colcuenta)
             {
-                if (cue.NumCuenta.Equals("numcue"))
+                if (cue.NumCuenta.Equals(numcuenta))
                 {
-                    return cue.getEstadoCuenta();
                     
+                    Cuenta tmpcue = new Cuenta();
+                    List<pago> tmpago = tmpcue.Colpago;
+                    foreach (pago tmp in tmpago)
+                    {
+                        retorno.Add(tmp.ToString());
+
+                    }
+                    foreach (gasto gas in tmpcue.Colgasto)
+                    {
+                        retorno.Add(gas.ToString());
+
+                    }
+
+                    retorno.Add("Fecha de Cierre: " + tmpcue.FechaCierre);
+                    retorno.Add("Credito disponible: " + tmpcue.Limite);
                 }
+                else
+                {
+                    retorno.Add("No existe la cuenta");
+                }
+                
             }
-            return null;
+            
+            return retorno;
+
+
+
         }
         public Boolean realizarPago(Decimal monto, String numcue) 
         {

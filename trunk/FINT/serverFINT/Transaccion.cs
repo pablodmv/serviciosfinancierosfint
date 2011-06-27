@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using serverFINTPersitencia;
+using System.Data;
 
 namespace serverFINT
 {
@@ -18,7 +19,9 @@ namespace serverFINT
         private int idCuentainicial;
         private int idCuentaFinal;
         private transaccionPersistente transacpers;
+        private String comprobante;
 
+      
 
 
         public Transaccion()
@@ -51,12 +54,17 @@ namespace serverFINT
 
         }
 
-      
+        public String Comprobante
+        {
+            get { return comprobante; }
+            set { comprobante = value; }
+        }
+
         
       
         
 
-        public Transaccion(String pConcepto, Decimal pMonto, String pFecha, tipoTransaccion pTipo, estado pEstado, int pidgastocancela, int idcuentainicia, int idcuentafinal)
+        public Transaccion(String pConcepto, Decimal pMonto, String pFecha, tipoTransaccion pTipo, estado pEstado, int pidgastocancela, int idcuentainicia, int idcuentafinal, String comprobante)
         {
             this.Concepto = pConcepto;
             this.Monto = pMonto;
@@ -66,6 +74,7 @@ namespace serverFINT
             this.IdGastoCancela = pidgastocancela;
             this.IdCuentainicial = idcuentainicia;
             this.idCuentaFinal = idcuentafinal;
+            this.Comprobante = comprobante;
             transacpers = new transaccionPersistente();
 
         }
@@ -125,12 +134,63 @@ namespace serverFINT
 
         public Boolean ingresarTransaccion(Transaccion transac)
         {
-            return transacpers.ingresarTransaccion(transac.Concepto, transac.Monto, (int)transac.Tipo, transac.Fecha, transac.IdGastoCancela, (int)transac.EstadoTransaccion, transac.IdCuentainicial, transac.IdCuentaFinal);
+            return transacpers.ingresarTransaccion(transac.Concepto, transac.Monto, (int)transac.Tipo, transac.Fecha, transac.IdGastoCancela, (int)transac.EstadoTransaccion, transac.IdCuentainicial, transac.IdCuentaFinal,transac.Comprobante);
+        }
+
+        public Boolean modificarTransaccion(Transaccion transac)
+        {
+            return transacpers.modificarTransaccion(transac.NumTransac,transac.Concepto, transac.Monto, (int)transac.Tipo, transac.Fecha, transac.IdGastoCancela, (int)transac.EstadoTransaccion, transac.IdCuentainicial, transac.IdCuentaFinal,transac.Comprobante);
         }
 
 
+        public Transaccion obtenerObjTransac(int idtransac)
+        {
+            transaccionPersistente persistranc = new transaccionPersistente();
+            Transaccion transac = new Transaccion();
+            DataSet dsTransaccion = new DataSet();
+            dsTransaccion = persistranc.obtenerTransaccionXid(idtransac);
+            this.NumTransac = int.Parse(dsTransaccion.Tables[0].Rows[0]["NumTransac"].ToString());
+            this.Concepto = dsTransaccion.Tables[0].Rows[0]["Concepto"].ToString();
+            this.Monto = Decimal.Parse(dsTransaccion.Tables[0].Rows[0]["Monto"].ToString());
+            this.Fecha = dsTransaccion.Tables[0].Rows[0]["Fecha"].ToString();
+            this.IdGastoCancela = int.Parse(dsTransaccion.Tables[0].Rows[0]["idGasto"].ToString());
+            this.IdCuentainicial = int.Parse(dsTransaccion.Tables[0].Rows[0]["idCuenta"].ToString());
+            this.IdCuentaFinal = int.Parse(dsTransaccion.Tables[0].Rows[0]["idCuentaDestino"].ToString());
+            this.Comprobante = dsTransaccion.Tables[0].Rows[0]["Comprobante"].ToString();
+
+            if (int.Parse(dsTransaccion.Tables[0].Rows[0]["Estado"].ToString())==(int)estado.Pendiente)
+            {
+                this.EstadoTransaccion=estado.Pendiente;
+
+            }
+            else if (int.Parse(dsTransaccion.Tables[0].Rows[0]["Estado"].ToString()) == (int)estado.Realizada)
+            {
+                this.EstadoTransaccion = estado.Realizada;
+            }
+
+            if (int.Parse(dsTransaccion.Tables[0].Rows[0]["Tipo"].ToString())==(int)tipoTransaccion.Deposito)
+            {
+                this.Tipo = tipoTransaccion.Deposito;
+            }
+            else if (int.Parse(dsTransaccion.Tables[0].Rows[0]["Tipo"].ToString())==(int)tipoTransaccion.Extraccion)
+            {
+                this.Tipo = tipoTransaccion.Extraccion;
+            }
+            else if (int.Parse(dsTransaccion.Tables[0].Rows[0]["Tipo"].ToString()) == (int)tipoTransaccion.Transferencia)
+            {
+                this.Tipo = tipoTransaccion.Transferencia;
+            }
+
+            return this;
+        }
 
 
-    
+        public DataSet obtenerTransacciones()
+        {
+
+            transaccionPersistente persistranc = new transaccionPersistente();
+            return persistranc.obtenerTransaccionPendiente();
+        
+        }
     }
 }

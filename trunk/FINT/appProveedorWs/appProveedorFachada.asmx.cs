@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace appProveedorWs
 {
@@ -22,9 +23,9 @@ namespace appProveedorWs
     {
 
         [WebMethod]
-        public appProveedor.estadoCuenta obtenerEstadoCuenta(String numcue)
+        public List<String> obtenerEstadoCuenta(String numcuenta)
         {
-            return appProveedor.Controller.getInstancia().estadoCuenta(numcue);
+            return appProveedor.Controller.getInstancia().estadoCuenta(numcuenta);
         }
 
         [WebMethod]

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using serverFINTPersitencia;
 using System.Data;
+using System.Collections;
 
 
 namespace serverFINT
@@ -224,15 +225,13 @@ namespace serverFINT
                 return true;    
             }
             return false;
-            
-
         }
 
 
-        public estadoCuenta verEstadoCuenta(DateTime fecha, Cuenta pCuenta)
-        {
-            return pCuenta.estadoCuentaProyectado(fecha);
-        }
+        //public estadoCuenta verEstadoCuenta(DateTime fecha, Cuenta pCuenta)
+        //{
+        //    return pCuenta.estadoCuentaProyectado(fecha);
+        //}
 
         public DataSet obtenerProveedores()
         {
@@ -254,7 +253,7 @@ namespace serverFINT
                 tmpCuenta = tmpCuenta.obtenerObjCuenta(idCuenta);
 
                 //Creo la transaccion
-                Transaccion transac = new Transaccion("Pago cuenta", tmpGasto.Monto, DateTime.Today.ToString("dd/MM/yyyy"), tipoTransaccion.Extraccion, estado.Realizada, tmpGasto.Id, tmpCuenta.Id, 0);
+                Transaccion transac = new Transaccion("Pago cuenta", tmpGasto.Monto, DateTime.Today.ToString("dd/MM/yyyy"), tipoTransaccion.Extraccion, estado.Realizada, tmpGasto.Id, tmpCuenta.Id, 0,"");
                 //Descuento los montos de la cuenta y cambio de estado al gasto
                 tmpCuenta.realizarMovimiento(transac);
                 tmpGasto.Estado = estado.Realizada;
@@ -270,10 +269,48 @@ namespace serverFINT
 
                 return false;
             }
-
-            
-
         }
+
+
+        public Boolean ingresarPagoCliente(int numcuenta, Decimal monto, String numComprobante, int idcliente)
+        {
+            Transaccion transac = new Transaccion("Cliente: "+ idcliente,monto,numcuenta,tipoTransaccion.Deposito,estado.Pendiente);
+            transac.Comprobante = numComprobante;
+            try
+            {
+                transac.ingresarTransaccion(transac);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                
+            }
+        }
+
+        public Boolean confirmarPagoCliente(int idtransac)
+        {
+            Transaccion tmptransac = new Transaccion();
+            try
+            {
+                tmptransac.obtenerObjTransac(idtransac);
+                tmptransac.EstadoTransaccion = estado.Realizada;
+                Cuenta cuen = new Cuenta();
+                cuen = cuen.obtenerObjCuenta(tmptransac.IdCuentainicial);
+                cuen.realizarMovimiento(tmptransac);
+                tmptransac.modificarTransaccion(tmptransac);
+                return true;
+            }
+            catch (Exception e )
+            {
+
+                return false;
+            }
+        }
+
+
+
+
 
         //public Boolean ingresarTransaccion(String pconcepto, Decimal monto, int ptipo, String fecha, int idgasto, int estado, int idcuenta, int idcuentadestino)
         //{
@@ -282,11 +319,13 @@ namespace serverFINT
         //}
 
 
-        public Object estadoCuentaServicio(String numcuenta)
+        public List<String> estadoCuentaServicio(int idcuenta )
         {
+            Cuenta cue = new Cuenta();
+            cue.obtenerObjCuenta(idcuenta);
+            String numc = cue.NumeroCuenta;
             appProveedorFachadaProxy.appProveedorFachada serviceProveedor = new appProveedorFachadaProxy.appProveedorFachada();
-            return serviceProveedor.obtenerEstadoCuenta(numcuenta);
-            
+            return new List<String>(serviceProveedor.obtenerEstadoCuenta(numc));
         }
 
         //private Boolean realizarPago(String numcue, Decimal monto)
@@ -295,6 +334,45 @@ namespace serverFINT
         //    return serviceProveedor.realizarPago(numcue, monto);
 
         //}
+
+        public List<String> estadoCuentaFINT(int idcuenta, String fecha)
+        {
+            List<String> retorno = new List<string>();
+            DataSet dsGastos = new DataSet();
+            
+            Gasto gast = new Gasto();
+            dsGastos = gast.obtenerGastoXcuenta(idcuenta);
+            dsGastos.Tables[0].Columns.Add("Display", typeof(string), "Concepto + ':  Total: ' + Monto");
+            Cuenta cuen = new Cuenta();
+            cuen = cuen.obtenerObjCuenta(idcuenta);
+            Decimal tmpMonto = cuen.Saldo;
+            DateTime tmpFecha = DateTime.Parse(fecha);
+            DateTime fechaaux;
+
+            for (int i = 0; i < dsGastos.Tables[0].Rows.Count; i++)
+            {
+                fechaaux = DateTime.Parse(dsGastos.Tables[0].Rows[i]["Vencimiento"].ToString());
+                if (fechaaux.CompareTo(tmpFecha)<=0)
+                {
+                    tmpMonto -= Decimal.Parse(dsGastos.Tables[0].Rows[i]["Monto"].ToString());
+                    retorno.Add(dsGastos.Tables[0].Rows[i]["Display"].ToString());    
+                }
+                
+                
+            }
+            retorno.Add("#### Saldo final: " + tmpMonto +" ####");
+
+            return retorno;
+        }
+
+
+
+        public DataSet obtenerTransaccionPendiente()
+        {
+            Transaccion transac = new Transaccion();
+            return transac.obtenerTransacciones();
+        }
+
 
 
 

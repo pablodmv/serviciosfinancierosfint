@@ -111,6 +111,12 @@
     <Compile Include="fint.Forms\RegistrarUsuario.Designer.cs">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="fint.Forms\transaccionesPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fint.Forms\transaccionesPendientes.Designer.cs">
+      <DependentUpon>transaccionesPendientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="fint.Forms\Transferencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fint.Forms\RegistrarUsuario.resx">
       <DependentUpon>RegistrarUsuario.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fint.Forms\transaccionesPendientes.resx">
+      <DependentUpon>transaccionesPendientes.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="fint.Forms\Transferencia.resx">

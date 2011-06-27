@@ -88,5 +88,11 @@ namespace fint.Forms
             estCuenta.Show();
 
         }
+
+        private void transferenciasPendeintesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form transaccform = new transaccionesPendientes();
+            transaccform.Show();
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             Sistema pepe = Sistema.getInstancia();
-            Boolean hola = pepe.realizarTransferencia(1, 11, 200, "Pruebadebug");
+            Boolean hola = pepe.confirmarPagoCliente(74);
             Console.WriteLine(hola);
         }
     }
