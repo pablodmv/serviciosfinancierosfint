@@ -81,20 +81,7 @@ namespace serverFINT
         }
 
       
-       
-
-
-
-        public void agregarGasto(Gasto gasto)
-        {
-            this.ColGasto.Add(gasto);
-        }
-
-        public String obtenerLogin()
-        {
-            return this.Credencial.Login;
-        
-        }
+    
 
         public DataSet obtenerUsuariosXTipo(rol tipo)
         {
