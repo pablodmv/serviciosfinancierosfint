@@ -17,12 +17,13 @@
 <body>
     
     <div id="container">
+            <form id="form1" runat="server">
+   
         <div id="head">
             <h4>Ingresar Gastos</h4>
             <asp:Label ID="usrLbl" runat="server"></asp:Label>    
         </div>
         <div id="central">
-            <form id="form1" runat="server">
    
         <table id="tbl">
             <tr>
@@ -43,6 +44,15 @@
                 <td><asp:TextBox ID="montoTxt" runat="server"></asp:TextBox></td>
                 <td><asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
         ErrorMessage="Monto invalido." ValidationExpression="^\d{7}" ControlToValidate="montoTxt"></asp:RegularExpressionValidator></td>
+            </tr>
+            <tr>
+                <td> 
+                    <asp:Label ID="Label2" runat="server" Text="NºCuenta:"></asp:Label>
+                </td>
+                <td> 
+                    <asp:DropDownList ID="selCuentaCmb" runat="server">
+                    </asp:DropDownList>
+                </td>
             </tr>
         
             <tr>
@@ -78,12 +88,13 @@
             <br />
             <asp:Label ID="msgLbl" runat="server" ForeColor="Red"></asp:Label>
     
-    </form>
-        
         </div>
         <div id="foot">
         <asp:Label ID="Label1" runat="server" Text="FINT WEB" Visible="true"></asp:Label>
     </div>
+    
+    </form>
+        
     </div>
 
     

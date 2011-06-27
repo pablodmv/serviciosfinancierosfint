@@ -48,11 +48,12 @@ namespace FINTWeb.webForms
                 MenuItem mITrans = this.Menu1.FindItem("Acciones/Transferencias");
                 mITrans.NavigateUrl = "~/webForms/Transferencia.aspx?usuarioTxt=" + usr;
 
+                MenuItem mITransPend = this.Menu1.FindItem("Acciones/TransfPendientes");
+                mITransPend.NavigateUrl = "~/webForms/TransfPendientes.aspx?usuarioTxt=" + usr;
+
                 MenuItem mIReal = this.Menu1.FindItem("EstadoCuentas/Real");
                 mIReal.NavigateUrl = "~/webForms/EstadoReal.aspx?usuarioTxt=" + usr;
 
-                MenuItem mIProy = this.Menu1.FindItem("EstadoCuentas/Proyectado");
-                mIProy.NavigateUrl = "~/webForms/EstadoProyectado.aspx?usuarioTxt=" + usr;
 
             }
 

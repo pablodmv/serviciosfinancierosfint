@@ -58,7 +58,6 @@
     <None Include="Web References\serverFINTFachada\serverFINTFachada.disco" />
     <Content Include="Web.config" />
     <Content Include="webForms\EliminarUsuario.aspx" />
-    <Content Include="webForms\EstadoProyectado.aspx" />
     <Content Include="webForms\EstadoReal.aspx" />
     <Content Include="webForms\IngresarCuenta.aspx" />
     <Content Include="webForms\IngresarDepExt.aspx" />
@@ -68,6 +67,7 @@
     <Content Include="webForms\RegistrarUsuario.aspx" />
     <Content Include="webForms\EditarUsuario.aspx" />
     <Content Include="webForms\Transferencia.aspx" />
+    <Content Include="webForms\TransfPendientes.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\Controller.cs" />
@@ -95,13 +95,6 @@
     </Compile>
     <Compile Include="webForms\EliminarUsuario.aspx.designer.cs">
       <DependentUpon>EliminarUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webForms\EstadoProyectado.aspx.cs">
-      <DependentUpon>EstadoProyectado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webForms\EstadoProyectado.aspx.designer.cs">
-      <DependentUpon>EstadoProyectado.aspx</DependentUpon>
     </Compile>
     <Compile Include="webForms\EstadoReal.aspx.cs">
       <DependentUpon>EstadoReal.aspx</DependentUpon>
@@ -165,6 +158,13 @@
     </Compile>
     <Compile Include="webForms\Transferencia.aspx.designer.cs">
       <DependentUpon>Transferencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webForms\TransfPendientes.aspx.cs">
+      <DependentUpon>TransfPendientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webForms\TransfPendientes.aspx.designer.cs">
+      <DependentUpon>TransfPendientes.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

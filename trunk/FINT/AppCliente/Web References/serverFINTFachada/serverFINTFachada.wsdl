@@ -318,6 +318,37 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="confirmarComprobante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idtransac" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confirmarComprobanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="confirmarComprobanteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerTransaccionesPendientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="obtenerTransaccionesPendientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerTransaccionesPendientesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="agregarUsuarioSoapIn">
@@ -422,6 +453,18 @@
   <wsdl:message name="ingresarComprobanteSoapOut">
     <wsdl:part name="parameters" element="tns:ingresarComprobanteResponse" />
   </wsdl:message>
+  <wsdl:message name="confirmarComprobanteSoapIn">
+    <wsdl:part name="parameters" element="tns:confirmarComprobante" />
+  </wsdl:message>
+  <wsdl:message name="confirmarComprobanteSoapOut">
+    <wsdl:part name="parameters" element="tns:confirmarComprobanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerTransaccionesPendientesSoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerTransaccionesPendientes" />
+  </wsdl:message>
+  <wsdl:message name="obtenerTransaccionesPendientesSoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerTransaccionesPendientesResponse" />
+  </wsdl:message>
   <wsdl:portType name="serverFINTFachadaSoap">
     <wsdl:operation name="agregarUsuario">
       <wsdl:input message="tns:agregarUsuarioSoapIn" />
@@ -490,6 +533,14 @@
     <wsdl:operation name="ingresarComprobante">
       <wsdl:input message="tns:ingresarComprobanteSoapIn" />
       <wsdl:output message="tns:ingresarComprobanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="confirmarComprobante">
+      <wsdl:input message="tns:confirmarComprobanteSoapIn" />
+      <wsdl:output message="tns:confirmarComprobanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerTransaccionesPendientes">
+      <wsdl:input message="tns:obtenerTransaccionesPendientesSoapIn" />
+      <wsdl:output message="tns:obtenerTransaccionesPendientesSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="serverFINTFachadaSoap" type="tns:serverFINTFachadaSoap">
@@ -647,6 +698,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="confirmarComprobante">
+      <soap:operation soapAction="http://tempuri.org/confirmarComprobante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerTransaccionesPendientes">
+      <soap:operation soapAction="http://tempuri.org/obtenerTransaccionesPendientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="serverFINTFachadaSoap12" type="tns:serverFINTFachadaSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -796,6 +865,24 @@
     </wsdl:operation>
     <wsdl:operation name="ingresarComprobante">
       <soap12:operation soapAction="http://tempuri.org/ingresarComprobante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmarComprobante">
+      <soap12:operation soapAction="http://tempuri.org/confirmarComprobante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerTransaccionesPendientes">
+      <soap12:operation soapAction="http://tempuri.org/obtenerTransaccionesPendientes" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

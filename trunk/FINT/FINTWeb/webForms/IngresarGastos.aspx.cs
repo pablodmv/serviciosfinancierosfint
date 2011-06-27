@@ -16,7 +16,8 @@ namespace FINTWeb.webForms
 {
     public partial class IngresarGastos : System.Web.UI.Page
     {
-
+        int idusuario;
+        DataSet dsCuentas = new DataSet();
         private String usrLogueado = "";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,6 +26,23 @@ namespace FINTWeb.webForms
             {
                 this.usrLogueado = Request.QueryString["usuarioTxt"];
             }
+
+            idusuario = int.Parse(Controller.getInstancia().dsUsuario.Tables[0].Rows[0]["id"].ToString());
+            dsCuentas = Controller.getInstancia().obtenerCuentasXusuario(idusuario);
+
+            if (!Page.IsPostBack)
+            {
+   
+                this.selCuentaCmb.DataSource = dsCuentas.Tables[0];
+                this.selCuentaCmb.DataTextField = "Descripcion";
+                this.selCuentaCmb.DataValueField = "id";
+
+                this.DataBind();
+
+                this.selCuentaCmb.Items.Insert(0, new ListItem("Seleccione...", "0"));
+            }
+
+
             this.usrLbl.Text = "Bienvenido Usuario: " + this.usrLogueado;
         }
 
@@ -37,12 +55,13 @@ namespace FINTWeb.webForms
             Double tmpMonto = Double.Parse(this.montoTxt.Text);
             Decimal monto = (Decimal)tmpMonto;
             String fVen = this.fVenDPicker.SelectedDate.ToString("dd/MM/yyyy");
+            int idCuenta = int.Parse(this.selCuentaCmb.SelectedValue.ToString());
             int estado = (int)Estado.Pendiente;
 
             if (!nFac.Equals("") && !desc.Equals("") && monto > 0)
             {
 
-                if (Controller.getInstancia().ingresarGasto(nFac, desc, monto, fVen, estado))
+                if (Controller.getInstancia().ingresarGasto(nFac, desc, monto, fVen, estado,idCuenta))
                 {
                     this.msgLbl.Text = "Gasto ingresado con exito.";
                 }

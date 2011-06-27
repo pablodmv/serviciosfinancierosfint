@@ -7,3 +7,4 @@ C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancieros
 C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\obj\Release\serverFINTWs.dll
 C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\obj\Release\serverFINTWs.pdb
+C:\Users\Gustavo Leites\ORT\Semestre 6\NET\obligatorio\FINT\serviciosfinancierosfint\FINT\serverFINTWs\bin\serverFINT.XmlSerializers.dll
