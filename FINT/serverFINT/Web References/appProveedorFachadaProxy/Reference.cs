@@ -79,24 +79,24 @@ namespace serverFINT.appProveedorFachadaProxy {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/obtenerEstadoCuenta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public estadoCuenta obtenerEstadoCuenta(string numcue) {
+        public string[] obtenerEstadoCuenta(string numcuenta) {
             object[] results = this.Invoke("obtenerEstadoCuenta", new object[] {
-                        numcue});
-            return ((estadoCuenta)(results[0]));
+                        numcuenta});
+            return ((string[])(results[0]));
         }
         
         /// <remarks/>
-        public void obtenerEstadoCuentaAsync(string numcue) {
-            this.obtenerEstadoCuentaAsync(numcue, null);
+        public void obtenerEstadoCuentaAsync(string numcuenta) {
+            this.obtenerEstadoCuentaAsync(numcuenta, null);
         }
         
         /// <remarks/>
-        public void obtenerEstadoCuentaAsync(string numcue, object userState) {
+        public void obtenerEstadoCuentaAsync(string numcuenta, object userState) {
             if ((this.obtenerEstadoCuentaOperationCompleted == null)) {
                 this.obtenerEstadoCuentaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnobtenerEstadoCuentaOperationCompleted);
             }
             this.InvokeAsync("obtenerEstadoCuenta", new object[] {
-                        numcue}, this.obtenerEstadoCuentaOperationCompleted, userState);
+                        numcuenta}, this.obtenerEstadoCuentaOperationCompleted, userState);
         }
         
         private void OnobtenerEstadoCuentaOperationCompleted(object arg) {
@@ -157,108 +157,6 @@ namespace serverFINT.appProveedorFachadaProxy {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.4927")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class estadoCuenta {
-        
-        private decimal totalField;
-        
-        private gasto[] colgastoField;
-        
-        /// <remarks/>
-        public decimal Total {
-            get {
-                return this.totalField;
-            }
-            set {
-                this.totalField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public gasto[] Colgasto {
-            get {
-                return this.colgastoField;
-            }
-            set {
-                this.colgastoField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.4927")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class gasto {
-        
-        private decimal montoField;
-        
-        private string fechaCompraField;
-        
-        private string conceptoField;
-        
-        private string numFactField;
-        
-        private int estadoField;
-        
-        /// <remarks/>
-        public decimal Monto {
-            get {
-                return this.montoField;
-            }
-            set {
-                this.montoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string FechaCompra {
-            get {
-                return this.fechaCompraField;
-            }
-            set {
-                this.fechaCompraField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Concepto {
-            get {
-                return this.conceptoField;
-            }
-            set {
-                this.conceptoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string NumFact {
-            get {
-                return this.numFactField;
-            }
-            set {
-                this.numFactField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int Estado {
-            get {
-                return this.estadoField;
-            }
-            set {
-                this.estadoField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
     public delegate void obtenerEstadoCuentaCompletedEventHandler(object sender, obtenerEstadoCuentaCompletedEventArgs e);
     
@@ -276,10 +174,10 @@ namespace serverFINT.appProveedorFachadaProxy {
         }
         
         /// <remarks/>
-        public estadoCuenta Result {
+        public string[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((estadoCuenta)(this.results[0]));
+                return ((string[])(this.results[0]));
             }
         }
     }

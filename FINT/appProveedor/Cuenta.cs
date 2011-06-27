@@ -7,17 +7,23 @@ namespace appProveedor
 {
     public class Cuenta
     {
-        private String numCuenta="1234";
+        private String numCuenta="123456";
         private Decimal saldo=(Decimal)4000.00;
         private Decimal limite = (Decimal)12000.00;
         private String descripcion="Tarjeta Visa";
         private List<pago> colpago = new List<pago>();
-
-
-        private List<gasto> colgasto = new List<gasto>();
+        private String fechaCierre = "05/07/2011";
 
       
 
+        private List<gasto> colgasto = new List<gasto>();
+
+
+        public String FechaCierre
+        {
+            get { return fechaCierre; }
+            set { fechaCierre = value; }
+        }
 
         public Cuenta()
         {
@@ -57,14 +63,14 @@ namespace appProveedor
 
         public void cargarPagosGastos()
         {
-            pago pago1 = new pago("2354568A", (Decimal)4500.00, "01/02/2011");
-            pago pago2 = new pago("2354448A", (Decimal)2200.00, "01/03/2011");
-            pago pago3 = new pago("23222568A", (Decimal)1200.00, "01/04/2011");
-            pago pago4 = new pago("23546666A", (Decimal)6800.00, "01/05/2011");
-            pago pago5 = new pago("2888568A", (Decimal)3255.00, "01/06/2011");
-            gasto gast1 = new gasto("999", "TIENDA INGLESA", "13/06/2011", (Decimal)4.500, 1);
-            gasto gast2 = new gasto("123", "VIDOL CALZADOS", "13/06/2011", (Decimal)1.500, 1);
-            gasto gast3 = new gasto("456", "LOS 4 ASES", "13/06/2011", (Decimal)2.500, 1);
+            pago pago1 = new pago("2354568A", (Decimal)4500, "01/02/2011");
+            pago pago2 = new pago("2354448A", (Decimal)2200, "01/03/2011");
+            pago pago3 = new pago("23222568A", (Decimal)1200, "01/04/2011");
+            pago pago4 = new pago("23546666A", (Decimal)6800, "01/05/2011");
+            pago pago5 = new pago("2888568A", (Decimal)3255, "01/06/2011");
+            gasto gast1 = new gasto("999", "TIENDA INGLESA", "13/06/2011", (Decimal)4500.00, 1);
+            gasto gast2 = new gasto("123", "VIDOL CALZADOS", "13/06/2011", (Decimal)1500.00, 1);
+            gasto gast3 = new gasto("456", "LOS 4 ASES", "13/06/2011", (Decimal)2500.00, 1);
             Colgasto.Add(gast1);
             Colgasto.Add(gast2);
             Colgasto.Add(gast3);
@@ -75,19 +81,19 @@ namespace appProveedor
             Colpago.Add(pago5);
         }
 
-        public estadoCuenta getEstadoCuenta()
-        {
-            estadoCuenta estado = new estadoCuenta();
+        //public estadoCuenta getEstadoCuenta()
+        //{
+        //    estadoCuenta estado = new estadoCuenta();
 
-            foreach (gasto gas in Colgasto)
-            {
-                estado.Colgasto.Add(gas);
-                estado.Total = gas.Monto;
+        //    foreach (gasto gas in Colgasto)
+        //    {
+        //        estado.Colgasto.Add(gas);
+        //        estado.Total = gas.Monto;
                 
-            }
+        //    }
 
-            return estado;
-        }
+        //    return estado;
+        //}
 
         public Boolean realizarPago(Decimal monto)
         {
@@ -140,7 +146,11 @@ namespace appProveedor
             get { return numeroFactura; }
             set { numeroFactura = value; }
         }
-       
+
+        public override string ToString()
+        {
+            return "Pago Numero:" +this.NumeroFactura +" Monto: "+this.Monto+" Fecha: "+ Fecha;
+        }
     }
 
     public class gasto
@@ -194,6 +204,11 @@ namespace appProveedor
         {
             get { return estado; }
             set { estado = value; }
+        }
+
+        public override string ToString()
+        {
+            return "Gasto - Factura: "+this.NumFact+" Monto: "+this.Monto+" Fecha: "+this.FechaCompra;
         }
     
     }

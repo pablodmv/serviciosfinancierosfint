@@ -68,6 +68,7 @@ namespace serverFINTPersitencia
             return dsGastos;
         }
 
+
         public DataSet obtenerGastosPorId(int idGasto)
         {
             DataSet dsGastos = new DataSet();
@@ -144,6 +145,22 @@ namespace serverFINTPersitencia
             return false;
         }
 
-     
+        public DataSet obtenerGastosPendientePorCuenta(int idCuenta)
+        {
+            DataSet dsGastos = new DataSet();
+            try
+            {
+                SqlConnection conn = new SqlConnection(this.conn);
+                SqlDataAdapter da = new SqlDataAdapter("select * from GASTOS WHERE idUsuario=" + idCuenta + " AND Estado=0", conn);
+
+                da.Fill(dsGastos, "Gastos2");
+                return dsGastos;
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Class);
+            }
+            return dsGastos;
+        }
     }
 }

@@ -58,6 +58,16 @@ namespace fint.Forms.serverFINTFachada {
         
         private System.Threading.SendOrPostCallback realizarTransferenciaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback estadoCuentaFINTOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback estadoCuentaRemotoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ingresarComprobanteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback confirmarComprobanteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback obtenerTransaccionesPendientesOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -137,6 +147,21 @@ namespace fint.Forms.serverFINTFachada {
         
         /// <remarks/>
         public event realizarTransferenciaCompletedEventHandler realizarTransferenciaCompleted;
+        
+        /// <remarks/>
+        public event estadoCuentaFINTCompletedEventHandler estadoCuentaFINTCompleted;
+        
+        /// <remarks/>
+        public event estadoCuentaRemotoCompletedEventHandler estadoCuentaRemotoCompleted;
+        
+        /// <remarks/>
+        public event ingresarComprobanteCompletedEventHandler ingresarComprobanteCompleted;
+        
+        /// <remarks/>
+        public event confirmarComprobanteCompletedEventHandler confirmarComprobanteCompleted;
+        
+        /// <remarks/>
+        public event obtenerTransaccionesPendientesCompletedEventHandler obtenerTransaccionesPendientesCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/agregarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -591,6 +616,157 @@ namespace fint.Forms.serverFINTFachada {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/estadoCuentaFINT", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] estadoCuentaFINT(int idcuenta, string fecha) {
+            object[] results = this.Invoke("estadoCuentaFINT", new object[] {
+                        idcuenta,
+                        fecha});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void estadoCuentaFINTAsync(int idcuenta, string fecha) {
+            this.estadoCuentaFINTAsync(idcuenta, fecha, null);
+        }
+        
+        /// <remarks/>
+        public void estadoCuentaFINTAsync(int idcuenta, string fecha, object userState) {
+            if ((this.estadoCuentaFINTOperationCompleted == null)) {
+                this.estadoCuentaFINTOperationCompleted = new System.Threading.SendOrPostCallback(this.OnestadoCuentaFINTOperationCompleted);
+            }
+            this.InvokeAsync("estadoCuentaFINT", new object[] {
+                        idcuenta,
+                        fecha}, this.estadoCuentaFINTOperationCompleted, userState);
+        }
+        
+        private void OnestadoCuentaFINTOperationCompleted(object arg) {
+            if ((this.estadoCuentaFINTCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.estadoCuentaFINTCompleted(this, new estadoCuentaFINTCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/estadoCuentaRemoto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] estadoCuentaRemoto(int idcuenta) {
+            object[] results = this.Invoke("estadoCuentaRemoto", new object[] {
+                        idcuenta});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void estadoCuentaRemotoAsync(int idcuenta) {
+            this.estadoCuentaRemotoAsync(idcuenta, null);
+        }
+        
+        /// <remarks/>
+        public void estadoCuentaRemotoAsync(int idcuenta, object userState) {
+            if ((this.estadoCuentaRemotoOperationCompleted == null)) {
+                this.estadoCuentaRemotoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnestadoCuentaRemotoOperationCompleted);
+            }
+            this.InvokeAsync("estadoCuentaRemoto", new object[] {
+                        idcuenta}, this.estadoCuentaRemotoOperationCompleted, userState);
+        }
+        
+        private void OnestadoCuentaRemotoOperationCompleted(object arg) {
+            if ((this.estadoCuentaRemotoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.estadoCuentaRemotoCompleted(this, new estadoCuentaRemotoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ingresarComprobante", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool ingresarComprobante(int idcuenta, decimal monto, string comprobante, int idcliente) {
+            object[] results = this.Invoke("ingresarComprobante", new object[] {
+                        idcuenta,
+                        monto,
+                        comprobante,
+                        idcliente});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ingresarComprobanteAsync(int idcuenta, decimal monto, string comprobante, int idcliente) {
+            this.ingresarComprobanteAsync(idcuenta, monto, comprobante, idcliente, null);
+        }
+        
+        /// <remarks/>
+        public void ingresarComprobanteAsync(int idcuenta, decimal monto, string comprobante, int idcliente, object userState) {
+            if ((this.ingresarComprobanteOperationCompleted == null)) {
+                this.ingresarComprobanteOperationCompleted = new System.Threading.SendOrPostCallback(this.OningresarComprobanteOperationCompleted);
+            }
+            this.InvokeAsync("ingresarComprobante", new object[] {
+                        idcuenta,
+                        monto,
+                        comprobante,
+                        idcliente}, this.ingresarComprobanteOperationCompleted, userState);
+        }
+        
+        private void OningresarComprobanteOperationCompleted(object arg) {
+            if ((this.ingresarComprobanteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ingresarComprobanteCompleted(this, new ingresarComprobanteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/confirmarComprobante", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool confirmarComprobante(int idtransac) {
+            object[] results = this.Invoke("confirmarComprobante", new object[] {
+                        idtransac});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void confirmarComprobanteAsync(int idtransac) {
+            this.confirmarComprobanteAsync(idtransac, null);
+        }
+        
+        /// <remarks/>
+        public void confirmarComprobanteAsync(int idtransac, object userState) {
+            if ((this.confirmarComprobanteOperationCompleted == null)) {
+                this.confirmarComprobanteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnconfirmarComprobanteOperationCompleted);
+            }
+            this.InvokeAsync("confirmarComprobante", new object[] {
+                        idtransac}, this.confirmarComprobanteOperationCompleted, userState);
+        }
+        
+        private void OnconfirmarComprobanteOperationCompleted(object arg) {
+            if ((this.confirmarComprobanteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.confirmarComprobanteCompleted(this, new confirmarComprobanteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/obtenerTransaccionesPendientes", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet obtenerTransaccionesPendientes() {
+            object[] results = this.Invoke("obtenerTransaccionesPendientes", new object[0]);
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void obtenerTransaccionesPendientesAsync() {
+            this.obtenerTransaccionesPendientesAsync(null);
+        }
+        
+        /// <remarks/>
+        public void obtenerTransaccionesPendientesAsync(object userState) {
+            if ((this.obtenerTransaccionesPendientesOperationCompleted == null)) {
+                this.obtenerTransaccionesPendientesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnobtenerTransaccionesPendientesOperationCompleted);
+            }
+            this.InvokeAsync("obtenerTransaccionesPendientes", new object[0], this.obtenerTransaccionesPendientesOperationCompleted, userState);
+        }
+        
+        private void OnobtenerTransaccionesPendientesOperationCompleted(object arg) {
+            if ((this.obtenerTransaccionesPendientesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.obtenerTransaccionesPendientesCompleted(this, new obtenerTransaccionesPendientesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -985,6 +1161,136 @@ namespace fint.Forms.serverFINTFachada {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void estadoCuentaFINTCompletedEventHandler(object sender, estadoCuentaFINTCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class estadoCuentaFINTCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal estadoCuentaFINTCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void estadoCuentaRemotoCompletedEventHandler(object sender, estadoCuentaRemotoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class estadoCuentaRemotoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal estadoCuentaRemotoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void ingresarComprobanteCompletedEventHandler(object sender, ingresarComprobanteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ingresarComprobanteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ingresarComprobanteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void confirmarComprobanteCompletedEventHandler(object sender, confirmarComprobanteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class confirmarComprobanteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal confirmarComprobanteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    public delegate void obtenerTransaccionesPendientesCompletedEventHandler(object sender, obtenerTransaccionesPendientesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.4927")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class obtenerTransaccionesPendientesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal obtenerTransaccionesPendientesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }

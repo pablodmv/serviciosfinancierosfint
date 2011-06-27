@@ -37,3 +37,4 @@ D:\Visual Studio 2008\Projects\FINT\FINTDesktop\FINTDesktop\bin\Debug\FINTDeskto
 D:\Visual Studio 2008\Projects\FINT\FINTDesktop\FINTDesktop\obj\Debug\FINTDesktop.exe
 D:\Visual Studio 2008\Projects\FINT\FINTDesktop\FINTDesktop\obj\Debug\FINTDesktop.pdb
 D:\Visual Studio 2008\Projects\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.estadoCuentaReal.resources
+D:\Visual Studio 2008\Projects\FINT\FINTDesktop\FINTDesktop\obj\Debug\fint.Forms.transaccionesPendientes.resources

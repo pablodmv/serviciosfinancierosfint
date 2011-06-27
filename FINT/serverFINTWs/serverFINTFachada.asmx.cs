@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml.Linq;
+using System.Web.UI.MobileControls;
+using System.Collections.Generic;
 
 
 namespace serverFINTWs
@@ -131,6 +133,47 @@ namespace serverFINTWs
         {
             serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
             return sistema.realizarTransferencia(pCuentaOrig, pCuentaDestino, monto, concepto);
+
+        }
+
+        [WebMethod]
+        public List<String> estadoCuentaFINT(int idcuenta, String fecha)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.estadoCuentaFINT(idcuenta,fecha);
+
+        }
+
+        [WebMethod]
+        public List<String> estadoCuentaRemoto(int idcuenta)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return new List<String>(sistema.estadoCuentaServicio(idcuenta));
+
+        }
+
+
+        [WebMethod]
+        public Boolean ingresarComprobante(int idcuenta, Decimal monto,String comprobante,int idcliente)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.ingresarPagoCliente(idcuenta, monto, comprobante,idcliente);
+
+        }
+
+        [WebMethod]
+        public Boolean confirmarComprobante(int idtransac)
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.confirmarPagoCliente(idtransac);
+
+        }
+
+        [WebMethod]
+        public DataSet obtenerTransaccionesPendientes()
+        {
+            serverFINT.Sistema sistema = serverFINT.Sistema.getInstancia();
+            return sistema.obtenerTransaccionPendiente();
 
         }
     }

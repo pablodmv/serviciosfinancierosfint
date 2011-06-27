@@ -99,6 +99,11 @@ namespace serverFINT
         
         }
 
+        public DataSet obtenerGastoXcuenta(int idcuenta)
+        {
+            return gastoPersis.obtenerGastosPendientePorCuenta(idcuenta);
+
+        }
         public Gasto obtenerObjGasto(int idGasto)
         {
             DataSet dsGasto = new DataSet();
