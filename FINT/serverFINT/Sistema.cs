@@ -58,15 +58,9 @@ namespace serverFINT
         {
             usuarioPersistente userPersistent = new usuarioPersistente();
             Usuario usuario = new Usuario(nombre, login, passwd, tipo);
-            //if (!chequearUsuario(usuario,userPersistent))
-            //{
-                
                  return userPersistent.altaUsuario(nombre, login, passwd, (int) tipo);
                 
 
-           //}
-
-           //// return false;
         }
 
         public Boolean editarUsuario(String nombre, String passwd, int id)
@@ -83,18 +77,7 @@ namespace serverFINT
         public DataSet chequearUsuario(String login, String pwd)
         {
             usuarioPersistente userPersistent = new usuarioPersistente();
-            //foreach (Usuario tmpUsuario in Colusuarios)
-            //{
-            //    if (user.obtenerLogin()==tmpUsuario.obtenerLogin())
-            //    {
-            //        return true;
-                    
-            //    }
-                
-            //}
-            //return false;
             DataSet ds = userPersistent.consultaUsuario(login, pwd);
-
             return ds;
 
         }
@@ -105,14 +88,6 @@ namespace serverFINT
 
             return usr.obtenerUsuariosXTipo(tipo);
         }
-
-
-        //public void agregarCuentaProveedor(String numero, String descripcion, DateTime vencimiento, Proveedor prov, Usuario user)
-        //{
-        //   // Cuenta cuentaProveedor = new cuentaProveedor(numero, descripcion, vencimiento, prov);
-        //   // user.agregarCuenta(cuentaProveedor);
-            
-        //}
 
         public Boolean agregarCuenta(String numero, String descripcion, Decimal saldo, int idProveedor, int idUsuario)
         {
@@ -135,37 +110,10 @@ namespace serverFINT
         }
 
 
-        //public Usuario obtenerUsuario(int id)
-        //{
-        //    foreach (Usuario user in Colusuarios)
-        //    {
-        //        if (user.Id==id)
-        //        {
-        //            return user;
-        //        }
-        //    }
-        //    return null;
-        //}
-
-
         public DataSet obtenerCuentasXusuario(int idUsuario)
         {
-
             Cuenta cuen = new Cuenta();
             return cuen.obtenerCuentasXusuario(idUsuario);
-
-
-
-            //foreach (Usuario user in Colusuarios)
-            //{
-            //    if (user.Id==idUsuario)
-            //    {
-            //        return user.ColCuentas;
-                    
-            //    }
-            //}
-            //return null;
-        
         }
 
         public Boolean ingresarGasto(String numero, String concepto, Decimal monto, String vencimiento, int estado, int idusuario, int idcuenta)
@@ -226,12 +174,6 @@ namespace serverFINT
             }
             return false;
         }
-
-
-        //public estadoCuenta verEstadoCuenta(DateTime fecha, Cuenta pCuenta)
-        //{
-        //    return pCuenta.estadoCuentaProyectado(fecha);
-        //}
 
         public DataSet obtenerProveedores()
         {
@@ -310,15 +252,6 @@ namespace serverFINT
 
 
 
-
-
-        //public Boolean ingresarTransaccion(String pconcepto, Decimal monto, int ptipo, String fecha, int idgasto, int estado, int idcuenta, int idcuentadestino)
-        //{
-        //    Transaccion transac = new Transaccion();
-        //    return transac.ingresarTransaccion(pconcepto, monto, ptipo, fecha, idgasto, estado, idcuenta, idcuentadestino);
-        //}
-
-
         public List<String> estadoCuentaServicio(int idcuenta )
         {
             Cuenta cue = new Cuenta();
@@ -328,12 +261,6 @@ namespace serverFINT
             return new List<String>(serviceProveedor.obtenerEstadoCuenta(numc));
         }
 
-        //private Boolean realizarPago(String numcue, Decimal monto)
-        //{
-        //    appProveedorFachadaProxy.appProveedorFachada serviceProveedor = new appProveedorFachadaProxy.appProveedorFachada();
-        //    return serviceProveedor.realizarPago(numcue, monto);
-
-        //}
 
         public List<String> estadoCuentaFINT(int idcuenta, String fecha)
         {
